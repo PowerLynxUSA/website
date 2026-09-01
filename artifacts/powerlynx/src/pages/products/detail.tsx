@@ -1,14 +1,18 @@
 import { useRoute, Link } from 'wouter';
 import { products } from '@/data/products';
-import { ArrowLeft, Check, CheckCircle2, ChevronRight, Share2, Printer } from 'lucide-react';
+import { ArrowLeft, Check, ChevronRight, Share2, Printer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import { ModelBadge } from '@/components/model-badge';
+import { useState } from 'react';
 
 export function ProductDetail() {
   const [, params] = useRoute('/products/:slug');
   const slug = params?.slug;
   
   const product = products.find(p => p.slug === slug);
+  const images = product ? [product.image, ...(product.gallery || [])] : [];
+  const [activeImage, setActiveImage] = useState(0);
 
   if (!product) {
     return (
@@ -42,17 +46,31 @@ export function ProductDetail() {
           
           {/* PRODUCT VISUAL / MOCK */}
           <div className="space-y-6">
-            <div className="aspect-[4/3] bg-card border border-border flex items-center justify-center p-8 relative">
-              <Badge variant="outline" className="absolute top-4 left-4 rounded-none uppercase tracking-widest font-bold bg-background">
-                {product.models.split(',')[0]}
-              </Badge>
-              <div className="text-center opacity-30">
-                <div className="w-48 h-48 rounded-full border-4 border-dashed border-muted-foreground/30 flex items-center justify-center mx-auto mb-4">
-                  <CheckCircle2 className="w-16 h-16" />
-                </div>
-                <p className="font-mono text-sm uppercase tracking-widest">Image Reference</p>
-              </div>
+            <div className="aspect-[4/3] bg-white border border-border flex items-center justify-center p-8 relative overflow-hidden">
+              <img
+                src={images[activeImage]}
+                alt={product.name}
+                className="w-full h-full object-contain"
+                data-testid="img-product-detail"
+              />
             </div>
+
+            {images.length > 1 && (
+              <div className="flex gap-3">
+                {images.map((img, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActiveImage(i)}
+                    className={`w-20 h-20 bg-white border-2 flex items-center justify-center p-2 transition-colors ${activeImage === i ? 'border-primary' : 'border-border hover:border-primary/50'}`}
+                    data-testid={`button-thumbnail-${i}`}
+                  >
+                    <img src={img} alt={`${product.name} view ${i + 1}`} className="w-full h-full object-contain" />
+                  </button>
+                ))}
+              </div>
+            )}
+
+            <ModelBadge models={product.models} size="lg" />
             
             {/* ACTIONS */}
             <div className="flex gap-4">

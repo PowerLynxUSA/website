@@ -1,6 +1,29 @@
 // POWERLYNX product catalog data, sourced from the 2027 POWERLYNX catalog (Powerlink Inc.)
 // Two lines: HVAC Tool and HVAC Supply.
 
+import imgBlackRubberInsulatedLineSet from "@/assets/products/black-rubber-insulated-line-set.png";
+import imgBrazingTorch from "@/assets/products/brazing-torch.png";
+import imgCondenserFanMotorSingleSpeed from "@/assets/products/condenser-fan-motor-single-speed.png";
+import imgDeburringTool from "@/assets/products/deburring-tool.png";
+import imgDualBladeFoldingKnife from "@/assets/products/dual-blade-folding-knife.png";
+import imgFlaringTool from "@/assets/products/flaring-tool.png";
+import imgFoldingKnife from "@/assets/products/folding-knife.png";
+import imgLedHeadlight from "@/assets/products/led-headlight.png";
+import imgLedPenlight from "@/assets/products/led-penlight.png";
+import imgManifoldGauge2valve from "@/assets/products/manifold-gauge-2valve.png";
+import imgManifoldGauge4valve from "@/assets/products/manifold-gauge-4valve.png";
+import imgRatchetingWrench from "@/assets/products/ratcheting-wrench.png";
+import imgReamer from "@/assets/products/reamer.png";
+import imgRefrigerantHoseSetStandard from "@/assets/products/refrigerant-hose-set-standard.png";
+import imgRefrigerantHoseSetValve from "@/assets/products/refrigerant-hose-set-valve.png";
+import imgThermalImagingCamera from "@/assets/products/thermal-imaging-camera.png";
+import imgThermalImagingCameraAccessories from "@/assets/products/thermal-imaging-camera-accessories.png";
+import imgTubeCutter from "@/assets/products/tube-cutter.png";
+import imgTubeExpander from "@/assets/products/tube-expander.png";
+import imgTubeStraightener from "@/assets/products/tube-straightener.png";
+import imgUtilityTorch from "@/assets/products/utility-torch.png";
+import imgWhiteInsulatedLineSet from "@/assets/products/white-insulated-line-set.png";
+
 export type ProductSpec = { label: string; value: string };
 
 export type Product = {
@@ -12,6 +35,8 @@ export type Product = {
   summary: string;
   bullets: string[];
   specs: ProductSpec[];
+  image: string;
+  gallery?: string[];
 };
 
 export const productLines = ["HVAC Tool", "HVAC Supply"] as const;
@@ -19,6 +44,7 @@ export const productLines = ["HVAC Tool", "HVAC Supply"] as const;
 export const products: Product[] = [
   {
     slug: "white-insulated-line-set",
+    image: imgWhiteInsulatedLineSet,
     name: "White Insulated Line Set w/ Flared Nuts",
     models: "1438W25F, 1412W25F, 1438W50F, 1412W50F",
     line: "HVAC Tool",
@@ -40,6 +66,7 @@ export const products: Product[] = [
   },
   {
     slug: "black-rubber-insulated-line-set",
+    image: imgBlackRubberInsulatedLineSet,
     name: "Black Rubber Insulated Line Set w/ Flared Nuts",
     models: "1438B25F, 1412B25F, 1438B50F, 1412B50F",
     line: "HVAC Tool",
@@ -61,6 +88,8 @@ export const products: Product[] = [
   },
   {
     slug: "thermal-imaging-camera",
+    image: imgThermalImagingCamera,
+    gallery: [imgThermalImagingCameraAccessories],
     name: "Thermal Imaging Camera",
     models: "ATC100 / ATC200",
     line: "HVAC Tool",
@@ -80,6 +109,7 @@ export const products: Product[] = [
   },
   {
     slug: "brazing-torch",
+    image: imgBrazingTorch,
     name: "Brazing Torch",
     models: "AT1LMP",
     line: "HVAC Tool",
@@ -95,6 +125,7 @@ export const products: Product[] = [
   },
   {
     slug: "utility-torch",
+    image: imgUtilityTorch,
     name: "Utility Torch",
     models: "AT1P",
     line: "HVAC Tool",
@@ -105,6 +136,8 @@ export const products: Product[] = [
   },
   {
     slug: "manifold-gauge",
+    image: imgManifoldGauge2valve,
+    gallery: [imgManifoldGauge4valve],
     name: "Manifold Gauge (2-Valve / 4-Valve)",
     models: "AG2MA / AG2MB / AG4MA / AG4MB",
     line: "HVAC Tool",
@@ -123,6 +156,8 @@ export const products: Product[] = [
   },
   {
     slug: "refrigerant-hose-set",
+    image: imgRefrigerantHoseSetStandard,
+    gallery: [imgRefrigerantHoseSetValve],
     name: "Refrigerant Hose Set",
     models: "ARH5S / ARH5SV",
     line: "HVAC Tool",
@@ -140,6 +175,7 @@ export const products: Product[] = [
   },
   {
     slug: "flaring-tool",
+    image: imgFlaringTool,
     name: "Flaring Tool",
     models: "AHF6",
     line: "HVAC Tool",
@@ -150,6 +186,7 @@ export const products: Product[] = [
   },
   {
     slug: "tube-expander",
+    image: imgTubeExpander,
     name: "Tube Expander",
     models: "AHE7",
     line: "HVAC Tool",
@@ -160,6 +197,7 @@ export const products: Product[] = [
   },
   {
     slug: "tube-straightener",
+    image: imgTubeStraightener,
     name: "Tube Straightener",
     models: "AHS2 / AHS3",
     line: "HVAC Tool",
@@ -173,6 +211,7 @@ export const products: Product[] = [
   },
   {
     slug: "tube-cutter",
+    image: imgTubeCutter,
     name: "Tube Cutter",
     models: "AHC6C / AHC11C / AHC12",
     line: "HVAC Tool",
@@ -191,6 +230,7 @@ export const products: Product[] = [
   },
   {
     slug: "reamer",
+    image: imgReamer,
     name: "Internal & External Reamer",
     models: "AHR30",
     line: "HVAC Tool",
@@ -201,6 +241,7 @@ export const products: Product[] = [
   },
   {
     slug: "deburring-tool",
+    image: imgDeburringTool,
     name: "Tube Deburring Tool",
     models: "AHD20",
     line: "HVAC Tool",
@@ -211,6 +252,7 @@ export const products: Product[] = [
   },
   {
     slug: "ratcheting-wrench",
+    image: imgRatchetingWrench,
     name: "Ratcheting Wrench",
     models: "AHW3 / AHW5 / AHWA",
     line: "HVAC Tool",
@@ -225,6 +267,7 @@ export const products: Product[] = [
   },
   {
     slug: "folding-knife",
+    image: imgFoldingKnife,
     name: "Folding Knife",
     models: "AK1",
     line: "HVAC Tool",
@@ -235,6 +278,7 @@ export const products: Product[] = [
   },
   {
     slug: "dual-blade-folding-knife",
+    image: imgDualBladeFoldingKnife,
     name: "Dual-Blade Folding Knife",
     models: "AK2",
     line: "HVAC Tool",
@@ -245,6 +289,7 @@ export const products: Product[] = [
   },
   {
     slug: "led-penlight",
+    image: imgLedPenlight,
     name: "LED Penlight",
     models: "AL1",
     line: "HVAC Tool",
@@ -255,6 +300,7 @@ export const products: Product[] = [
   },
   {
     slug: "led-headlight",
+    image: imgLedHeadlight,
     name: "LED Headlight",
     models: "AL2",
     line: "HVAC Tool",
@@ -265,6 +311,7 @@ export const products: Product[] = [
   },
   {
     slug: "condenser-fan-motor-single-speed",
+    image: imgCondenserFanMotorSingleSpeed,
     name: "Condenser Fan Motor (Single Speed)",
     models: "ACM216 / ACM214",
     line: "HVAC Supply",
@@ -284,6 +331,7 @@ export const products: Product[] = [
   },
   {
     slug: "condenser-fan-motor-multi-hp",
+    image: imgCondenserFanMotorSingleSpeed,
     name: "Condenser Fan Motor (Multi-HP)",
     models: "ACM2M1",
     line: "HVAC Supply",

@@ -5,6 +5,7 @@ import { Search, SlidersHorizontal, ChevronRight, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
+import { ModelBadge } from '@/components/model-badge';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 
 export function ProductsIndex() {
@@ -134,13 +135,19 @@ export function ProductsIndex() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {filteredProducts.map(product => (
-                <Link key={product.slug} href={`/products/${product.slug}`}>
+                <Link key={product.slug} href={`/products/${product.slug}`} data-testid={`link-product-${product.slug}`}>
                   <div className="group flex flex-col h-full bg-card border border-border hover:border-primary transition-all duration-300 hover:shadow-lg">
-                    <div className="p-4 border-b border-border bg-muted/50 flex justify-between items-start">
-                      <Badge variant={product.line === 'HVAC Tool' ? 'default' : 'secondary'} className="rounded-none uppercase tracking-widest text-[10px]">
+                    <div className="aspect-[4/3] bg-white flex items-center justify-center relative overflow-hidden border-b border-border">
+                      <img
+                        src={product.image}
+                        alt={product.name}
+                        className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
+                        data-testid={`img-product-${product.slug}`}
+                      />
+                      <Badge variant={product.line === 'HVAC Tool' ? 'default' : 'secondary'} className="absolute top-3 left-3 rounded-none uppercase tracking-widest text-[10px]">
                         {product.line}
                       </Badge>
-                      <ChevronRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-1" />
+                      <ChevronRight className="absolute top-3 right-3 w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-1" />
                     </div>
                     
                     <div className="p-6 flex-1 flex flex-col">
@@ -149,10 +156,7 @@ export function ProductsIndex() {
                       <p className="text-sm text-muted-foreground mb-6 line-clamp-3">{product.summary}</p>
                       
                       <div className="mt-auto pt-4 border-t border-border/50">
-                        <p className="text-xs text-muted-foreground font-mono font-medium break-words">
-                          <span className="text-foreground/50 mr-2 uppercase">MDL:</span> 
-                          {product.models}
-                        </p>
+                        <ModelBadge models={product.models} size="sm" />
                       </div>
                     </div>
                   </div>

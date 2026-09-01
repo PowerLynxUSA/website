@@ -1,6 +1,7 @@
 import { Link } from 'wouter';
 import { ArrowRight, ShieldCheck, Wrench, Zap, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { ModelBadge } from '@/components/model-badge';
 import { products, productLines } from '@/data/products';
 import markUrl from '@/assets/brand/powerlynx-mark.png';
 import catalogCollageUrl from '@/assets/brand/catalog-hero-collage.jpeg';
@@ -136,18 +137,20 @@ export function Home() {
             {featuredProducts.map(product => (
               <Link key={product.slug} href={`/products/${product.slug}`}>
                 <div className="group h-full flex flex-col bg-card border border-border hover:border-primary transition-colors duration-300">
-                  <div className="aspect-square bg-muted p-6 flex items-center justify-center relative overflow-hidden">
+                  <div className="aspect-square bg-white p-6 flex items-center justify-center relative overflow-hidden border-b border-border">
                     <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors" />
-                    {/* Placeholder for product image since we don't have individual shots */}
-                    <div className="w-24 h-24 rounded-full bg-background border-4 border-muted-foreground/10 flex items-center justify-center text-muted-foreground/30 group-hover:scale-110 transition-transform duration-500">
-                      <Wrench className="w-10 h-10" />
-                    </div>
+                    <img
+                      src={product.image}
+                      alt={product.name}
+                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                      data-testid={`img-featured-${product.slug}`}
+                    />
                   </div>
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">{product.category}</div>
                     <h3 className="font-bold text-lg leading-tight mb-4 group-hover:text-primary transition-colors">{product.name}</h3>
                     <div className="mt-auto pt-4 border-t border-border">
-                      <p className="text-sm text-muted-foreground font-mono truncate">{product.models}</p>
+                      <ModelBadge models={product.models} size="sm" />
                     </div>
                   </div>
                 </div>
