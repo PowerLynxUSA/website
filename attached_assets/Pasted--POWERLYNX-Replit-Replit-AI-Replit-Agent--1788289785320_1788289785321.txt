@@ -1,0 +1,222 @@
+# POWERLYNX 웹사이트 제작 주문서 (Replit 작업 지시서)
+
+> 이 문서를 Replit AI 에이전트(Replit Agent)에게 그대로 붙여넣어 작업을 지시하면 됩니다.
+> 최종 마감/커스텀 기능은 Cursor에서 이어서 작업할 예정이므로, Replit에는 "1차 반응형 구조 + Under Construction 배포 → 2차 본 사이트 편집"까지만 요청합니다.
+
+---
+
+## 0. 프로젝트 개요
+
+- **브랜드명:** POWERLYNX ("Power Delivered.")
+- **운영 법인:** Powerlink Inc.
+- **사업 성격:** HVAC/R(냉난방공조) 전문가용 공구 및 부품 브랜드 — HVAC Tool + HVAC Supply
+- **레퍼런스 사이트(스타일 참고, 복제 금지):** https://navacglobal.com
+  - 참고할 요소: 상단 메가메뉴(카테고리 드롭다운 + 제품 썸네일), 풀스크린 히어로 배너, 카테고리 아이콘 그리드, 대표 제품 하이라이트 슬라이더, 뉴스/이벤트 섹션, 파트너사 로고 슬라이더, 하단 Footer(본사/창고 주소, 전화, 이메일 3종 분리)
+  - **주의:** 디자인 톤과 정보구조(IA)만 참고하고, 실제 레이아웃·폰트·컬러는 POWERLYNX만의 고유한 스타일로 새로 디자인할 것 (동일 템플릿 복제 금지)
+- **목표 사용자:** 북미/글로벌 HVAC 도소매업체, 시공업체, 유통업체, 개인 기술자
+- **최종 결과물:** 반응형(Responsive) 다국어 기업 웹사이트, Cloudflare Pages로 배포, GitHub로 버전관리
+
+---
+
+## 1. 개발 환경 및 배포 파이프라인
+
+Replit 작업 시작 전에 아래 환경을 명확히 인지하고 작업해 주세요.
+
+1. **버전관리:** GitHub 레포지토리와 연동하여 작업 (Replit → GitHub 연결, 커밋/푸시 가능하도록 설정)
+2. **배포:** 최종 호스팅은 **Cloudflare Pages**(또는 Cloudflare + Workers 조합)를 사용할 예정
+   - **배포 방식: GitHub 레포 ↔ Cloudflare Pages 연동(Git Integration)을 기본으로 설정해 주세요.** 이렇게 연동해두면 레포에 push되는 즉시 Cloudflare가 자동으로 재배포하므로, **Replit에서 1단계 Under Construction 페이지를 만들어 push하는 것만으로도 실제 도메인에 바로 반영됩니다.** (별도로 Cursor를 거칠 필요 없음 — Cursor는 이후 세부 기능을 다듬는 편집 환경일 뿐, 배포 권한 자체는 "GitHub 레포 ↔ Cloudflare" 연동에 있음)
+   - Cloudflare API 토큰이 있다면 Replit 터미널에서 `wrangler deploy`로 직접 배포도 가능(선택)
+3. **후속 작업 도구:** 이 프로젝트는 Replit에서 1차 구조를 잡은 뒤, **Cursor**로 넘겨서 세부 기능(폼 연동, 관리자 기능 등 마지막 커스텀 기능)을 마무리할 계획입니다.
+   - 따라서 Replit 단계에서는 **표준적이고 이식성 높은 코드 구조**로 작업해 주세요 (프레임워크 Lock-in 최소화, 정적 사이트 생성 방식 권장: Next.js(Static Export) 또는 Astro 등 Cloudflare Pages 호환 프레임워크 사용)
+   - 소스코드는 GitHub 레포에 정리된 구조로 커밋 (컴포넌트/페이지/다국어 리소스 폴더 분리)
+   - Replit과 Cursor 모두 같은 GitHub 레포에 push하는 방식으로 작업이 이어지므로, 어느 도구에서 작업하든 배포 파이프라인은 동일하게 유지됨
+4. **환경변수/시크릿:** 이메일 폼 발송용 API 키 등은 `.env`로 분리, Cloudflare Pages 환경변수에 별도 등록 예정이므로 하드코딩 금지
+
+---
+
+## 2. 작업 순서 (2단계 진행 요청)
+
+### ▶ 1단계: "Under Construction (공사중)" 안내 페이지 선(先) 배포
+- 반응형(모바일/태블릿/데스크톱) 1페이지 랜딩
+- 구성 요소:
+  - POWERLYNX 로고 (첨부 카탈로그 표지의 로고 이미지 사용)
+  - "Power Delivered." 슬로건
+  - "웹사이트를 준비 중입니다 / Website Coming Soon" 안내 문구 (영어 기본, 추후 다국어 전환 가능하게 구조만 마련)
+  - 회사 주소, 전화번호, 이메일 (아래 §8 참조) 노출
+  - 심플한 배경(브랜드 컬러 기반), 로딩/애니메이션 과하지 않게
+- **이 페이지를 먼저 Cloudflare Pages에 배포하여 도메인이 실제로 뜨는 것을 확인한 후**, 2단계로 넘어갈 것
+
+### ▶ 2단계: 본 사이트 개발 (Under Construction 페이지 대체)
+- 아래 §4~§7 내용을 반영한 정식 다국어 반응형 사이트로 확장
+- 페이지/섹션 단위로 순차 커밋 (Home → Products → About → Contact 순서 권장)
+
+---
+
+## 3. 브랜드 & 디자인 가이드
+
+### 3-1. 로고 & 컬러
+- 로고: 첨부된 `POWERLYNX_2027_CATALOG_V1_0.pdf` 표지 및 각 페이지 상단의 로고(늑대/스파크 아이콘 + "POWERLYNX" 워드마크) 사용. 고해상도 로고 파일은 별도 제공 예정이니, 우선 카탈로그에서 추출한 이미지를 사용해 자리 배치
+- 카탈로그 내 브랜드 컬러: 다크 차콜(#2B2B2B 계열) + 오렌지/레드 포인트 컬러(#E8552A 계열 추정) — 실제 HEX는 로고 원본 파일 수령 후 보정 예정이니 우선 이 톤으로 진행
+
+### 3-2. 타이포그래피 / CSS — Wordshiper 디자인 시스템 그대로 적용
+POWERLYNX 사이트는 wordshiper.org(Wordshiper Ministry 앱 프로젝트)에서 확정된 폰트/컬러 시스템을 그대로 가져와 적용합니다.
+
+- **한글 폰트:** Binggrae Taom
+- **영문 폰트:** EB Garamond
+- **중문(간체) 폰트:** Noto Sans SC
+- 언어 감지/선택에 따라 위 3개 폰트 스택을 자동 전환 (`lang` 속성 기반 CSS 폰트 스위칭)
+- 다국어 24개국 지원 시, 위 3개 언어군에 속하지 않는 언어(예: 아랍어, 태국어, 베트남어 등)는 각 언어의 표준 웹폰트(Noto Sans 계열)로 폴백 처리
+- **주의:** POWERLYNX의 포인트 컬러(§3-1)는 유지하되, 타이포그래피 스케일/줄간격/헤딩 웨이트 등 CSS 토큰 구조는 Wordshiper 시스템의 방식을 그대로 이식
+- (Cursor 단계에서 실제 wordshiper.org의 CSS 변수 파일을 그대로 import 또는 복사하여 연결할 예정이므로, Replit 단계에서는 **CSS 변수(디자인 토큰) 구조로 폰트/컬러를 관리**해 나중에 손쉽게 교체 가능하도록 설계해 주세요)
+
+### 3-3. 반응형 기준
+- 모바일 (~480px), 태블릿 (~768px), 데스크톱 (1200px+) 3단 브레이크포인트 기본
+- 상단 내비게이션은 모바일에서 햄버거 메뉴로 전환
+- 제품 그리드는 모바일 1열 → 태블릿 2열 → 데스크톱 3~4열
+
+---
+
+## 4. 사이트 구조 (정보 구조 / IA)
+
+```
+Home
+├── Products (제품)
+│   ├── HVAC Tool
+│   │   ├── Line Sets (냉매 라인셋)
+│   │   ├── Thermal Imaging Camera (열화상 카메라)
+│   │   ├── Brazing / Utility Torch (브레이징/유틸리티 토치)
+│   │   ├── Manifold Gauge (매니폴드 게이지)
+│   │   ├── Refrigerant Hose Set (냉매 호스 세트)
+│   │   ├── Flaring Tool / Tube Expander / Tube Straightener (플레어링/확관/직관 공구)
+│   │   ├── Tube Cutter / Reamer / Deburring Tool (튜브 커터/리머/디버링)
+│   │   ├── Ratcheting Wrench (라쳇 렌치)
+│   │   └── Folding Knife / LED Penlight / LED Headlight (안전/조명 공구)
+│   └── HVAC Supply
+│       └── Condenser Fan Motor (콘덴서 팬 모터)
+├── About (회사 소개)
+│   ├── Company Overview (Powerlink Inc.)
+│   ├── Why POWERLYNX (품질/인증: UL, CSA 등)
+│   └── Mission / Vision
+├── Where to Buy / Distributors (선택, 추후 확장)
+├── Contact (문의)
+│   ├── Email Inquiry Form (이메일 문의 폼)
+│   ├── Phone Inquiry (전화 문의 CTA)
+│   └── Company Address / Map
+└── Language Switcher (24개국어)
+```
+
+---
+
+## 5. 제품 콘텐츠 데이터 (첨부 카탈로그 기반, 그대로 활용)
+
+Replit 에이전트가 제품 페이지/카드를 채울 때 아래 데이터를 사용하세요. (원본: `POWERLYNX_2027_CATALOG_V1_0.pdf`)
+
+| 카테고리 | 제품명 | 모델 | 핵심 스펙 요약 |
+|---|---|---|---|
+| HVAC Tool | White Insulated Line Set w/ Flared Nuts | 1438W25F, 1412W25F, 1438W50F, 1412W50F | 3중 절연, -40°F~248°F, UV저항, UL94, 99.9% 순동 |
+| HVAC Tool | Black Rubber Insulated Line Set w/ Flared Nuts | 1438B25F, 1412B25F, 1438B50F, 1412B50F | 상동, 블랙 러버 절연 |
+| HVAC Tool | Thermal Imaging Camera | ATC100 / ATC200 | 120×90 / 256×192 적외선 해상도, -4°F~1022°F, IP54, 2.8" 디스플레이 |
+| HVAC Tool | Brazing Torch | AT1LMP | MAP-PRO/프로판 겸용, 자동 점화/소화, 스테인리스 팁 |
+| HVAC Tool | Utility Torch | AT1P | 프로판 전용, 소형 솔더링용 |
+| HVAC Tool | Manifold Gauge (2-Valve / 4-Valve) | AG2MA/AG2MB/AG4MA/AG4MB | R410A/R32/R454B/R22 대응, 3-1/8" 다이얼, -30inHg~800psi |
+| HVAC Tool | Refrigerant Hose Set | ARH5S / ARH5SV | 5ft, 1/4"-1/4", 800psi 작동/4000psi 파열압, 볼밸브 유무 선택 |
+| HVAC Tool | Flaring Tool | AHF6 | 1/4"~3/4" 대응, 45도 편심콘, 니켈도금 |
+| HVAC Tool | Tube Expander | AHE7 | 1/4"~7/8" 대응, 접이식 |
+| HVAC Tool | Tube Straightener | AHS2 / AHS3 | 1/4" / 3/8" |
+| HVAC Tool | Tube Cutter | AHC6C / AHC11C / AHC12 | 1/8"~3/4" / 3/16"~1-1/8" / 1/8"~1-1/4" |
+| HVAC Tool | Internal & External Reamer | AHR30 | 1/8"~1-1/2" |
+| HVAC Tool | Tube Deburring Tool | AHD20 | 예비 블레이드 2개 포함 |
+| HVAC Tool | Ratcheting Wrench | AHW3 / AHW5 / AHWA | 양방향(CW/CCW), 헥스키 어댑터 포함 |
+| HVAC Tool | Folding Knife | AK1 | 필립스/일자 드라이버 겸용 |
+| HVAC Tool | Dual-blade Folding Knife | AK2 | 2중 블레이드 |
+| HVAC Tool | LED Penlight | AL1 | 300루멘, IP44, 330ft 조사거리 |
+| HVAC Tool | LED Headlight | AL2 | 350루멘, IPX3, 6시간 연속사용 |
+| HVAC Supply | Condenser Fan Motor (Single Speed) | ACM216 / ACM214 | NEMA Frame 48, Class B, UL 인증 |
+| HVAC Supply | Condenser Fan Motor (Multi-HP) | ACM2M1 | 1/6-1/3HP, UL 인증 |
+
+> 각 제품 상세페이지는 카탈로그 원문의 스펙 표(치수/전압/전류/RPM 등)를 표 형태로 그대로 구현. 카탈로그 PDF 원본은 프로젝트 assets 폴더에 저장해 이미지/스펙 추출에 활용.
+
+---
+
+## 6. 다국어(Localization) 요구사항
+
+- **지원 언어: 주요 24개국어** (아래 리스트 기준으로 i18n 구조 설계, 초기 배포는 영어를 기본값으로 하고 순차적으로 번역 채워 넣는 구조)
+- 순서는 전 세계 사용자 수(원어민+제2언어 사용자 합계 기준, 대략적 추정치) 많은 순으로 정렬했습니다.
+  1. 영어 (기본)
+  2. 중국어 간체
+  3. 힌디어
+  4. 스페인어
+  5. 프랑스어
+  6. 아랍어 (RTL 레이아웃 대응 필요)
+  7. 러시아어
+  8. 포르투갈어
+  9. 인도네시아어
+  10. 독일어
+  11. 일본어
+  12. 베트남어
+  13. 터키어
+  14. 한국어
+  15. 이탈리아어
+  16. 태국어
+  17. 중국어 번체
+  18. 폴란드어
+  19. 우크라이나어
+  20. 네덜란드어
+  21. 루마니아어
+  22. 그리스어
+  23. 헤브라이어 (RTL 레이아웃 대응 필요)
+  24. 스웨덴어
+- i18n 프레임워크 기반으로 구조화 (예: next-intl / i18next 등 Cloudflare Pages 호환 라이브러리), 언어별 리소스 JSON 파일 분리
+- 아랍어/히브리어는 RTL(우→좌) 레이아웃 자동 전환 지원
+- 상단 또는 Footer에 언어 선택 드롭다운(국기 아이콘 + 언어명) 배치
+- **1단계(Under Construction)에서는 영어만 우선 적용**, 구조만 다국어 대응 가능하게 세팅
+
+---
+
+## 7. 문의(Contact) 기능
+
+- **이메일 문의 폼:** 이름, 회사명, 국가, 이메일, 전화번호, 문의 유형(제품문의/견적요청/유통제휴/기타), 메시지 입력 → 지정 이메일로 발송
+  - 발송 대상: `info@powerlinkus.com` (일반 문의), `orders@powerlinkus.com` (주문/견적 문의) — 문의유형에 따라 수신처 분기
+- **전화 문의:** 상단 헤더 및 Contact 페이지에 클릭 시 바로 전화 연결되는 `tel:` 링크 버튼 배치 (모바일에서 특히 중요)
+- 폼 발송은 이메일 API(예: Resend, SendGrid 등) 연동 — 실제 키 연결은 Cursor 단계에서 마무리 예정이므로, Replit 단계에서는 폼 UI + 발송 함수 인터페이스만 구현
+
+---
+
+## 8. 회사/연락처 정보 (Footer 및 Contact 페이지에 정확히 반영)
+
+```
+Powerlink Inc.
+POWERLYNX — Power Delivered.
+
+Address:
+915 Secaucus Rd, Secaucus, NJ 07094
+United States
+
+Tel (Call Us): 888-818-POWER (888-818-7693)
+
+General Inquiries: info@powerlinkus.com
+Orders / Quotes: orders@powerlinkus.com
+```
+
+> 참고: 카탈로그 PDF 뒷표지에는 "8 Campus Drive, Suite 105, Parsippany, NJ 07054"라는 기존 주소가 있었으나, 이번에 알려주신 신주소(Secaucus)로 최종 반영했습니다.
+
+---
+
+## 9. 반응형 & 성능 요구사항 (Replit 작업 시 체크리스트)
+
+- [ ] 모바일 퍼스트 반응형 (360px~1920px 전 구간 확인)
+- [ ] 이미지 최적화 (WebP 변환, lazy loading)
+- [ ] Lighthouse 성능/접근성 점수 90+ 목표
+- [ ] SEO 기본 메타태그(og:title, description) + 다국어 hreflang 태그 구조 마련
+- [ ] Cloudflare Pages 배포 설정 파일(`wrangler.toml` 또는 Pages 빌드 설정) 포함
+- [ ] GitHub Actions 또는 Cloudflare 자동배포 연동 (push 시 자동 빌드)
+
+---
+
+## 10. 진행 순서 요약 (Replit에게 전달할 최종 지시 문장)
+
+> "아래 사양대로 반응형 웹사이트를 GitHub 레포로 구성하고, 1단계로 'Under Construction' 안내 페이지를 먼저 완성해 Cloudflare Pages에 배포해 주세요. 배포 확인 후, 2단계로 본 사이트(Products/About/Contact, 다국어 구조 포함)를 이어서 개발해 주세요. 최종 세부 기능은 이후 Cursor에서 마무리할 예정이니, 표준적이고 이식성 높은 코드 구조(컴포넌트/디자인 토큰 분리)로 작업해 주세요."
+
+---
+
+*본 문서는 첨부 파일 `POWERLYNX_2027_CATALOG_V1_0.pdf`의 제품 데이터와 논의된 내용을 기반으로 작성되었습니다.*

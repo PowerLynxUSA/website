@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "POWERLYNX"
+description = "Corporate website for POWERLYNX (Powerlink Inc.), a brand of professional HVAC/R tools and supply equipment for technicians, contractors, and distributors. Showcases the product catalog (HVAC Tool and HVAC Supply lines), company info, and a contact/inquiry flow, built with a multilingual-ready structure (English live first)."
+version = "1.0.0"
+id = "artifacts/powerlynx"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 19013
+
+[services.development]
+run = "pnpm --filter @workspace/powerlynx run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/powerlynx", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/powerlynx/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "19013"
+BASE_PATH = "/"
