@@ -13,13 +13,16 @@ import imgLedPenlight from "@/assets/products/led-penlight.png";
 import imgManifoldGauge2valve from "@/assets/products/manifold-gauge-2valve.png";
 import imgManifoldGauge4valve from "@/assets/products/manifold-gauge-4valve.png";
 import imgRatchetingWrench from "@/assets/products/ratcheting-wrench.png";
+import imgRatchetingWrenchAlt from "@/assets/products/ratcheting-wrench-alt.png";
 import imgReamer from "@/assets/products/reamer.png";
 import imgRefrigerantHoseSetStandard from "@/assets/products/refrigerant-hose-set-standard.png";
 import imgRefrigerantHoseSetValve from "@/assets/products/refrigerant-hose-set-valve.png";
 import imgThermalImagingCamera from "@/assets/products/thermal-imaging-camera.png";
 import imgThermalImagingCameraAccessories from "@/assets/products/thermal-imaging-camera-accessories.png";
 import imgTubeCutter from "@/assets/products/tube-cutter.png";
+import imgTubeCutterMini from "@/assets/products/tube-cutter-mini.png";
 import imgTubeExpander from "@/assets/products/tube-expander.png";
+import imgTubeExpanderAccessories from "@/assets/products/tube-expander-accessories.png";
 import imgTubeStraightener from "@/assets/products/tube-straightener.png";
 import imgUtilityTorch from "@/assets/products/utility-torch.png";
 import imgWhiteInsulatedLineSet from "@/assets/products/white-insulated-line-set.png";
@@ -187,6 +190,7 @@ export const products: Product[] = [
   {
     slug: "tube-expander",
     image: imgTubeExpander,
+    gallery: [imgTubeExpanderAccessories],
     name: "Tube Expander",
     models: "AHE7",
     line: "HVAC Tool",
@@ -212,6 +216,7 @@ export const products: Product[] = [
   {
     slug: "tube-cutter",
     image: imgTubeCutter,
+    gallery: [imgTubeCutterMini],
     name: "Tube Cutter",
     models: "AHC6C / AHC11C / AHC12",
     line: "HVAC Tool",
@@ -253,6 +258,7 @@ export const products: Product[] = [
   {
     slug: "ratcheting-wrench",
     image: imgRatchetingWrench,
+    gallery: [imgRatchetingWrenchAlt],
     name: "Ratcheting Wrench",
     models: "AHW3 / AHW5 / AHWA",
     line: "HVAC Tool",

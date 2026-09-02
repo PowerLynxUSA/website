@@ -1,8 +1,8 @@
 import { Link, useLocation } from 'wouter';
-import { Phone, Globe, Menu, X, ChevronDown } from 'lucide-react';
+import { Phone, Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { LanguageSwitcher } from '@/components/layout/language-switcher';
 import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import markUrl from '@/assets/brand/powerlynx-mark.png';
 
@@ -20,9 +20,17 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2">
-          <img src={logoUrl} alt="POWERLYNX" className="h-10 object-contain hidden md:block" />
-          <img src={markUrl} alt="POWERLYNX" className="h-10 object-contain md:hidden" />
+        <Link href="/" className="flex items-center gap-2 group">
+          <img
+            src={logoUrl}
+            alt="POWERLYNX"
+            className="h-[52px] object-contain hidden md:block animate-logo-glow transition-transform duration-500 group-hover:scale-[1.03]"
+          />
+          <img
+            src={markUrl}
+            alt="POWERLYNX"
+            className="h-[52px] object-contain md:hidden animate-logo-glow transition-transform duration-500 group-hover:scale-[1.03]"
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -42,20 +50,7 @@ export function Header() {
 
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="sm" className="gap-2 font-bold">
-                <Globe className="w-4 h-4" />
-                EN
-                <ChevronDown className="w-3 h-3" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem className="font-bold">English</DropdownMenuItem>
-              <DropdownMenuItem disabled className="text-muted-foreground">Français (Coming Soon)</DropdownMenuItem>
-              <DropdownMenuItem disabled className="text-muted-foreground">Español (Coming Soon)</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <LanguageSwitcher />
 
           <Button asChild className="gap-2 font-bold tracking-wider rounded-none uppercase">
             <a href="tel:8888187693">
@@ -95,9 +90,8 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="flex items-center gap-4 pt-4 border-t border-border">
-            <Globe className="w-5 h-5 text-muted-foreground" />
-            <span className="font-bold tracking-widest uppercase text-sm">EN</span>
+          <div className="pt-4 border-t border-border">
+            <LanguageSwitcher variant="mobile" />
           </div>
         </div>
       )}
