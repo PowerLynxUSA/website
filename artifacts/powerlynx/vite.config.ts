@@ -5,23 +5,28 @@ import { defineConfig } from 'vite';
 
 import runtimeErrorOverlay from '@replit/vite-plugin-runtime-error-modal';
 
+// PORT and BASE_PATH are provided by Replit's per-artifact routing when running
+// inside the Replit environment. When building/serving standalone (e.g. on
+// Cloudflare Pages or any other host), fall back to sane defaults so the build
+// doesn't require Replit-specific configuration.
+const isReplitEnv = process.env.REPL_ID !== undefined;
 const rawPort = process.env.PORT;
 
-if (!rawPort) {
+if (isReplitEnv && !rawPort) {
   throw new Error(
     'PORT environment variable is required but was not provided.',
   );
 }
 
-const port = Number(rawPort);
+const port = Number(rawPort ?? 4173);
 
 if (Number.isNaN(port) || port <= 0) {
   throw new Error(`Invalid PORT value: "${rawPort}"`);
 }
 
-const basePath = process.env.BASE_PATH;
+const basePath = process.env.BASE_PATH ?? '/';
 
-if (!basePath) {
+if (isReplitEnv && !process.env.BASE_PATH) {
   throw new Error(
     'BASE_PATH environment variable is required but was not provided.',
   );
