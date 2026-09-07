@@ -3,6 +3,7 @@ import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
+import rocketUrl from '@/assets/coming-soon-rocket.png';
 import { useLanguage } from '@/i18n';
 
 export function ComingSoon() {
@@ -28,7 +29,15 @@ export function ComingSoon() {
           </div>
         </header>
 
-        <div className="grid flex-1 items-center gap-10 py-10 lg:grid-cols-[minmax(0,0.84fr)_minmax(460px,1.16fr)] lg:gap-16 lg:py-14">
+        <div className="flex items-center justify-center gap-2 pt-7 sm:gap-4 sm:pt-9">
+          <span className="h-3 w-3 shrink-0 rounded-full bg-[#f14d2f]" aria-hidden="true" />
+          <p className="font-display text-5xl font-bold uppercase leading-none tracking-[0.05em] text-white sm:text-7xl">
+            Coming Soon
+          </p>
+          <img src={rocketUrl} alt="" className="h-20 w-20 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
+        </div>
+
+        <div className="grid flex-1 items-center gap-10 py-7 lg:grid-cols-[minmax(0,0.84fr)_minmax(460px,1.16fr)] lg:gap-16 lg:pb-14 lg:pt-5">
           <section className="max-w-xl">
             <p className="mb-5 flex items-center gap-3 font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#f14d2f]">
               <span className="h-px w-8 bg-[#f14d2f]" />
@@ -75,15 +84,8 @@ export function ComingSoon() {
             </div>
           </section>
 
-          <div className="flex flex-col gap-6">
-            <div className="flex items-center justify-center gap-4">
-              <span className="h-3 w-3 shrink-0 rounded-full bg-[#f14d2f]" aria-hidden="true" />
-              <p className="font-display text-5xl font-bold uppercase leading-none tracking-[0.05em] text-white sm:text-7xl">
-                Coming Soon
-              </p>
-            </div>
-            <section className="relative min-h-[360px] lg:min-h-[500px]">
-              <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[500px]">
+          <section className="relative min-h-[360px] lg:min-h-[500px]">
+            <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[500px]">
                 <img src={heroBgUrl} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" />
                 <img src={textureUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
@@ -93,9 +95,8 @@ export function ComingSoon() {
                   <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
                   <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
                 </div>
-              </div>
-            </section>
-          </div>
+            </div>
+          </section>
         </div>
 
         <footer className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
