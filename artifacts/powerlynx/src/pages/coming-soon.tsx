@@ -31,8 +31,9 @@ export function ComingSoon() {
 
         <div className="flex w-full items-center justify-center gap-2 pt-14 sm:gap-4 sm:pt-16 lg:pt-20">
           <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#f14d2f] sm:h-3 sm:w-3" aria-hidden="true" />
-          <p className="whitespace-nowrap text-center font-display text-4xl font-bold uppercase leading-none tracking-[0.04em] text-white sm:text-7xl sm:tracking-[0.05em]">
-            Coming Soon
+          <p className="whitespace-nowrap text-center font-display text-4xl font-bold uppercase leading-none tracking-[0.04em] sm:text-7xl sm:tracking-[0.05em]">
+            <span className="text-[#f14d2f]">Launching</span>{' '}
+            <span className="text-white">Soon</span>
           </p>
           <img src={rocketUrl} alt="" className="h-16 w-16 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
         </div>
