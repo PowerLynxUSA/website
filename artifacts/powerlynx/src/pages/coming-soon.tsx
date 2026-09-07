@@ -29,12 +29,12 @@ export function ComingSoon() {
           </div>
         </header>
 
-        <div className="flex items-center justify-center gap-2 pt-7 sm:gap-4 sm:pt-9">
-          <span className="h-3 w-3 shrink-0 rounded-full bg-[#f14d2f]" aria-hidden="true" />
-          <p className="font-display text-5xl font-bold uppercase leading-none tracking-[0.05em] text-white sm:text-7xl">
+        <div className="flex w-full items-center justify-center gap-2 pt-14 sm:gap-4 sm:pt-16 lg:pt-20">
+          <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#f14d2f] sm:h-3 sm:w-3" aria-hidden="true" />
+          <p className="whitespace-nowrap text-center font-display text-4xl font-bold uppercase leading-none tracking-[0.04em] text-white sm:text-7xl sm:tracking-[0.05em]">
             Coming Soon
           </p>
-          <img src={rocketUrl} alt="" className="h-20 w-20 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
+          <img src={rocketUrl} alt="" className="h-16 w-16 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
         </div>
 
         <div className="grid flex-1 items-center gap-10 py-7 lg:grid-cols-[minmax(0,0.84fr)_minmax(460px,1.16fr)] lg:gap-16 lg:pb-14 lg:pt-5">
