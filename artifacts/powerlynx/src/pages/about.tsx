@@ -1,5 +1,5 @@
 import { ShieldCheck, HardHat, Cog, CheckCircle2 } from 'lucide-react';
-import aboutWarehouseUrl from '@/assets/generated/about-technician.jpg';
+import aboutWarehouseUrl from '@/assets/generated/about-technician-branded-v2.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 
 export function About() {
