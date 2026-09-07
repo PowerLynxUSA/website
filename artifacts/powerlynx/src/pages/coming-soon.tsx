@@ -38,25 +38,9 @@ export function ComingSoon() {
               <span className="h-px w-8 bg-[#f14d2f]" />
               New tools. Same field standard.
             </p>
-            <h1 className="max-w-2xl font-display text-[clamp(3.6rem,8vw,7.7rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
+            <h1 className="max-w-lg font-display text-[clamp(3.6rem,8vw,7.7rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
               {t('coming.powerIs')}
-              <span className="mt-2 flex items-end text-[#f14d2f]">
-                <span>{t('coming.coming')}</span>
-                <span className="rocket-lift relative mb-0.5 ml-2 inline-flex h-[1.08em] w-[0.48em] shrink-0 items-end justify-center sm:ml-4" aria-hidden="true">
-                  <svg viewBox="0 0 84 174" className="h-full w-full overflow-visible drop-shadow-[0_12px_16px_rgba(241,77,47,0.3)]">
-                    <path d="M42 2 34 19h16L42 2Z" fill="#F6F3ED" />
-                    <path d="M42 13C24 33 22 77 31 107h22c9-30 7-74-11-94Z" fill="#F5C76A" stroke="#F6F3ED" strokeWidth="2.5" />
-                    <circle cx="42" cy="53" r="11" fill="#F14D2F" stroke="#F6F3ED" strokeWidth="4" />
-                    <path d="M31 77 17 102v31l18-18-4-38ZM53 77l14 25v31l-18-18 4-38Z" fill="#F14D2F" stroke="#F6F3ED" strokeWidth="2.5" />
-                    <path d="M33 107h18v12H33z" fill="#171D22" stroke="#F6F3ED" strokeWidth="2" />
-                    <path d="m36 119 6 27 6-27H36Z" fill="#F5C76A" />
-                    <path d="m39 119 3 39 3-39h-6Z" fill="#F14D2F" />
-                    <circle cx="42" cy="153" r="9" fill="#F6F3ED" fillOpacity=".92" />
-                    <circle cx="31" cy="160" r="11" fill="#F6F3ED" fillOpacity=".8" />
-                    <circle cx="53" cy="162" r="13" fill="#F6F3ED" fillOpacity=".72" />
-                  </svg>
-                </span>
-              </span>
+              <span className="mt-2 block text-[#f14d2f]">{t('coming.coming')}</span>
             </h1>
             <p className="mt-8 max-w-lg text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
               {t('coming.description')}
@@ -91,7 +75,7 @@ export function ComingSoon() {
 
               <div className="absolute left-5 top-5 flex items-center gap-2 border border-white/20 bg-[#10161b]/85 px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white sm:left-8 sm:top-8">
                 <span className="h-1.5 w-1.5 rounded-full bg-[#f14d2f]" aria-hidden="true" />
-                Field ready / Launching soon
+                Concept 01 / Field Manual
               </div>
               <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
                 <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
