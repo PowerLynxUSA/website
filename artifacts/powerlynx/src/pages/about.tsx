@@ -1,5 +1,5 @@
 import { ShieldCheck, HardHat, Cog, CheckCircle2 } from 'lucide-react';
-import aboutWarehouseUrl from '@/assets/generated/about-warehouse.jpg';
+import aboutWarehouseUrl from '@/assets/generated/about-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 
 export function About() {
@@ -30,8 +30,8 @@ export function About() {
               <div className="absolute -inset-4 bg-muted border border-border z-0" />
               <img 
                 src={aboutWarehouseUrl} 
-                alt="POWERLYNX Warehouse" 
-                className="relative z-10 w-full h-auto shadow-2xl grayscale contrast-125"
+                alt="POWERLYNX HVAC Technician" 
+                className="relative z-10 w-full h-auto shadow-2xl object-cover"
               />
             </div>
             

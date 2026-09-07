@@ -5,7 +5,7 @@ import { ModelBadge } from '@/components/model-badge';
 import { products, productLines } from '@/data/products';
 import markUrl from '@/assets/brand/powerlynx-mark.png';
 import catalogCollageUrl from '@/assets/brand/catalog-hero-collage.jpeg';
-import heroBgUrl from '@/assets/generated/hero-bg.jpg';
+import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 
 export function Home() {
@@ -20,8 +20,8 @@ export function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent z-10" />
           <img 
             src={heroBgUrl} 
-            alt="HVAC technician at work" 
-            className="w-full h-full object-cover"
+            alt="Confident HVAC technician on a rooftop with American flag" 
+            className="w-full h-full object-cover object-[center_8%]"
           />
         </div>
         
