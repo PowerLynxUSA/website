@@ -199,3 +199,22 @@
   }
 }
 
+@keyframes rocket-lift {
+  0%, 100% {
+    transform: translateY(2px);
+  }
+  50% {
+    transform: translateY(-7px);
+  }
+}
+
+.rocket-lift {
+  animation: rocket-lift 2.8s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .rocket-lift {
+    animation: none;
+  }
+}
+
