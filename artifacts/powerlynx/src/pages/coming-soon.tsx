@@ -28,7 +28,6 @@ export function ComingSoon() {
         </header>
 
         <div className="flex w-full items-center justify-center gap-2 pt-14 sm:gap-4 sm:pt-16 lg:pt-20">
-          <span className="h-2.5 w-2.5 shrink-0 rounded-full bg-[#f14d2f] sm:h-3 sm:w-3" aria-hidden="true" />
           <p className="whitespace-nowrap text-center font-display text-4xl font-bold uppercase leading-none tracking-[0.04em] sm:text-7xl sm:tracking-[0.05em]">
             <span className="text-[#f14d2f]">Launching</span>{' '}
             <span className="text-white">Soon</span>
@@ -91,7 +90,7 @@ export function ComingSoon() {
                 <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
 
                 <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
-                  <p className="mb-5 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#f14d2f]">
+                  <p className="mb-2 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#f14d2f]">
                     POWERLYNX
                   </p>
                   <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
