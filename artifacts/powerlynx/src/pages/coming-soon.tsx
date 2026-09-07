@@ -16,21 +16,15 @@ export function ComingSoon() {
       <div className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-[#f14d2f]/10 blur-3xl" />
 
       <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-[1440px] flex-col px-5 py-5 sm:px-8 lg:px-12">
-        <header className="flex items-center justify-between border-b border-white/10 pb-5">
+        <header className="flex items-center border-b border-white/10 pb-5">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-[116px] items-center justify-center bg-[#f6f3ed] px-2 py-1.5 sm:h-14 sm:w-[138px]">
               <img src={logoUrl} alt="POWERLYNX — Power Delivered." className="h-full w-full object-contain" />
             </div>
             <div className="hidden border-l border-white/15 pl-4 sm:block">
-              <p className="font-mono text-xs uppercase tracking-[0.24em] text-white/45">Powerlink Inc.</p>
+              <p className="font-mono text-base font-extrabold uppercase tracking-[0.18em] text-[#f14d2f]">Powerlink Inc.</p>
               <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-white/75">HVAC / R systems</p>
             </div>
-          </div>
-          <div className="flex items-center gap-2 text-right sm:gap-4">
-            <span className="h-2 w-2 shrink-0 rounded-full bg-[#f14d2f] sm:h-3 sm:w-3" aria-hidden="true" />
-            <span className="font-display text-2xl font-bold uppercase leading-none tracking-[0.05em] text-white sm:text-7xl">
-              {t('coming.launching')}
-            </span>
           </div>
         </header>
 
@@ -81,19 +75,27 @@ export function ComingSoon() {
             </div>
           </section>
 
-          <section className="relative min-h-[360px] lg:min-h-[560px]">
-            <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[560px]">
-              <img src={heroBgUrl} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" />
-              <img src={textureUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
-              <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
-
-              <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
-                <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
-                <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
-              </div>
+          <div className="flex flex-col gap-6">
+            <div className="flex items-center justify-center gap-4">
+              <span className="h-3 w-3 shrink-0 rounded-full bg-[#f14d2f]" aria-hidden="true" />
+              <p className="font-display text-5xl font-bold uppercase leading-none tracking-[0.05em] text-white sm:text-7xl">
+                Coming Soon
+              </p>
             </div>
-          </section>
+            <section className="relative min-h-[360px] lg:min-h-[500px]">
+              <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[500px]">
+                <img src={heroBgUrl} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" />
+                <img src={textureUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
+                <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
+
+                <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
+                  <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
+                  <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
+                </div>
+              </div>
+            </section>
+          </div>
         </div>
 
         <footer className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
