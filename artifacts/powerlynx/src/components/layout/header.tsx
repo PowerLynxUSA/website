@@ -24,12 +24,12 @@ export function Header() {
           <img
             src={logoUrl}
             alt="POWERLYNX"
-            className="h-[52px] object-contain hidden md:block animate-logo-glow transition-transform duration-500 group-hover:scale-[1.03]"
+            className="h-[62px] object-contain hidden md:block transition-transform duration-500 group-hover:scale-[1.03]"
           />
           <img
             src={markUrl}
             alt="POWERLYNX"
-            className="h-[52px] object-contain md:hidden animate-logo-glow transition-transform duration-500 group-hover:scale-[1.03]"
+            className="h-[62px] object-contain md:hidden transition-transform duration-500 group-hover:scale-[1.03]"
           />
         </Link>
 
