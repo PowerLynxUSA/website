@@ -29,10 +29,9 @@ export function Home() {
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-tight mb-6 animate-in slide-in-from-bottom-8 duration-700">
             Power <span className="text-primary">Delivered.</span>
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-secondary-foreground/80 mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">
-            Professional-grade HVAC/R tools engineered for accuracy, durability, and ease of use.
-            <br />
-            Built by POWERLYNX to withstand the demands of the field.
+          <p className="max-w-3xl mx-auto text-lg md:text-xl text-secondary-foreground/80 mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">
+            <span className="block md:whitespace-nowrap">Professional-grade HVAC/R tools engineered for accuracy, durability, and ease of use.</span>
+            <span className="block">Built by POWERLYNX to withstand the demands of the field.</span>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-8 duration-700 delay-300">
             <Button size="lg" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest w-full sm:w-auto">
