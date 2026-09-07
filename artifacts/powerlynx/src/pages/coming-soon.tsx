@@ -36,17 +36,17 @@ export function ComingSoon() {
           <img src={rocketUrl} alt="" className="h-16 w-16 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
         </div>
 
-        <div className="grid flex-1 items-center gap-10 py-7 lg:grid-cols-[minmax(0,0.84fr)_minmax(460px,1.16fr)] lg:gap-16 lg:pb-14 lg:pt-5">
-          <section className="max-w-xl">
+        <div className="grid flex-1 items-center gap-10 py-7 lg:-mt-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(500px,1.14fr)] lg:gap-12 lg:pb-10 lg:pt-0">
+          <section className="max-w-2xl">
             <p className="mb-5 flex items-center gap-3 font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#f14d2f]">
               <span className="h-px w-8 bg-[#f14d2f]" />
               New tools. Same field standard.
             </p>
-            <h1 className="max-w-lg font-display text-[clamp(3.6rem,8vw,7.7rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
+            <h1 className="max-w-2xl font-display text-[clamp(3.8rem,9vw,9rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
               Power Is
               <span className="mt-2 block text-[#f14d2f]">Coming.</span>
             </h1>
-            <p className="mt-8 max-w-lg text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
+            <p className="mt-8 max-w-xl text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
               {descriptionAfterBrand !== undefined ? (
                 <>
                   {descriptionBeforeBrand}
@@ -83,13 +83,16 @@ export function ComingSoon() {
             </div>
           </section>
 
-          <section className="relative min-h-[360px] lg:min-h-[500px]">
-            <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[500px]">
+          <section className="relative min-h-[400px] lg:min-h-[590px]">
+            <div className="relative h-full min-h-[400px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[590px]">
                 <img src={heroBgUrl} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" />
                 <img src={textureUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
                 <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
 
+              <p className="absolute bottom-[11rem] left-5 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#f14d2f] sm:left-8">
+                POWERLYNX
+              </p>
                 <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
                   <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
                   <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
