@@ -24,6 +24,6 @@ export const languages: Language[] = [
   { code: "PT", name: "Portuguese", nativeName: "Português", flag: "🇵🇹" },
   { code: "FR", name: "French", nativeName: "Français", flag: "🇫🇷" },
   { code: "DE", name: "German", nativeName: "Deutsch", flag: "🇩🇪" },
-  { code: "JA", name: "Japanese", nativeName: "日本語", flag: "🇯🇵" },
   { code: "KO", name: "Korean", nativeName: "한국어", flag: "🇰🇷" },
+  { code: "JA", name: "Japanese", nativeName: "日本語", flag: "🇯🇵" },
 ];
