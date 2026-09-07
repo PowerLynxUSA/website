@@ -12,23 +12,29 @@ import { About } from '@/pages/about';
 import { Contact } from '@/pages/contact';
 import { ProductsIndex } from '@/pages/products/index';
 import { ProductDetail } from '@/pages/products/detail';
+import { ComingSoon } from '@/pages/coming-soon';
 
 const queryClient = new QueryClient();
 
 function Router() {
   return (
-    <PageLayout>
-      <RoutedErrorBoundary>
-        <Switch>
-          <Route path="/" component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/contact" component={Contact} />
-          <Route path="/products" component={ProductsIndex} />
-          <Route path="/products/:slug" component={ProductDetail} />
-          <Route component={NotFound} />
-        </Switch>
-      </RoutedErrorBoundary>
-    </PageLayout>
+    <RoutedErrorBoundary>
+      <Switch>
+        <Route path="/coming-soon" component={ComingSoon} />
+        <Route>
+          <PageLayout>
+            <Switch>
+              <Route path="/" component={Home} />
+              <Route path="/about" component={About} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/products" component={ProductsIndex} />
+              <Route path="/products/:slug" component={ProductDetail} />
+              <Route component={NotFound} />
+            </Switch>
+          </PageLayout>
+        </Route>
+      </Switch>
+    </RoutedErrorBoundary>
   );
 }
 
