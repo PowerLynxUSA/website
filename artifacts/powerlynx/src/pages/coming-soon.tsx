@@ -20,13 +20,13 @@ export function ComingSoon() {
               <img src={logoUrl} alt="POWERLYNX — Power Delivered." className="h-full w-full object-contain" />
             </div>
             <div className="hidden border-l border-white/15 pl-4 sm:block">
-              <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-white/45">Powerlink Inc.</p>
-              <p className="mt-1 text-xs font-semibold uppercase tracking-[0.14em] text-white/75">HVAC / R systems</p>
+              <p className="font-mono text-xs uppercase tracking-[0.24em] text-white/45">Powerlink Inc.</p>
+              <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-white/75">HVAC / R systems</p>
             </div>
           </div>
           <div className="flex items-center gap-2 text-right">
             <span className="h-2 w-2 rounded-full bg-[#f14d2f]" aria-hidden="true" />
-            <span className="font-mono text-[10px] font-semibold uppercase tracking-[0.18em] text-white/60 sm:text-xs">
+            <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-white/60 sm:text-sm">
               {t('coming.launching')}
             </span>
           </div>
@@ -34,7 +34,7 @@ export function ComingSoon() {
 
         <div className="grid flex-1 items-center gap-10 py-10 lg:grid-cols-[minmax(0,0.84fr)_minmax(460px,1.16fr)] lg:gap-16 lg:py-14">
           <section className="max-w-xl">
-            <p className="mb-5 flex items-center gap-3 font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-[#f14d2f]">
+            <p className="mb-5 flex items-center gap-3 font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#f14d2f]">
               <span className="h-px w-8 bg-[#f14d2f]" />
               New tools. Same field standard.
             </p>
@@ -49,14 +49,14 @@ export function ComingSoon() {
             <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:gap-6">
               <a
                 href="mailto:info@powerlinkus.com"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f]"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f]"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" /> info@powerlinkus.com
               </a>
               <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden="true" />
               <a
                 href="tel:8888187693"
-                className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f]"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f]"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 <span>
@@ -73,12 +73,8 @@ export function ComingSoon() {
               <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
               <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
 
-              <div className="absolute left-5 top-5 flex items-center gap-2 border border-white/20 bg-[#10161b]/85 px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white sm:left-8 sm:top-8">
-                <span className="h-1.5 w-1.5 rounded-full bg-[#f14d2f]" aria-hidden="true" />
-                Concept 01 / Field Manual
-              </div>
               <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
-                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
+                <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
                 <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
               </div>
             </div>
@@ -86,10 +82,10 @@ export function ComingSoon() {
         </div>
 
         <footer className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-mono text-[10px] uppercase tracking-[0.15em] text-white/35">© Powerlink Inc. / POWERLYNX</p>
+          <p className="font-mono text-xs uppercase tracking-[0.15em] text-white/35">© Powerlink Inc. / POWERLYNX</p>
           <Link
             href="/website"
-            className="group inline-flex items-center gap-3 self-start text-xs font-bold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f] sm:self-auto"
+            className="group inline-flex items-center gap-3 self-start text-sm font-bold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f] sm:self-auto"
             data-testid="link-preview-site"
             aria-label="View the website in progress"
           >
