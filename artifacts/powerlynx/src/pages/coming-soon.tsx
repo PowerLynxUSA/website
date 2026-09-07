@@ -4,11 +4,9 @@ import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import rocketUrl from '@/assets/coming-soon-rocket.png';
-import { useLanguage } from '@/i18n';
 
 export function ComingSoon() {
-  const { t } = useLanguage();
-  const description = t('coming.description');
+  const description = 'POWERLYNX is preparing a new lineup of precision-engineered HVAC/R tools and equipment. Our full catalog and distributor portal launch shortly — built for technicians who demand accuracy, durability, and ease of use on every job.';
   const [descriptionBeforeBrand, descriptionAfterBrand] = description.split('POWERLYNX');
 
   return (
@@ -45,8 +43,8 @@ export function ComingSoon() {
               New tools. Same field standard.
             </p>
             <h1 className="max-w-lg font-display text-[clamp(3.6rem,8vw,7.7rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
-              {t('coming.powerIs')}
-              <span className="mt-2 block text-[#f14d2f]">{t('coming.coming')}</span>
+              Power Is
+              <span className="mt-2 block text-[#f14d2f]">Coming.</span>
             </h1>
             <p className="mt-8 max-w-lg text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
               {descriptionAfterBrand !== undefined ? (
