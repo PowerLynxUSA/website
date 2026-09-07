@@ -88,20 +88,22 @@ function LanguageList({
               key={lang.code}
               value={`${lang.name} ${lang.nativeName} ${lang.code}`}
               onSelect={() => onSelect(lang)}
-              className={`rounded-none py-2.5 px-3 cursor-pointer ${
-                 selectedCode === lang.code ? 'bg-primary/10' : ''
+              className={`group rounded-none py-2.5 px-3 cursor-pointer data-[selected=true]:!text-white ${
+                selectedCode === lang.code ? 'bg-primary/10' : ''
               }`}
               data-testid={`option-language-${lang.code}`}
             >
               <span className="text-lg leading-none mr-1">{lang.flag}</span>
               <div className="flex flex-col min-w-0">
-                <span className="text-sm font-bold leading-tight truncate">{lang.name}</span>
-                <span className="text-xs text-muted-foreground leading-tight truncate">
+                <span className="text-sm font-bold leading-tight truncate group-data-[selected=true]:!text-white">
+                  {lang.name}
+                </span>
+                <span className="text-xs text-muted-foreground leading-tight truncate group-data-[selected=true]:!text-white/80">
                   {lang.nativeName} · {lang.code}
                 </span>
               </div>
               {selectedCode === lang.code && (
-                <Check className="w-4 h-4 text-primary ml-auto shrink-0" />
+                <Check className="w-4 h-4 text-primary ml-auto shrink-0 group-data-[selected=true]:!text-white" />
               )}
             </CommandItem>
           ))}
