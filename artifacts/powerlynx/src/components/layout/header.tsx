@@ -56,8 +56,8 @@ export function Header() {
           <Button asChild className="gap-2 font-bold tracking-wider rounded-none uppercase">
             <a href="tel:8888187693">
               <Phone className="w-4 h-4" />
-              <span>
-                888-818-POWER <span className="text-[0.55em] font-semibold tracking-normal">(7693)</span>
+              <span className="whitespace-nowrap">
+                888-818-POWER <span className="text-[0.78em] font-semibold tracking-normal">(7693)</span>
               </span>
             </a>
           </Button>

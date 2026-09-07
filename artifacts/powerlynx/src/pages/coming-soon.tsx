@@ -1,6 +1,5 @@
-import { useState } from 'react';
 import { Link } from 'wouter';
-import { ArrowRight, Check, Mail, Phone, Sparkles } from 'lucide-react';
+import { ArrowRight, Mail, Phone } from 'lucide-react';
 import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
@@ -9,10 +8,6 @@ import { useLanguage } from '@/i18n';
 
 export function ComingSoon() {
   const { t } = useLanguage();
-  const [concept, setConcept] = useState<'field' | 'launch'>(() =>
-    new URLSearchParams(window.location.search).get('concept') === 'launch' ? 'launch' : 'field',
-  );
-  const isLaunchConcept = concept === 'launch';
 
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-[#10161b] text-[#f6f3ed]">
@@ -52,48 +47,6 @@ export function ComingSoon() {
               {t('coming.description')}
             </p>
 
-            <div className="mt-10">
-              <p className="mb-3 font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
-                Choose a visual direction
-              </p>
-              <div className="grid max-w-md grid-cols-2 gap-2" role="group" aria-label="Choose a visual direction">
-                <button
-                  type="button"
-                  aria-pressed={concept === 'field'}
-                  onClick={() => setConcept('field')}
-                  className={`group min-h-[82px] border p-3 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f] focus-visible:ring-offset-2 focus-visible:ring-offset-[#10161b] ${
-                    concept === 'field'
-                      ? 'border-[#f14d2f] bg-[#f14d2f]/12'
-                      : 'border-white/15 bg-white/[0.035] hover:border-white/35 hover:bg-white/[0.07]'
-                  }`}
-                  data-testid="button-concept-field"
-                >
-                  <span className="flex items-center justify-between">
-                    <span className="font-display text-base font-bold uppercase tracking-wide text-white">Field Manual</span>
-                    {concept === 'field' && <Check className="h-4 w-4 text-[#f14d2f]" aria-hidden="true" />}
-                  </span>
-                  <span className="mt-2 block font-mono text-[9px] uppercase tracking-[0.13em] text-white/45">Precision / utility</span>
-                </button>
-                <button
-                  type="button"
-                  aria-pressed={concept === 'launch'}
-                  onClick={() => setConcept('launch')}
-                  className={`group min-h-[82px] border p-3 text-left transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f] focus-visible:ring-offset-2 focus-visible:ring-offset-[#10161b] ${
-                    concept === 'launch'
-                      ? 'border-[#f14d2f] bg-[#f14d2f]/12'
-                      : 'border-white/15 bg-white/[0.035] hover:border-white/35 hover:bg-white/[0.07]'
-                  }`}
-                  data-testid="button-concept-launch"
-                >
-                  <span className="flex items-center justify-between">
-                    <span className="font-display text-base font-bold uppercase tracking-wide text-white">Launch Signal</span>
-                    {concept === 'launch' && <Check className="h-4 w-4 text-[#f14d2f]" aria-hidden="true" />}
-                  </span>
-                  <span className="mt-2 block font-mono text-[9px] uppercase tracking-[0.13em] text-white/45">Bold / optimistic</span>
-                </button>
-              </div>
-            </div>
-
             <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:gap-6">
               <a
                 href="mailto:info@powerlinkus.com"
@@ -106,44 +59,39 @@ export function ComingSoon() {
                 href="tel:8888187693"
                 className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f]"
               >
-                <Phone className="h-4 w-4" aria-hidden="true" /> 888-818-POWER
+                <Phone className="h-4 w-4" aria-hidden="true" />
+                <span>
+                  888-818-POWER <span className="text-[0.78em]">(7693)</span>
+                </span>
               </a>
             </div>
           </section>
 
-          <section className="relative min-h-[360px] lg:min-h-[560px]" aria-live="polite">
-            {isLaunchConcept ? (
-              <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#f14d2f] p-3 shadow-2xl shadow-black/25 sm:p-5 lg:min-h-[560px]">
-                <div className="absolute left-5 top-5 z-10 flex items-center gap-2 bg-[#10161b] px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white sm:left-8 sm:top-8">
-                  <Sparkles className="h-3.5 w-3.5 text-[#f5b94f]" aria-hidden="true" />
-                  Concept 02 / Launch Signal
-                </div>
+          <section className="relative min-h-[360px] lg:min-h-[560px]">
+            <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[560px]">
+              <img src={heroBgUrl} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" />
+              <img src={textureUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
+              <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
+
+              <div className="absolute right-5 top-5 h-44 w-36 rotate-2 overflow-hidden border-4 border-[#f14d2f] bg-[#f14d2f] shadow-2xl shadow-black/40 sm:right-8 sm:top-8 sm:h-64 sm:w-52 lg:h-72 lg:w-56">
                 <img
                   src={launchPosterUrl}
-                  alt="POWERLYNX coming soon launch poster with a rocket lifting off"
-                  className="h-full min-h-[334px] w-full object-cover object-center sm:min-h-[500px]"
+                  alt="Rocket lifting off for the POWERLYNX launch"
+                  className="h-full w-full object-cover object-[82%_center]"
                 />
-                <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between sm:bottom-8 sm:left-8 sm:right-8">
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.17em] text-[#10161b]/70">Built to lift the trade</span>
-                  <span className="font-mono text-[10px] font-bold uppercase tracking-[0.17em] text-[#10161b]/70">PL / 2027</span>
-                </div>
+                <div className="pointer-events-none absolute inset-0 border border-white/25" />
               </div>
-            ) : (
-              <div className="relative h-full min-h-[360px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[560px]">
-                <img src={heroBgUrl} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" />
-                <img src={textureUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/15 to-[#10161b]/20" />
-                <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
-                <div className="absolute left-5 top-5 flex items-center gap-2 border border-white/20 bg-[#10161b]/80 px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white sm:left-8 sm:top-8">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#f14d2f]" aria-hidden="true" />
-                  Concept 01 / Field Manual
-                </div>
-                <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
-                  <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
-                  <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
-                </div>
+
+              <div className="absolute left-5 top-5 flex items-center gap-2 border border-white/20 bg-[#10161b]/85 px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-white sm:left-8 sm:top-8">
+                <span className="h-1.5 w-1.5 rounded-full bg-[#f14d2f]" aria-hidden="true" />
+                Power meets momentum
               </div>
-            )}
+              <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
+                <p className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
+                <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
+              </div>
+            </div>
           </section>
         </div>
 
