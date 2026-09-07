@@ -46,20 +46,6 @@ export function ProductDetail() {
           
           {/* PRODUCT VISUAL / MOCK */}
           <div className="space-y-6">
-            {product.video && (
-              <div className="aspect-video bg-secondary border border-border relative overflow-hidden">
-                <video
-                  src={product.video}
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover"
-                  data-testid="video-product-detail"
-                />
-              </div>
-            )}
-
             <div className="aspect-[4/3] bg-white border border-border flex items-center justify-center p-8 relative overflow-hidden">
               <img
                 src={images[activeImage]}

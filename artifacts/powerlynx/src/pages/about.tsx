@@ -17,7 +17,7 @@ export function About() {
             Engineered for <br/> the <span className="text-primary">Trade.</span>
           </h1>
           <p className="text-secondary-foreground/80 max-w-2xl text-xl font-medium">
-            Powerlink Inc. (POWERLYNX) is dedicated to manufacturing uncompromising HVAC/R tools and supply components. We build for the technicians who keep North America running.
+            Powerlink Inc. (POWERLYNX) is dedicated to the design and manufacture of precision HVAC/R tools and supply components, empowering the technicians who keep North America running.
           </p>
         </div>
       </div>
@@ -40,7 +40,7 @@ export function About() {
                 <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-4">Our Mission</h2>
                 <div className="w-12 h-1 bg-primary mb-6" />
                 <p className="text-lg text-muted-foreground leading-relaxed">
-                  We observed a market flooded with consumer-grade tools masquerading as professional equipment. POWERLYNX was founded with a single directive: produce HVAC/R equipment that never fails in the field. Every manifold, motor, and line set we manufacture is tested against the harsh realities of commercial and residential jobsites.
+                  We saw a market flooded with consumer-grade tools masquerading as professional equipment. POWERLYNX was founded with a single directive: engineer HVAC/R equipment that delivers unsurpassed accuracy, durability, and ease of use on every job. Every manifold, motor, and line set we manufacture is validated against the demands of commercial and residential jobsites.
                 </p>
               </div>
               
@@ -48,10 +48,10 @@ export function About() {
                 <h2 className="font-display text-3xl font-bold uppercase tracking-tight mb-4">The POWERLYNX Standard</h2>
                 <ul className="space-y-4">
                   {[
-                    "No compromises on material purity (99.9% pure C12200 copper).",
-                    "Stringent factory QA on every batch.",
-                    "Designed with input from veteran field technicians.",
-                    "Built to exceed standard UL and CSA requirements."
+                    "Uncompromising material purity (99.9% pure C12200 copper).",
+                    "Rigorous factory QA and testing on every production batch.",
+                    "Engineered with direct input from veteran field technicians.",
+                    "Manufactured to exceed UL and CSA requirements."
                   ].map((item, i) => (
                     <li key={i} className="flex items-start gap-4">
                       <CheckCircle2 className="w-6 h-6 text-primary shrink-0" />
@@ -70,7 +70,7 @@ export function About() {
         <div className="container mx-auto px-4">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-4">Why Technicians Trust Us</h2>
-            <p className="text-muted-foreground text-lg">We don't sell to the general public. Our entire supply chain and R&D process is built around the needs of the professional contractor.</p>
+            <p className="text-muted-foreground text-lg">We don't sell to the general public. Our entire supply chain and R&D process is built around the accuracy, efficiency, and reliability the professional contractor demands.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -79,7 +79,7 @@ export function About() {
                 <ShieldCheck className="w-8 h-8" />
               </div>
               <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-3">Safety Verified</h3>
-              <p className="text-muted-foreground">Rigorous pressure, flame, and electrical testing ensures our gear keeps technicians safe.</p>
+              <p className="text-muted-foreground">Rigorous pressure, flame, and electrical testing ensures every tool keeps technicians safe on the job.</p>
             </div>
             <div className="bg-card p-8 border border-border text-center shadow-lg border-primary/50 relative overflow-hidden">
               <div className="absolute top-0 left-0 w-full h-1 bg-primary" />
@@ -87,14 +87,14 @@ export function About() {
                 <HardHat className="w-8 h-8" />
               </div>
               <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-3">Jobsite Tough</h3>
-              <p className="text-muted-foreground">Shock-resistant, IP-rated, and weather-proofed housings designed for drops and impacts.</p>
+              <p className="text-muted-foreground">Shock-resistant, IP-rated, weatherproof housings engineered to withstand drops and impacts in the field.</p>
             </div>
             <div className="bg-card p-8 border border-border text-center">
               <div className="w-16 h-16 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                 <Cog className="w-8 h-8" />
               </div>
               <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-3">Precision Machined</h3>
-              <p className="text-muted-foreground">Tight tolerances on all fittings, flaring tools, and gauges for leak-free installations.</p>
+              <p className="text-muted-foreground">Tight tolerances across every fitting, flaring tool, and gauge for consistent, leak-free installations.</p>
             </div>
           </div>
         </div>

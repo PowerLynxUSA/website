@@ -30,7 +30,9 @@ export function Home() {
             Power <span className="text-primary">Delivered.</span>
           </h1>
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-secondary-foreground/80 mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">
-            Professional HVAC/R tools and equipment engineered for the truck. Built to withstand the demands of the field.
+            Professional-grade HVAC/R tools engineered for accuracy, durability, and ease of use.
+            <br />
+            Built by POWERLYNX to withstand the demands of the field.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-8 duration-700 delay-300">
             <Button size="lg" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest w-full sm:w-auto">
@@ -50,17 +52,17 @@ export function Home() {
             <div className="flex flex-col items-center gap-3 px-4 pt-4 md:pt-0">
               <ShieldCheck className="w-8 h-8" />
               <h3 className="font-display font-bold text-xl uppercase tracking-widest">Certified Quality</h3>
-              <p className="text-sm font-medium text-primary-foreground/80">UL recognized components and CSA compliant standards for total jobsite safety.</p>
+              <p className="text-sm font-medium text-primary-foreground/80">UL recognized components, manufactured to CSA compliant standards for verified jobsite safety.</p>
             </div>
             <div className="flex flex-col items-center gap-3 px-4 pt-8 md:pt-0">
               <Wrench className="w-8 h-8" />
               <h3 className="font-display font-bold text-xl uppercase tracking-widest">Trade Engineered</h3>
-              <p className="text-sm font-medium text-primary-foreground/80">Designed specifically for HVAC/R contractors. No compromises, no consumer gimmicks.</p>
+              <p className="text-sm font-medium text-primary-foreground/80">Purpose-built for HVAC/R professionals, delivering the accuracy and reliability the trade demands.</p>
             </div>
             <div className="flex flex-col items-center gap-3 px-4 pt-8 md:pt-0">
               <Zap className="w-8 h-8" />
               <h3 className="font-display font-bold text-xl uppercase tracking-widest">Precision Performance</h3>
-              <p className="text-sm font-medium text-primary-foreground/80">From 99.9% pure copper to IP-rated diagnostic tools, every spec is verified.</p>
+              <p className="text-sm font-medium text-primary-foreground/80">From 99.9% pure copper to IP-rated diagnostic instruments, every specification is verified.</p>
             </div>
           </div>
         </div>
@@ -76,7 +78,7 @@ export function Home() {
                 <span className="text-primary">Equipment Lineup</span>
               </h2>
               <p className="text-muted-foreground text-lg mb-8 max-w-lg">
-                We've expanded our catalog to include precision thermal imaging, multi-HP condenser fan motors, and rugged brazing torches. Every tool is rigorously field-tested before it earns the POWERLYNX name.
+                Our catalog now includes precision thermal imaging cameras, multi-horsepower condenser fan motors, and rugged brazing torches. Every tool is rigorously tested for accuracy and durability before it earns the POWERLYNX name.
               </p>
               
               <div className="space-y-4 mb-10">
@@ -163,7 +165,7 @@ export function Home() {
           <img src={markUrl} alt="" className="w-12 h-12 mx-auto mb-8 opacity-50 brightness-0 invert" style={{ filter: 'brightness(0) invert(1)' }} />
           <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6 text-white">Ready to stock POWERLYNX?</h2>
           <p className="max-w-2xl mx-auto text-lg text-secondary-foreground/70 mb-10">
-            We partner with premier HVAC/R distributors across North America to bring trade-engineered equipment to the contractors who need it.
+            We partner with leading HVAC/R distributors across North America to deliver precision-engineered equipment to the contractors who rely on it.
           </p>
           <Button size="lg" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest">
             <Link href="/contact">Become a Distributor</Link>

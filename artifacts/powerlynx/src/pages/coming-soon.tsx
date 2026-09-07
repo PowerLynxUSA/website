@@ -47,9 +47,9 @@ export function ComingSoon() {
         </h1>
 
         <p className="text-base md:text-lg text-white/70 font-medium max-w-xl mb-12">
-          POWERLYNX is preparing a new lineup of trade-engineered HVAC/R tools and equipment.
+          POWERLYNX is preparing a new lineup of precision-engineered HVAC/R tools and equipment.
           Our full catalog and distributor portal launch shortly — built for technicians who
-          never settle for consumer-grade gear.
+          demand accuracy, durability, and ease of use on every job.
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">

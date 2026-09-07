@@ -10,7 +10,7 @@ export function Footer() {
           <div className="md:col-span-1">
             <img src={logoUrl} alt="POWERLYNX" className="h-12 object-contain mb-6 invert brightness-0" style={{ filter: 'brightness(0) invert(1)' }} />
             <p className="text-secondary-foreground/70 text-sm mb-6 max-w-sm">
-              Professional HVAC/R tools and equipment built for the truck, engineered for the trade, and trusted by technicians across North America.
+              Precision-engineered HVAC/R tools and equipment, built for accuracy, durability, and ease of use, and trusted by technicians across North America.
             </p>
           </div>
 

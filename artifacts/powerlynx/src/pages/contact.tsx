@@ -62,7 +62,7 @@ export function Contact() {
             Contact Us
           </h1>
           <p className="text-secondary-foreground/70 max-w-2xl text-lg">
-            Distributor inquiries, quote requests, and technical support.
+            Distributor inquiries, quote requests, and technical support for HVAC/R professionals.
           </p>
         </div>
       </div>
@@ -141,7 +141,7 @@ export function Contact() {
           <div className="lg:col-span-2">
             <div className="bg-card border border-border p-6 md:p-10 shadow-sm">
               <h2 className="font-display text-3xl font-bold uppercase tracking-tight mb-2">Send an Inquiry</h2>
-              <p className="text-muted-foreground mb-8">Fill out the form below and the appropriate team will get back to you.</p>
+              <p className="text-muted-foreground mb-8">Complete the form below and the appropriate team will respond promptly.</p>
 
               {isSubmitted ? (
                 <div className="py-16 text-center animate-in fade-in zoom-in duration-500">
@@ -150,7 +150,7 @@ export function Contact() {
                   </div>
                   <h3 className="font-display text-3xl font-bold uppercase tracking-tight mb-2">Inquiry Sent</h3>
                   <p className="text-muted-foreground max-w-md mx-auto mb-8">
-                    Thank you for reaching out. A representative from Powerlink Inc. will review your submission and contact you shortly.
+                    Thank you for reaching out. A representative from Powerlink Inc. will review your submission and respond promptly.
                   </p>
                   <Button variant="outline" onClick={() => { setIsSubmitted(false); form.reset(); }} className="rounded-none uppercase font-bold tracking-widest">
                     Send Another Message

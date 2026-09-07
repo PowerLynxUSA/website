@@ -36,7 +36,7 @@ export function ProductsIndex() {
             Product Catalog
           </h1>
           <p className="text-secondary-foreground/70 max-w-2xl text-lg">
-            Professional-grade tools, components, and equipment built to withstand the demands of the HVAC/R trade.
+            Precision-engineered tools, components, and equipment built for accuracy, durability, and ease of use on every HVAC/R job.
           </p>
         </div>
       </div>
