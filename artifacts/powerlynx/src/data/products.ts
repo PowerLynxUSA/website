@@ -19,6 +19,7 @@ import imgRefrigerantHoseSetStandard from "@/assets/products/refrigerant-hose-se
 import imgRefrigerantHoseSetValve from "@/assets/products/refrigerant-hose-set-valve.png";
 import imgThermalImagingCamera from "@/assets/products/thermal-imaging-camera.png";
 import imgThermalImagingCameraAccessories from "@/assets/products/thermal-imaging-camera-accessories.png";
+import videoThermalImagingCamera from "@/assets/videos/thermal-imaging-camera.mp4";
 import imgTubeCutter from "@/assets/products/tube-cutter.png";
 import imgTubeCutterMini from "@/assets/products/tube-cutter-mini.png";
 import imgTubeExpander from "@/assets/products/tube-expander.png";
@@ -40,6 +41,7 @@ export type Product = {
   specs: ProductSpec[];
   image: string;
   gallery?: string[];
+  video?: string;
 };
 
 export const productLines = ["HVAC Tool", "HVAC Supply"] as const;
@@ -93,6 +95,7 @@ export const products: Product[] = [
     slug: "thermal-imaging-camera",
     image: imgThermalImagingCamera,
     gallery: [imgThermalImagingCameraAccessories],
+    video: videoThermalImagingCamera,
     name: "Thermal Imaging Camera",
     models: "ATC100 / ATC200",
     line: "HVAC Tool",
