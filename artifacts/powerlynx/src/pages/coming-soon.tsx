@@ -90,10 +90,10 @@ export function ComingSoon() {
                 <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
                 <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
 
-              <p className="absolute bottom-[11rem] left-5 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#f14d2f] sm:left-8">
-                POWERLYNX
-              </p>
                 <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
+                  <p className="mb-5 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#f14d2f]">
+                    POWERLYNX
+                  </p>
                   <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
                   <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
                 </div>
