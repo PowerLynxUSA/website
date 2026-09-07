@@ -1,5 +1,5 @@
 import { Link } from 'wouter';
-import { ArrowRight, Mail, Phone } from 'lucide-react';
+import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
 import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
@@ -7,6 +7,8 @@ import { useLanguage } from '@/i18n';
 
 export function ComingSoon() {
   const { t } = useLanguage();
+  const description = t('coming.description');
+  const [descriptionBeforeBrand, descriptionAfterBrand] = description.split('POWERLYNX');
 
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-[#10161b] text-[#f6f3ed]">
@@ -24,9 +26,9 @@ export function ComingSoon() {
               <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-white/75">HVAC / R systems</p>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-right">
-            <span className="h-2 w-2 rounded-full bg-[#f14d2f]" aria-hidden="true" />
-            <span className="font-mono text-xs font-semibold uppercase tracking-[0.18em] text-white/60 sm:text-sm">
+          <div className="flex items-center gap-2 text-right sm:gap-4">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-[#f14d2f] sm:h-3 sm:w-3" aria-hidden="true" />
+            <span className="font-display text-2xl font-bold uppercase leading-none tracking-[0.05em] text-white sm:text-7xl">
               {t('coming.launching')}
             </span>
           </div>
@@ -43,10 +45,18 @@ export function ComingSoon() {
               <span className="mt-2 block text-[#f14d2f]">{t('coming.coming')}</span>
             </h1>
             <p className="mt-8 max-w-lg text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
-              {t('coming.description')}
+              {descriptionAfterBrand !== undefined ? (
+                <>
+                  {descriptionBeforeBrand}
+                  <strong className="font-extrabold text-[#f14d2f]">POWERLYNX</strong>
+                  {descriptionAfterBrand}
+                </>
+              ) : (
+                description
+              )}
             </p>
 
-            <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:gap-6">
+            <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-4">
               <a
                 href="mailto:info@powerlinkus.com"
                 className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f]"
@@ -63,6 +73,11 @@ export function ComingSoon() {
                   888-818-POWER <span className="text-[0.78em]">(7693)</span>
                 </span>
               </a>
+              <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden="true" />
+              <address className="inline-flex items-start gap-2 text-sm font-bold uppercase not-italic tracking-[0.1em] text-white/72">
+                <MapPin className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
+                <span>915 Secaucus Rd, Secaucus, NJ 07094, United States</span>
+              </address>
             </div>
           </section>
 
