@@ -109,10 +109,6 @@ function LanguageList({
           ))}
         </CommandGroup>
       </CommandList>
-      <div className="border-t border-border py-2.5 text-center text-xs font-bold uppercase tracking-widest text-muted-foreground flex items-center justify-center gap-2">
-        <Globe className="w-3.5 h-3.5" />
-         {t('language.count').replace('{count}', String(languages.length))}
-      </div>
     </Command>
   );
 }
