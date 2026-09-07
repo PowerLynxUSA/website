@@ -29,10 +29,10 @@ export function Home() {
         </div>
         
         <div className="container relative z-20 px-4 pb-16 md:pb-20 text-center">
-          <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-tight mb-2 animate-in slide-in-from-bottom-8 duration-700">
+          <h1 className="font-display text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-2 animate-in slide-in-from-bottom-8 duration-700">
              POWER <span className="text-primary">DELIVERED</span>
           </h1>
-          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-tight mb-6 animate-in slide-in-from-bottom-8 duration-700 delay-100">
+          <h2 className="font-display text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-6 animate-in slide-in-from-bottom-8 duration-700 delay-100">
              {t('home.heroDescription1')}
           </h2>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-secondary-foreground/80 mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">

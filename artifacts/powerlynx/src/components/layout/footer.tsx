@@ -20,7 +20,7 @@ export function Footer() {
             <h3 className="font-display text-xl font-bold tracking-widest uppercase mb-6 text-white">{t('footer.company')}</h3>
             <ul className="flex flex-col gap-3">
               <li>
-                <Link href="/" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.home')}</Link>
+                <Link href="/website" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.home')}</Link>
               </li>
               <li>
                 <Link href="/products" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.products')}</Link>

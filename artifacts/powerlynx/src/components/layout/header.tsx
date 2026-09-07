@@ -12,7 +12,7 @@ export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { t } = useLanguage();
   const navItems = [
-    { label: t('nav.home'), path: '/' },
+    { label: t('nav.home'), path: '/website' },
     { label: t('nav.products'), path: '/products' },
     { label: t('nav.about'), path: '/about' },
     { label: t('nav.contact'), path: '/contact' },
@@ -21,7 +21,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/website" className="flex items-center gap-2 group">
           <img
             src={logoUrl}
             alt="POWERLYNX"
@@ -56,13 +56,16 @@ export function Header() {
           <Button asChild className="gap-2 font-bold tracking-wider rounded-none uppercase">
             <a href="tel:8888187693">
               <Phone className="w-4 h-4" />
-              888-818-POWER
+              <span>
+                888-818-POWER <span className="text-[0.55em] font-semibold tracking-normal">(7693)</span>
+              </span>
             </a>
           </Button>
         </div>
 
         {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center gap-4">
+        <div className="md:hidden flex items-center gap-2">
+          <LanguageSwitcher variant="compact" />
           <Button asChild size="icon" variant="outline" className="rounded-none" aria-label={t('contact.callUs')}>
             <a href="tel:8888187693">
               <Phone className="w-4 h-4" />
@@ -98,9 +101,6 @@ export function Header() {
               </Link>
             ))}
           </nav>
-          <div className="pt-4 border-t border-border">
-            <LanguageSwitcher variant="mobile" />
-          </div>
         </div>
       )}
     </header>

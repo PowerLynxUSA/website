@@ -21,11 +21,12 @@ function Router() {
   return (
     <RoutedErrorBoundary>
       <Switch>
+        <Route path="/" component={ComingSoon} />
         <Route path="/coming-soon" component={ComingSoon} />
         <Route>
           <PageLayout>
             <Switch>
-              <Route path="/" component={Home} />
+              <Route path="/website" component={Home} />
               <Route path="/about" component={About} />
               <Route path="/contact" component={Contact} />
               <Route path="/products" component={ProductsIndex} />
