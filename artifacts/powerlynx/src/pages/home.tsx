@@ -14,21 +14,18 @@ export function Home() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* HERO SECTION */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative h-[88vh] min-h-[680px] flex items-end justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <div className="absolute inset-0 bg-secondary/80 mix-blend-multiply z-10" />
-          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/50 to-transparent z-10" />
+          <div className="absolute inset-0 bg-secondary/35 z-10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/75 to-transparent z-10" />
           <img 
             src={heroBgUrl} 
-            alt="Confident HVAC technician on a rooftop with American flag" 
+            alt="Confident HVAC technician on a rooftop with the American flag" 
             className="w-full h-full object-cover object-[center_8%]"
           />
         </div>
         
-        <div className="container relative z-20 px-4 text-center">
-          <div className="inline-flex items-center justify-center p-3 bg-primary/10 border border-primary/20 rounded-full mb-8">
-            <img src={markUrl} alt="POWERLYNX Mark" className="w-8 h-8" />
-          </div>
+        <div className="container relative z-20 px-4 pb-16 md:pb-20 text-center">
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-tight mb-6 animate-in slide-in-from-bottom-8 duration-700">
             Power <span className="text-primary">Delivered.</span>
           </h1>
