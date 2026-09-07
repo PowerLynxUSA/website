@@ -5,6 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
 import { useState } from 'react';
+import { useLanguage } from '@/i18n';
+import { localizeProduct, localizedLineLabel } from '@/i18n/products';
 
 export function ProductDetail() {
   const [, params] = useRoute('/products/:slug');
@@ -13,14 +15,16 @@ export function ProductDetail() {
   const product = products.find(p => p.slug === slug);
   const images = product ? [product.image, ...(product.gallery || [])] : [];
   const [activeImage, setActiveImage] = useState(0);
+  const { t, language } = useLanguage();
+  const localizedProduct = product ? localizeProduct(product, language) : null;
 
-  if (!product) {
+  if (!product || !localizedProduct) {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4">
-        <h1 className="font-display text-4xl font-bold uppercase mb-4">Product Not Found</h1>
-        <p className="text-muted-foreground mb-8">The requested product could not be located in the catalog.</p>
+         <h1 className="font-display text-4xl font-bold uppercase mb-4">{t('detail.productNotFound')}</h1>
+         <p className="text-muted-foreground mb-8">{t('notFound.description')}</p>
         <Button asChild className="rounded-none uppercase tracking-widest font-bold">
-          <Link href="/products">Return to Catalog</Link>
+           <Link href="/products">{t('detail.returnCatalog')}</Link>
         </Button>
       </div>
     );
@@ -31,13 +35,13 @@ export function ProductDetail() {
       {/* BREADCRUMBS */}
       <div className="bg-muted border-b border-border py-3">
         <div className="container mx-auto px-4 flex items-center text-xs font-bold uppercase tracking-widest text-muted-foreground">
-          <Link href="/products" className="hover:text-primary transition-colors flex items-center gap-1">
-            <ArrowLeft className="w-3 h-3" /> Catalog
+          <Link href="/products" className="hover:text-primary transition-colors flex items-center gap-1 shrink-0">
+             <ArrowLeft className="w-3 h-3" /> {t('detail.catalog')}
           </Link>
           <ChevronRight className="w-3 h-3 mx-2 opacity-50" />
-          <span>{product.line}</span>
+           <span className="shrink-0">{localizedLineLabel(product.line, language)}</span>
           <ChevronRight className="w-3 h-3 mx-2 opacity-50" />
-          <span className="text-foreground truncate">{product.category}</span>
+           <span className="text-foreground truncate min-w-0">{localizedProduct.category}</span>
         </div>
       </div>
 
@@ -73,12 +77,12 @@ export function ProductDetail() {
             <ModelBadge models={product.models} size="lg" />
             
             {/* ACTIONS */}
-            <div className="flex gap-4">
+            <div className="flex flex-col sm:flex-row gap-4">
               <Button variant="outline" className="flex-1 rounded-none uppercase font-bold tracking-widest gap-2">
-                <Printer className="w-4 h-4" /> Print Spec Sheet
+                 <Printer className="w-4 h-4" /> {t('detail.printSpec')}
               </Button>
               <Button variant="outline" className="flex-1 rounded-none uppercase font-bold tracking-widest gap-2">
-                <Share2 className="w-4 h-4" /> Share
+                 <Share2 className="w-4 h-4" /> {t('detail.share')}
               </Button>
             </div>
           </div>
@@ -87,22 +91,22 @@ export function ProductDetail() {
           <div>
             <div className="mb-8">
               <div className="flex items-center gap-3 mb-4">
-                <Badge className="rounded-none uppercase tracking-widest bg-primary text-primary-foreground">
-                  {product.line}
+                 <Badge className="rounded-none uppercase tracking-widest bg-primary text-primary-foreground">
+                   {localizedLineLabel(product.line, language)}
                 </Badge>
-                <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{product.category}</span>
+                 <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{localizedProduct.category}</span>
               </div>
               <h1 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-foreground mb-6">
-                {product.name}
+                 {localizedProduct.name}
               </h1>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                {product.summary}
+                 {localizedProduct.summary}
               </p>
             </div>
 
             <div className="space-y-8">
               <div>
-                <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-4 border-b border-border pb-2">Features</h3>
+                 <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-4 border-b border-border pb-2">{t('detail.features')}</h3>
                 <ul className="space-y-3">
                   {product.bullets.map((bullet, i) => (
                     <li key={i} className="flex items-start gap-3">
@@ -116,7 +120,7 @@ export function ProductDetail() {
               </div>
 
               <div>
-                <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-4 border-b border-border pb-2">Specifications</h3>
+                 <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-4 border-b border-border pb-2">{t('detail.specifications')}</h3>
                 <div className="bg-card border border-border rounded-sm overflow-hidden">
                   <table className="w-full text-left text-sm">
                     <tbody className="divide-y divide-border">
@@ -137,10 +141,10 @@ export function ProductDetail() {
 
               <div className="pt-8 border-t border-border">
                 <p className="text-sm text-muted-foreground mb-4">
-                  For distributor pricing and availability, contact our sales team.
+                   {t('detail.pricing')}
                 </p>
                 <Button size="lg" asChild className="rounded-none uppercase font-bold tracking-widest w-full sm:w-auto px-8">
-                  <Link href="/contact">Request a Quote</Link>
+                   <Link href="/contact">{t('detail.requestQuote')}</Link>
                 </Button>
               </div>
             </div>

@@ -3,8 +3,10 @@ import { Phone, Mail, ArrowRight } from 'lucide-react';
 import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
+import { useLanguage } from '@/i18n';
 
 export function ComingSoon() {
+  const { t } = useLanguage();
   return (
     <div className="relative min-h-[100dvh] w-full flex flex-col items-center justify-center overflow-hidden bg-secondary text-white">
       {/* Background layers */}
@@ -39,17 +41,15 @@ export function ComingSoon() {
 
         <div className="inline-flex items-center gap-2 px-4 py-1.5 border border-primary/40 bg-primary/10 rounded-full mb-8">
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">Launching Soon</span>
+           <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">{t('coming.launching')}</span>
         </div>
 
         <h1 className="font-display text-4xl sm:text-6xl md:text-7xl font-bold uppercase tracking-tight leading-[0.95] mb-6">
-          Power Is <span className="text-primary">Coming.</span>
+           {t('coming.powerIs')} <span className="text-primary">{t('coming.coming')}</span>
         </h1>
 
         <p className="text-base md:text-lg text-white/70 font-medium max-w-xl mb-12">
-          POWERLYNX is preparing a new lineup of precision-engineered HVAC/R tools and equipment.
-          Our full catalog and distributor portal launch shortly — built for technicians who
-          demand accuracy, durability, and ease of use on every job.
+           {t('coming.description')}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center gap-4 mb-16">
@@ -76,7 +76,7 @@ export function ComingSoon() {
           className="group inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.2em] text-white/40 hover:text-white transition-colors"
           data-testid="link-preview-site"
         >
-          Preview Demo Site
+           {t('coming.preview')}
           <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
         </Link>
       </div>

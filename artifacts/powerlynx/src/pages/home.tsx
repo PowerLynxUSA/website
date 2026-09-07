@@ -7,9 +7,12 @@ import markUrl from '@/assets/brand/powerlynx-mark.png';
 import catalogCollageUrl from '@/assets/brand/catalog-hero-collage.jpeg';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
+import { useLanguage } from '@/i18n';
+import { localizeProducts, localizedLineLabel } from '@/i18n/products';
 
 export function Home() {
-  const featuredProducts = products.slice(0, 4);
+  const { t, language } = useLanguage();
+  const featuredProducts = localizeProducts(products.slice(0, 4), language);
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -27,18 +30,18 @@ export function Home() {
         
         <div className="container relative z-20 px-4 pb-16 md:pb-20 text-center">
           <h1 className="font-display text-5xl md:text-7xl lg:text-8xl font-bold text-white uppercase tracking-tight mb-6 animate-in slide-in-from-bottom-8 duration-700">
-            Power <span className="text-primary">Delivered.</span>
+             {t('home.heroPower')} <span className="text-primary">{t('home.heroDelivered')}</span>
           </h1>
           <p className="max-w-3xl mx-auto text-lg md:text-xl text-secondary-foreground/80 mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">
-            <span className="block md:whitespace-nowrap">Professional-grade HVAC/R tools engineered for accuracy, durability, and ease of use.</span>
-            <span className="block">Built by POWERLYNX to withstand the demands of the field.</span>
+             <span className="block md:whitespace-nowrap">{t('home.heroDescription1')}</span>
+             <span className="block">{t('home.heroDescription2')}</span>
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-8 duration-700 delay-300">
             <Button size="lg" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest w-full sm:w-auto">
-              <Link href="/products">View Catalog</Link>
+               <Link href="/products">{t('home.viewCatalog')}</Link>
             </Button>
             <Button size="lg" variant="outline" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest w-full sm:w-auto bg-transparent text-white border-white hover:bg-white hover:text-secondary">
-              <Link href="/about">Our Standards</Link>
+               <Link href="/about">{t('home.ourStandards')}</Link>
             </Button>
           </div>
         </div>
@@ -50,18 +53,18 @@ export function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-primary-foreground/20">
             <div className="flex flex-col items-center gap-3 px-4 pt-4 md:pt-0">
               <ShieldCheck className="w-8 h-8" />
-              <h3 className="font-display font-bold text-xl uppercase tracking-widest">Certified Quality</h3>
-              <p className="text-sm font-medium text-primary-foreground/80">UL recognized components, manufactured to CSA compliant standards for verified jobsite safety.</p>
+               <h3 className="font-display font-bold text-xl uppercase tracking-widest">{t('home.certifiedQuality')}</h3>
+               <p className="text-sm font-medium text-primary-foreground/80">{t('home.certifiedQualityDescription')}</p>
             </div>
             <div className="flex flex-col items-center gap-3 px-4 pt-8 md:pt-0">
               <Wrench className="w-8 h-8" />
-              <h3 className="font-display font-bold text-xl uppercase tracking-widest">Trade Engineered</h3>
-              <p className="text-sm font-medium text-primary-foreground/80">Purpose-built for HVAC/R professionals, delivering the accuracy and reliability the trade demands.</p>
+               <h3 className="font-display font-bold text-xl uppercase tracking-widest">{t('home.tradeEngineered')}</h3>
+               <p className="text-sm font-medium text-primary-foreground/80">{t('home.tradeEngineeredDescription')}</p>
             </div>
             <div className="flex flex-col items-center gap-3 px-4 pt-8 md:pt-0">
               <Zap className="w-8 h-8" />
-              <h3 className="font-display font-bold text-xl uppercase tracking-widest">Precision Performance</h3>
-              <p className="text-sm font-medium text-primary-foreground/80">From 99.9% pure copper to IP-rated diagnostic instruments, every specification is verified.</p>
+               <h3 className="font-display font-bold text-xl uppercase tracking-widest">{t('home.precisionPerformance')}</h3>
+               <p className="text-sm font-medium text-primary-foreground/80">{t('home.precisionPerformanceDescription')}</p>
             </div>
           </div>
         </div>
@@ -73,11 +76,11 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6">
-                The 2027 <br/>
-                <span className="text-primary">Equipment Lineup</span>
+                 {t('home.equipmentLineup')} <br/>
+                 <span className="text-primary">{t('home.equipmentLineupAccent')}</span>
               </h2>
               <p className="text-muted-foreground text-lg mb-8 max-w-lg">
-                Our catalog now includes precision thermal imaging cameras, multi-horsepower condenser fan motors, and rugged brazing torches. Every tool is rigorously tested for accuracy and durability before it earns the POWERLYNX name.
+                 {t('home.equipmentLineupDescription')}
               </p>
               
               <div className="space-y-4 mb-10">
@@ -87,8 +90,8 @@ export function Home() {
                       {line === 'HVAC Tool' ? 'T' : 'S'}
                     </div>
                     <div>
-                      <h4 className="font-bold text-lg uppercase tracking-wide">{line} Series</h4>
-                      <p className="text-sm text-muted-foreground">{line === 'HVAC Tool' ? 'Diagnostic & Installation Equipment' : 'Replacement Components'}</p>
+                       <h4 className="font-bold text-lg uppercase tracking-wide">{localizedLineLabel(line, language)} Series</h4>
+                       <p className="text-sm text-muted-foreground">{line === 'HVAC Tool' ? t('home.toolSeries') : t('home.supplySeries')}</p>
                     </div>
                   </div>
                 ))}
@@ -96,7 +99,7 @@ export function Home() {
 
               <Button asChild className="rounded-none font-bold uppercase tracking-widest gap-2">
                 <Link href="/products">
-                  Explore All Categories <ArrowRight className="w-4 h-4" />
+                   {t('home.exploreCategories')} <ArrowRight className="w-4 h-4" />
                 </Link>
               </Button>
             </div>
@@ -121,12 +124,12 @@ export function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <div>
-              <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-2">Featured Products</h2>
-              <p className="text-muted-foreground">Top requested SKUs from distributors this quarter.</p>
+               <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-2">{t('home.featuredProducts')}</h2>
+               <p className="text-muted-foreground">{t('home.topRequested')}</p>
             </div>
             <Button variant="outline" asChild className="rounded-none font-bold uppercase tracking-widest gap-2">
               <Link href="/products">
-                View All <ChevronRight className="w-4 h-4" />
+                 {t('home.viewAll')} <ChevronRight className="w-4 h-4" />
               </Link>
             </Button>
           </div>
@@ -162,12 +165,10 @@ export function Home() {
       <section className="bg-secondary text-secondary-foreground py-24 text-center">
         <div className="container mx-auto px-4">
           <img src={markUrl} alt="" className="w-12 h-12 mx-auto mb-8 opacity-50 brightness-0 invert" style={{ filter: 'brightness(0) invert(1)' }} />
-          <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6 text-white">Ready to stock POWERLYNX?</h2>
-          <p className="max-w-2xl mx-auto text-lg text-secondary-foreground/70 mb-10">
-            We partner with leading HVAC/R distributors across North America to deliver precision-engineered equipment to the contractors who rely on it.
-          </p>
+           <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6 text-white">{t('home.readyToStock')}</h2>
+           <p className="max-w-2xl mx-auto text-lg text-secondary-foreground/70 mb-10">{t('home.partnerDescription')}</p>
           <Button size="lg" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest">
-            <Link href="/contact">Become a Distributor</Link>
+             <Link href="/contact">{t('home.becomeDistributor')}</Link>
           </Button>
         </div>
       </section>

@@ -5,17 +5,18 @@ import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/layout/language-switcher';
 import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import markUrl from '@/assets/brand/powerlynx-mark.png';
-
-const navItems = [
-  { label: 'Home', path: '/' },
-  { label: 'Products', path: '/products' },
-  { label: 'About', path: '/about' },
-  { label: 'Contact', path: '/contact' },
-];
+import { useLanguage } from '@/i18n';
 
 export function Header() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t } = useLanguage();
+  const navItems = [
+    { label: t('nav.home'), path: '/' },
+    { label: t('nav.products'), path: '/products' },
+    { label: t('nav.about'), path: '/about' },
+    { label: t('nav.contact'), path: '/contact' },
+  ];
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -62,12 +63,19 @@ export function Header() {
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-4">
-          <Button asChild size="icon" variant="outline" className="rounded-none">
+          <Button asChild size="icon" variant="outline" className="rounded-none" aria-label={t('contact.callUs')}>
             <a href="tel:8888187693">
               <Phone className="w-4 h-4" />
             </a>
           </Button>
-          <Button variant="ghost" size="icon" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? t('nav.contact') : t('nav.home')}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-navigation"
+          >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </Button>
         </div>
@@ -75,7 +83,7 @@ export function Header() {
 
       {/* Mobile Nav */}
       {isMobileMenuOpen && (
-        <div className="md:hidden border-t border-border bg-background py-4 px-4 flex flex-col gap-4 animate-in slide-in-from-top-4">
+        <div id="mobile-navigation" className="md:hidden border-t border-border bg-background py-4 px-4 flex flex-col gap-4 animate-in slide-in-from-top-4">
           <nav className="flex flex-col gap-4">
             {navItems.map((item) => (
               <Link

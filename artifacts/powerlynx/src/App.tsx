@@ -13,6 +13,7 @@ import { Contact } from '@/pages/contact';
 import { ProductsIndex } from '@/pages/products/index';
 import { ProductDetail } from '@/pages/products/detail';
 import { ComingSoon } from '@/pages/coming-soon';
+import { LanguageProvider } from '@/i18n';
 
 const queryClient = new QueryClient();
 
@@ -47,10 +48,12 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
-          <Router />
-        </WouterRouter>
-        <Toaster />
+        <LanguageProvider>
+          <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, '')}>
+            <Router />
+          </WouterRouter>
+          <Toaster />
+        </LanguageProvider>
       </TooltipProvider>
     </QueryClientProvider>
   );
