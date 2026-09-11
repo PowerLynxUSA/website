@@ -126,6 +126,7 @@ const en = {
   "products.productLine": "Product Line",
   "products.allLines": "All Lines",
   "products.category": "Category",
+  "products.filters": "Filters",
   "products.allCategories": "All Categories",
   "products.showing": "Showing",
   "products.result": "result",

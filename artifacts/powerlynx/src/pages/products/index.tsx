@@ -1,21 +1,36 @@
-import { products, productLines, categories } from '@/data/products';
+import { products, productLines, categoryTree } from '@/data/products';
 import { Link } from 'wouter';
 import { useState, useMemo } from 'react';
-import { Search, SlidersHorizontal, ChevronRight, X, ShieldCheck } from 'lucide-react';
+import { Search, SlidersHorizontal, ChevronRight, ChevronDown, X, ShieldCheck, ListFilter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
-import { localizeProduct, localizedCategoryLabel, localizedLineLabel, localizedA2LBadgeLabel } from '@/i18n/products';
+import {
+  localizeProduct,
+  localizedCategoryLabel,
+  localizedCategoryGroupLabel,
+  localizedLineLabel,
+  localizedA2LBadgeLabel,
+} from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function ProductsIndex() {
   const [search, setSearch] = useState("");
   const [activeLine, setActiveLine] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    "Tubing Tools": true,
+    "Utility & Hand Tools": true,
+  });
+  const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const { t, language } = useLanguage();
+
+  const toggleSection = (section: string) => {
+    setOpenSections(prev => ({ ...prev, [section]: !prev[section] }));
+  };
 
   useDocumentMeta({
     title: 'HVAC/R Tools & Equipment Catalog',
@@ -52,9 +67,28 @@ export function ProductsIndex() {
         </div>
       </div>
 
-      <div className="container mx-auto px-4 mt-8 flex flex-col md:flex-row gap-8 items-start">
+      {/* MOBILE FILTER TOGGLE */}
+      <div className="container mx-auto px-4 mt-8 md:hidden">
+        <Button
+          variant="outline"
+          className="w-full justify-between rounded-none uppercase font-bold tracking-widest text-xs h-11"
+          onClick={() => setMobileFiltersOpen(open => !open)}
+          data-testid="button-toggle-mobile-filters"
+        >
+          <span className="flex items-center gap-2">
+            <ListFilter className="w-4 h-4" />
+             {t('products.filters')}
+          </span>
+          <ChevronDown className={`w-4 h-4 transition-transform ${mobileFiltersOpen ? 'rotate-180' : ''}`} />
+        </Button>
+      </div>
+
+      <div className="container mx-auto px-4 mt-4 md:mt-8 flex flex-col md:flex-row gap-8 items-start">
         {/* SIDEBAR FILTERS */}
-        <aside className="w-full md:w-64 shrink-0 space-y-8 md:sticky md:top-28 self-start">
+        <aside
+          className={`w-full md:w-64 shrink-0 space-y-8 md:sticky md:top-28 self-start ${mobileFiltersOpen ? 'block' : 'hidden'} md:block`}
+          data-testid="sidebar-filters"
+        >
           <div>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -97,24 +131,78 @@ export function ProductsIndex() {
             <h3 className="font-display font-bold uppercase tracking-widest text-sm border-b border-border pb-2">
                {t('products.category')}
             </h3>
-            <div className="flex flex-col gap-1 max-h-[40vh] overflow-y-auto pr-2 scrollbar-thin">
-              <button 
+            <div className="flex flex-col gap-1 max-h-[60vh] overflow-y-auto pr-2 scrollbar-thin">
+              <button
                 onClick={() => setActiveCategory(null)}
                 className={`text-left text-sm py-1.5 transition-colors ${activeCategory === null ? 'text-primary font-bold' : 'text-muted-foreground hover:text-foreground'}`}
+                data-testid="button-category-all"
               >
                  {t('products.allCategories')}
               </button>
-              {categories
-                .filter(c => !activeLine || products.find(p => p.category === c && p.line === activeLine))
-                .map(category => (
-                <button 
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`text-left text-sm py-1.5 transition-colors ${activeCategory === category ? 'text-primary font-bold' : 'text-muted-foreground hover:text-foreground'}`}
-                >
-                   {localizedCategoryLabel(category, language)}
-                </button>
-              ))}
+
+              {categoryTree.map(({ group, items }) => {
+                const groupCategories = items.flatMap(item => item.kind === 'category' ? [item.category] : item.categories);
+                const groupHasMatch = !activeLine || products.some(p => groupCategories.includes(p.category) && p.line === activeLine);
+                if (!groupHasMatch) return null;
+
+                return (
+                  <div key={group} className="pt-3 first:pt-0">
+                    <div className="text-[11px] font-display font-bold uppercase tracking-widest text-foreground/80 mb-1.5 mt-2">
+                       {localizedCategoryGroupLabel(group, language)}
+                    </div>
+                    {items.map(item => {
+                      if (item.kind === 'category') {
+                        const category = item.category;
+                        const hasMatch = !activeLine || products.some(p => p.category === category && p.line === activeLine);
+                        if (!hasMatch) return null;
+                        return (
+                          <button
+                            key={category}
+                            onClick={() => setActiveCategory(category)}
+                            className={`w-full text-left text-sm py-1.5 pl-2 transition-colors ${activeCategory === category ? 'text-primary font-bold' : 'text-muted-foreground hover:text-foreground'}`}
+                            data-testid={`button-category-${category}`}
+                          >
+                             {localizedCategoryLabel(category, language)}
+                          </button>
+                        );
+                      }
+
+                      const sectionCategories = item.categories.filter(
+                        category => !activeLine || products.some(p => p.category === category && p.line === activeLine),
+                      );
+                      if (sectionCategories.length === 0) return null;
+                      const isOpen = openSections[item.section] ?? true;
+
+                      return (
+                        <div key={item.section} className="mt-1">
+                          <button
+                            onClick={() => toggleSection(item.section)}
+                            className="w-full flex items-center justify-between text-left text-sm py-1.5 pl-2 font-bold text-foreground hover:text-primary transition-colors"
+                            data-testid={`button-section-${item.section}`}
+                          >
+                            <span>{localizedCategoryGroupLabel(item.section, language)}</span>
+                            <ChevronDown className={`w-3.5 h-3.5 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                          </button>
+                          {isOpen && (
+                            <div className="flex flex-col gap-1 pl-4 border-l border-border ml-2">
+                              {sectionCategories.map(category => (
+                                <button
+                                  key={category}
+                                  onClick={() => setActiveCategory(category)}
+                                  className={`text-left text-sm py-1.5 transition-colors ${activeCategory === category ? 'text-primary font-bold' : 'text-muted-foreground hover:text-foreground'}`}
+                                  data-testid={`button-category-${category}`}
+                                >
+                                   {localizedCategoryLabel(category, language)}
+                                </button>
+                              ))}
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </div>
           </div>
         </aside>

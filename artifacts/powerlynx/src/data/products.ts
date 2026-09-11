@@ -29,12 +29,17 @@ import imgWhiteInsulatedLineSet from "@/assets/products/white-insulated-line-set
 
 export type ProductSpec = { label: string; value: string };
 
+export type CategoryGroup = "HVAC Parts & Supplies" | "HVAC Tools and Instruments";
+export type CategorySection = "Tubing Tools" | "Utility & Hand Tools";
+
 export type Product = {
   slug: string;
   name: string;
   models: string; // model codes, as printed in the catalog
   line: "HVAC Tool" | "HVAC Supply";
   category: string;
+  categoryGroup: CategoryGroup;
+  categorySection?: CategorySection;
   summary: string;
   bullets: string[];
   specs: ProductSpec[];
@@ -56,6 +61,7 @@ export const products: Product[] = [
     models: "1438W25F, 1412W25F, 1438W50F, 1412W50F",
     line: "HVAC Tool",
     category: "Line Sets",
+    categoryGroup: "HVAC Parts & Supplies",
     summary:
       "Copper line set with a three-layer insulation cover of embossed polyethylene film, weather-resistant materials, and thick insulating cotton. Corrosion, water, shock, and fire resistant with a flame-retardant, sound-absorbent build.",
     bullets: [
@@ -78,6 +84,7 @@ export const products: Product[] = [
     models: "1438B25F, 1412B25F, 1438B50F, 1412B50F",
     line: "HVAC Tool",
     category: "Line Sets",
+    categoryGroup: "HVAC Parts & Supplies",
     summary:
       "The same corrosion, fire, and shock resistant performance as the white line set, wrapped in a rugged black rubber insulation for jobs that call for a darker finish.",
     bullets: [
@@ -100,7 +107,8 @@ export const products: Product[] = [
     name: "Thermal Imaging Camera",
     models: "ATC100 / ATC200",
     line: "HVAC Tool",
-    category: "Thermal Imaging Camera",
+    category: "Thermal Camera",
+    categoryGroup: "HVAC Tools and Instruments",
     summary:
       "A handheld thermal imaging camera for spotting hot/cold spots, refrigerant leaks, and electrical faults on the job.",
     bullets: [
@@ -120,7 +128,8 @@ export const products: Product[] = [
     name: "Brazing Torch",
     models: "AT1LMP",
     line: "HVAC Tool",
-    category: "Brazing / Utility Torch",
+    category: "Torch",
+    categoryGroup: "HVAC Tools and Instruments",
     summary:
       "A MAP-Pro/propane compatible brazing torch with automatic ignition and shutoff for fast, safe joint work.",
     bullets: [
@@ -136,7 +145,8 @@ export const products: Product[] = [
     name: "Utility Torch",
     models: "AT1P",
     line: "HVAC Tool",
-    category: "Brazing / Utility Torch",
+    category: "Torch",
+    categoryGroup: "HVAC Tools and Instruments",
     summary: "A compact propane-only torch built for precision soldering work.",
     bullets: ["Propane only", "Compact form factor for tight spaces"],
     specs: [{ label: "Model", value: "AT1P" }],
@@ -149,6 +159,7 @@ export const products: Product[] = [
     models: "AG2MA / AG2MB / AG4MA / AG4MB",
     line: "HVAC Tool",
     category: "Manifold Gauge",
+    categoryGroup: "HVAC Tools and Instruments",
     summary:
       'A precision manifold gauge set for reading and charging systems across common refrigerants, with a large 3-1/8" dial for easy reading in the field.',
     bullets: [
@@ -171,7 +182,8 @@ export const products: Product[] = [
     name: "Refrigerant Hose Set",
     models: "ARH5S / ARH5SV",
     line: "HVAC Tool",
-    category: "Refrigerant Hose Set",
+    category: "Refrigerant Hoses",
+    categoryGroup: "HVAC Tools and Instruments",
     summary:
       '5ft, 1/4"-1/4" refrigerant hose set rated for demanding charging and recovery work, available with or without a ball valve.',
     bullets: [
@@ -189,7 +201,9 @@ export const products: Product[] = [
     name: "Flaring Tool",
     models: "AHF6",
     line: "HVAC Tool",
-    category: "Flaring Tool / Tube Expander / Tube Straightener",
+    category: "Flaring Tool",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Tubing Tools",
     summary: 'A flaring tool covering 1/4" to 3/4" tube with a 45-degree eccentric cone for clean, consistent flares.',
     bullets: ['1/4" to 3/4" capacity', "45-degree eccentric cone", "Nickel-plated"],
     specs: [{ label: "Model", value: "AHF6" }],
@@ -201,7 +215,9 @@ export const products: Product[] = [
     name: "Tube Expander",
     models: "AHE7",
     line: "HVAC Tool",
-    category: "Flaring Tool / Tube Expander / Tube Straightener",
+    category: "Tube Expander",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Tubing Tools",
     summary: 'A folding tube expander covering 1/4" to 7/8" for fast swaging in the field.',
     bullets: ['1/4" to 7/8" capacity', "Folding design for jobsite portability"],
     specs: [{ label: "Model", value: "AHE7" }],
@@ -212,7 +228,9 @@ export const products: Product[] = [
     name: "Tube Straightener",
     models: "AHS2 / AHS3",
     line: "HVAC Tool",
-    category: "Flaring Tool / Tube Expander / Tube Straightener",
+    category: "Tube Straightener",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Tubing Tools",
     summary: 'A simple, durable tube straightener available in 1/4" and 3/8" sizes.',
     bullets: ['AHS2: 1/4"', 'AHS3: 3/8"'],
     specs: [
@@ -227,7 +245,9 @@ export const products: Product[] = [
     name: "Tube Cutter",
     models: "AHC6C / AHC11C / AHC12",
     line: "HVAC Tool",
-    category: "Tube Cutter / Reamer / Deburring Tool",
+    category: "Tube Cutter",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Tubing Tools",
     summary: "A range of tube cutters sized for everything from tight refrigerant lines to larger copper pipe.",
     bullets: [
       'AHC6C: 1/8" to 3/4"',
@@ -246,7 +266,9 @@ export const products: Product[] = [
     name: "Internal & External Reamer",
     models: "AHR30",
     line: "HVAC Tool",
-    category: "Tube Cutter / Reamer / Deburring Tool",
+    category: "Internal & External Reamer",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Tubing Tools",
     summary: 'A dual-function internal and external reamer covering 1/8" to 1-1/2" tube.',
     bullets: ['1/8" to 1-1/2" capacity', "Internal and external reaming in one tool"],
     specs: [{ label: "Model", value: "AHR30" }],
@@ -257,7 +279,9 @@ export const products: Product[] = [
     name: "Tube Deburring Tool",
     models: "AHD20",
     line: "HVAC Tool",
-    category: "Tube Cutter / Reamer / Deburring Tool",
+    category: "Tube Deburring Tool",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Tubing Tools",
     summary: "A tube deburring tool that ships with two spare blades so it's ready for extended jobs.",
     bullets: ["Includes 2 spare blades"],
     specs: [{ label: "Model", value: "AHD20" }],
@@ -270,6 +294,8 @@ export const products: Product[] = [
     models: "AHW3 / AHW5 / AHWA",
     line: "HVAC Tool",
     category: "Ratcheting Wrench",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Utility & Hand Tools",
     summary: "A bi-directional ratcheting wrench for valve work, supplied with hex key adapters.",
     bullets: ["Switches between clockwise and counter-clockwise", "Includes hex key adapters"],
     specs: [
@@ -284,7 +310,9 @@ export const products: Product[] = [
     name: "Folding Utility Knife",
     models: "AK1",
     line: "HVAC Tool",
-    category: "Folding Utility Knife / LED Penlight / LED Headlight",
+    category: "Folding Knife",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Utility & Hand Tools",
     summary: "A jobsite folding knife with a built-in Phillips/flathead driver.",
     bullets: ["Combined Phillips and flathead driver"],
     specs: [{ label: "Model", value: "AK1" }],
@@ -295,7 +323,9 @@ export const products: Product[] = [
     name: "Dual-Blade Folding Knife",
     models: "AK2",
     line: "HVAC Tool",
-    category: "Folding Utility Knife / LED Penlight / LED Headlight",
+    category: "Dual-Blade Folding Knife",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Utility & Hand Tools",
     summary: "A dual-blade folding knife for cutting a wider range of jobsite materials.",
     bullets: ["Two blade configuration"],
     specs: [{ label: "Model", value: "AK2" }],
@@ -306,7 +336,9 @@ export const products: Product[] = [
     name: "LED Penlight",
     models: "AL1",
     line: "HVAC Tool",
-    category: "Folding Utility Knife / LED Penlight / LED Headlight",
+    category: "LED Penlight",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Utility & Hand Tools",
     summary: "A compact 300-lumen penlight for inspecting tight, dark spaces.",
     bullets: ["300 lumens", "IP44 rated", "330ft throw distance"],
     specs: [{ label: "Model", value: "AL1" }],
@@ -317,7 +349,9 @@ export const products: Product[] = [
     name: "LED Headlight",
     models: "AL2",
     line: "HVAC Tool",
-    category: "Folding Utility Knife / LED Penlight / LED Headlight",
+    category: "LED Headlight",
+    categoryGroup: "HVAC Tools and Instruments",
+    categorySection: "Utility & Hand Tools",
     summary: "A hands-free 350-lumen headlight built for long jobs.",
     bullets: ["350 lumens", "IPX3 rated", "Up to 6 hours continuous use"],
     specs: [{ label: "Model", value: "AL2" }],
@@ -328,7 +362,8 @@ export const products: Product[] = [
     name: "Condenser Fan Motor (Single Speed)",
     models: "ACM216 / ACM214",
     line: "HVAC Supply",
-    category: "Condenser Fan Motor",
+    category: "Motors",
+    categoryGroup: "HVAC Parts & Supplies",
     summary:
       "A heavy-duty, weather-resistant single-speed condenser fan motor built to restore proper airflow across condenser coils and prevent system overheating.",
     bullets: [
@@ -348,7 +383,8 @@ export const products: Product[] = [
     name: "Condenser Fan Motor (Multi-HP)",
     models: "ACM2M1",
     line: "HVAC Supply",
-    category: "Condenser Fan Motor",
+    category: "Motors",
+    categoryGroup: "HVAC Parts & Supplies",
     summary:
       "A multi-horsepower condenser fan motor covering a wider service range for techs stocking fewer SKUs on the truck.",
     bullets: ["1/6 - 1/3 HP", "NEMA Frame 48, Class B insulation", "UL recognized"],
@@ -356,4 +392,61 @@ export const products: Product[] = [
   },
 ];
 
-export const categories = Array.from(new Set(products.map((p) => p.category)));
+// Product category tree — mirrors the official POWERLYNX category structure:
+// two top-level groups, with "Tubing Tools" and "Utility & Hand Tools" nested
+// under HVAC Tools and Instruments as collapsible sections.
+export type CategoryTreeItem =
+  | { kind: "category"; category: string }
+  | { kind: "section"; section: CategorySection; categories: string[] };
+
+export type CategoryTreeGroup = {
+  group: CategoryGroup;
+  items: CategoryTreeItem[];
+};
+
+export const categoryTree: CategoryTreeGroup[] = [
+  {
+    group: "HVAC Parts & Supplies",
+    items: [
+      { kind: "category", category: "Line Sets" },
+      { kind: "category", category: "Motors" },
+    ],
+  },
+  {
+    group: "HVAC Tools and Instruments",
+    items: [
+      { kind: "category", category: "Thermal Camera" },
+      { kind: "category", category: "Torch" },
+      { kind: "category", category: "Manifold Gauge" },
+      { kind: "category", category: "Refrigerant Hoses" },
+      {
+        kind: "section",
+        section: "Tubing Tools",
+        categories: [
+          "Flaring Tool",
+          "Tube Expander",
+          "Tube Straightener",
+          "Tube Cutter",
+          "Internal & External Reamer",
+          "Tube Deburring Tool",
+        ],
+      },
+      {
+        kind: "section",
+        section: "Utility & Hand Tools",
+        categories: [
+          "Ratcheting Wrench",
+          "Folding Knife",
+          "Dual-Blade Folding Knife",
+          "LED Penlight",
+          "LED Headlight",
+        ],
+      },
+    ],
+  },
+];
+
+// Flat category list, ordered to match categoryTree (used for search/filter helpers).
+export const categories = categoryTree.flatMap((g) =>
+  g.items.flatMap((item) => (item.kind === "category" ? [item.category] : item.categories)),
+);
