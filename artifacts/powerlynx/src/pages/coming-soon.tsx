@@ -103,12 +103,12 @@ export function ComingSoon() {
         <footer className="flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-white/35">© Powerlink Inc. / POWERLYNX</p>
           <Link
-            href="/website"
+            href="/"
             className="group inline-flex items-center gap-3 self-start text-sm font-bold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f] sm:self-auto"
             data-testid="link-preview-site"
-            aria-label="View the website in progress"
+            aria-label="Visit the live website"
           >
-            View the website in progress
+            Visit the live website
             <span className="flex h-8 w-8 items-center justify-center border border-[#f14d2f] text-[#f14d2f] transition-transform group-hover:translate-x-1">
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
