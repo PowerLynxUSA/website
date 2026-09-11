@@ -2,9 +2,17 @@ import { ShieldCheck, HardHat, Cog, CheckCircle2 } from 'lucide-react';
 import aboutWarehouseUrl from '@/assets/generated/about-technician-branded-v2.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
+import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function About() {
   const { t } = useLanguage();
+
+  useDocumentMeta({
+    title: 'About Powerlink Inc.',
+    description: 'Learn about Powerlink Inc., the American company behind POWERLYNX HVAC/R tools — engineering precision equipment trusted by technicians across North America.',
+    path: '/about',
+  });
+
   return (
     <div className="flex flex-col min-h-screen bg-background">
       
