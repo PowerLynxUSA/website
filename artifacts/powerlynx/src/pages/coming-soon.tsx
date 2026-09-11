@@ -27,7 +27,7 @@ export function ComingSoon() {
           </div>
         </header>
 
-        <div className="flex min-w-0 w-full items-center justify-center gap-1 pt-14 sm:gap-4 sm:pt-16 lg:pt-20">
+        <div className="relative z-10 flex min-w-0 w-full items-center justify-center gap-1 pt-14 sm:gap-4 sm:pt-16 lg:pt-20">
           <p className="min-w-0 whitespace-nowrap text-center font-display text-[clamp(2rem,8.8vw,4.5rem)] font-bold uppercase leading-none tracking-[0.02em] sm:text-7xl sm:tracking-[0.05em]">
             <span className="text-[#f14d2f]">Launching</span>{' '}
             <span className="text-white">Soon</span>
@@ -35,7 +35,7 @@ export function ComingSoon() {
           <img src={rocketUrl} alt="" className="h-12 w-12 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
         </div>
 
-        <div className="grid flex-1 items-center gap-10 py-7 lg:-mt-5 lg:grid-cols-[minmax(0,0.86fr)_minmax(500px,1.14fr)] lg:gap-12 lg:pb-10 lg:pt-0">
+        <div className="relative z-0 grid flex-1 items-center gap-10 py-7 lg:mt-4 lg:grid-cols-[minmax(0,0.86fr)_minmax(500px,1.14fr)] lg:gap-12 lg:pb-10 lg:pt-4">
           <section className="max-w-2xl">
             <p className="mb-5 flex items-center gap-3 font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#f14d2f]">
               <span className="h-px w-8 bg-[#f14d2f]" />
