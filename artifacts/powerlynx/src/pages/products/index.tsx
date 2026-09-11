@@ -1,6 +1,6 @@
 import { products, categoryGroups, categoryTree } from '@/data/products';
-import { Link } from 'wouter';
-import { useState, useMemo } from 'react';
+import { Link, useSearch } from 'wouter';
+import { useState, useMemo, useEffect } from 'react';
 import { Search, SlidersHorizontal, ChevronRight, ChevronDown, X, ShieldCheck, ListFilter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -17,6 +17,7 @@ import {
 import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function ProductsIndex() {
+  const searchParamsString = useSearch();
   const [search, setSearch] = useState("");
   const [activeGroup, setActiveGroup] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
@@ -26,6 +27,16 @@ export function ProductsIndex() {
   });
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const { t, language } = useLanguage();
+
+  // Deep-link support: /products?group=... and/or /products?category=...
+  // let the header's category menu land directly on a pre-filtered view.
+  useEffect(() => {
+    const params = new URLSearchParams(searchParamsString);
+    const group = params.get('group');
+    const category = params.get('category');
+    setActiveGroup(group && categoryGroups.includes(group as any) ? group : null);
+    setActiveCategory(category && categoryTree.some(g => g.items.some(item => item.kind === 'category' ? item.category === category : item.categories.includes(category))) ? category : null);
+  }, [searchParamsString]);
 
   const toggleSection = (section: string) => {
     setOpenSections(prev => ({ ...prev, [section]: !prev[section] }));

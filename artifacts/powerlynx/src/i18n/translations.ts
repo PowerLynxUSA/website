@@ -5,6 +5,7 @@ const en = {
   "nav.products": "Products",
   "nav.about": "About",
   "nav.contact": "Contact",
+  "nav.viewCatalog": "View Full Catalog",
   "language.search": "Search languages...",
   "language.empty": "No language found.",
   "language.count": "{count} languages",
