@@ -13,8 +13,8 @@ export function Header() {
   const { t } = useLanguage();
   const navItems = [
     { label: t('nav.home'), path: '/website' },
-    { label: t('nav.products'), path: '/products' },
     { label: t('nav.about'), path: '/about' },
+    { label: t('nav.products'), path: '/products' },
     { label: t('nav.contact'), path: '/contact' },
   ];
 
