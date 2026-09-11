@@ -12,6 +12,7 @@ import { useToast } from '@/hooks/use-toast';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
 import type { TranslationKey } from '@/i18n/translations';
+import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 type ContactFormValues = {
   name: string;
@@ -60,6 +61,12 @@ export function Contact() {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useDocumentMeta({
+    title: 'Contact Powerlink Inc.',
+    description: 'Get in touch with Powerlink Inc. for POWERLYNX HVAC/R tools — sales inquiries, distribution, and support across North America.',
+    path: '/contact',
+  });
   const contactSchema = createContactSchema(t);
 
   const form = useForm<ContactFormValues>({
