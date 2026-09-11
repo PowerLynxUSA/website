@@ -20,7 +20,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "Escariador interno y externo",
     "deburring-tool": "Desbarbador de tubos",
     "ratcheting-wrench": "Llave de carraca",
-    "folding-knife": "Cuchillo plegable",
+    "folding-knife": "Cuchillo plegable multiuso",
     "dual-blade-folding-knife": "Cuchillo plegable de doble hoja",
     "led-penlight": "Linterna LED tipo lápiz",
     "led-headlight": "Linterna frontal LED",
@@ -42,7 +42,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "Alargador interno e externo",
     "deburring-tool": "Ferramenta de rebarbação",
     "ratcheting-wrench": "Chave catraca",
-    "folding-knife": "Faca dobrável",
+    "folding-knife": "Faca dobrável utilitária",
     "dual-blade-folding-knife": "Faca dobrável de duas lâminas",
     "led-penlight": "Lanterna LED",
     "led-headlight": "Lanterna frontal LED",
@@ -64,7 +64,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "Alésoir intérieur et extérieur",
     "deburring-tool": "Ébavureur de tubes",
     "ratcheting-wrench": "Clé à cliquet",
-    "folding-knife": "Couteau pliant",
+    "folding-knife": "Couteau pliant utilitaire",
     "dual-blade-folding-knife": "Couteau pliant à double lame",
     "led-penlight": "Lampe stylo LED",
     "led-headlight": "Lampe frontale LED",
@@ -86,7 +86,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "Innen- und Außenentgrater",
     "deburring-tool": "Rohr-Entgrater",
     "ratcheting-wrench": "Ratschenringschlüssel",
-    "folding-knife": "Klappmesser",
+    "folding-knife": "Universal-Klappmesser",
     "dual-blade-folding-knife": "Klappmesser mit zwei Klingen",
     "led-penlight": "LED-Stiftlampe",
     "led-headlight": "LED-Stirnlampe",
@@ -108,7 +108,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "内外面リーマー",
     "deburring-tool": "チューブ面取りツール",
     "ratcheting-wrench": "ラチェットレンチ",
-    "folding-knife": "折りたたみナイフ",
+    "folding-knife": "折りたたみ万能ナイフ",
     "dual-blade-folding-knife": "2枚刃折りたたみナイフ",
     "led-penlight": "LED ペンライト",
     "led-headlight": "LED ヘッドライト",
@@ -130,7 +130,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "내·외경 리머",
     "deburring-tool": "튜브 디버링 공구",
     "ratcheting-wrench": "래칫 렌치",
-    "folding-knife": "접이식 나이프",
+    "folding-knife": "접이식 다용도 나이프",
     "dual-blade-folding-knife": "더블 블레이드 접이식 나이프",
     "led-penlight": "LED 펜라이트",
     "led-headlight": "LED 헤드라이트",
@@ -152,7 +152,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "内外两用铰刀",
     "deburring-tool": "管路去毛刺工具",
     "ratcheting-wrench": "棘轮扳手",
-    "folding-knife": "折叠刀",
+    "folding-knife": "多用途折叠刀",
     "dual-blade-folding-knife": "双刃折叠刀",
     "led-penlight": "LED 笔灯",
     "led-headlight": "LED 头灯",
@@ -174,7 +174,7 @@ const names: Partial<Record<LanguageCode, Record<string, string>>> = {
     reamer: "內外兩用鉸刀",
     "deburring-tool": "管路去毛刺工具",
     "ratcheting-wrench": "棘輪扳手",
-    "folding-knife": "折疊刀",
+    "folding-knife": "多用途折疊刀",
     "dual-blade-folding-knife": "雙刃折疊刀",
     "led-penlight": "LED 筆燈",
     "led-headlight": "LED 頭燈",
@@ -233,6 +233,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         'Juego de manómetro múltiple de precisión para medir y cargar sistemas con los refrigerantes habituales, con una esfera grande de 3-1/8" fácil de leer en obra.',
       bullets: [
         "Compatible con R410A, R32, R454B y R22",
+        "Compatible con refrigerantes A2L",
         'Esfera de 3-1/8"',
         "Rango de -30 inHg a 800 psi",
       ],
@@ -365,6 +366,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         'Conjunto de manifold de precisão para medir e carregar sistemas com os refrigerantes mais comuns, com mostrador grande de 3-1/8" fácil de ler no local de trabalho.',
       bullets: [
         "Compatível com R410A, R32, R454B e R22",
+        "Compatível com refrigerantes A2L",
         'Mostrador de 3-1/8"',
         "Faixa de -30 inHg a 800 psi",
       ],
@@ -497,6 +499,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         'Jeu de manifold de précision pour mesurer et charger les systèmes avec les réfrigérants courants, doté d\'un grand cadran de 3-1/8" facile à lire sur le chantier.',
       bullets: [
         "Compatible avec R410A, R32, R454B et R22",
+        "Compatible avec les réfrigérants A2L",
         'Cadran de 3-1/8"',
         "Plage de -30 inHg à 800 psi",
       ],
@@ -629,6 +632,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         'Präzisions-Manometer-Set zum Messen und Befüllen von Anlagen mit gängigen Kältemitteln, mit einer großen, im Einsatz gut ablesbaren 3-1/8"-Skala.',
       bullets: [
         "Kompatibel mit R410A, R32, R454B und R22",
+        "Kompatibel mit A2L-Kältemitteln",
         '3-1/8"-Skala',
         "Bereich -30 inHg bis 800 psi",
       ],
@@ -761,6 +765,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         '一般的な冷媒の測定・充填に対応する精密マニホールドゲージセット。現場で読み取りやすい大型 3-1/8" ダイヤルを備えています。',
       bullets: [
         "R410A、R32、R454B、R22 に対応",
+        "A2L 冷媒に対応",
         '3-1/8" ダイヤル',
         "範囲 -30 inHg to 800 psi",
       ],
@@ -892,6 +897,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         '일반적인 냉매 시스템의 측정과 충전을 위한 정밀 매니폴드 게이지 세트로, 현장에서 읽기 쉬운 대형 3-1/8" 다이얼을 적용했습니다.',
       bullets: [
         "R410A, R32, R454B 및 R22 호환",
+        "A2L 냉매 호환",
         '3-1/8" 다이얼',
         "범위 -30 inHg to 800 psi",
       ],
@@ -1021,6 +1027,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         '用于测量和充注常用制冷剂系统的精密歧管压力表组，配备便于现场读取的大型 3-1/8" 表盘。',
       bullets: [
         "兼容 R410A、R32、R454B 和 R22",
+        "兼容 A2L 制冷剂",
         '3-1/8" 表盘',
         "范围 -30 inHg 至 800 psi",
       ],
@@ -1149,6 +1156,7 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
         '用於測量和充填常用冷媒系統的精密歧管壓力表組，配備便於現場讀取的大型 3-1/8" 表面。',
       bullets: [
         "相容 R410A、R32、R454B 和 R22",
+        "相容 A2L 冷媒",
         '3-1/8" 表面',
         "範圍 -30 inHg 至 800 psi",
       ],
@@ -1233,41 +1241,41 @@ const technicalProductCopy: Partial<Record<LanguageCode, Record<string, ProductT
 };
 
 const categoryTranslations: Partial<Record<LanguageCode, Record<string, string>>> = {
-  ES: { "Line Sets": "Juegos de líneas", "Thermal Imaging Camera": "Cámara termográfica", "Brazing / Utility Torch": "Soplete de soldadura / multiuso", "Manifold Gauge": "Manómetro múltiple", "Refrigerant Hose Set": "Juego de mangueras para refrigerante", "Flaring Tool / Tube Expander / Tube Straightener": "Abocardador / expansor / enderezador", "Tube Cutter / Reamer / Deburring Tool": "Cortatubos / escariador / desbarbador", "Ratcheting Wrench": "Llave de carraca", "Folding Knife / LED Penlight / LED Headlight": "Cuchillo plegable / linterna LED", "Condenser Fan Motor": "Motor de ventilador de condensador" },
-  PT: { "Line Sets": "Conjuntos de linhas", "Thermal Imaging Camera": "Câmera termográfica", "Brazing / Utility Torch": "Maçarico de brasagem / utilitário", "Manifold Gauge": "Manifold", "Refrigerant Hose Set": "Mangueiras para refrigerante", "Flaring Tool / Tube Expander / Tube Straightener": "Flangeador / expansor / endireitador", "Tube Cutter / Reamer / Deburring Tool": "Cortador / alargador / rebarbador", "Ratcheting Wrench": "Chave catraca", "Folding Knife / LED Penlight / LED Headlight": "Faca dobrável / lanterna LED", "Condenser Fan Motor": "Motor do ventilador do condensador" },
-  FR: { "Line Sets": "Kits de lignes", "Thermal Imaging Camera": "Caméra thermique", "Brazing / Utility Torch": "Chalumeau de brasage / utilitaire", "Manifold Gauge": "Manifold", "Refrigerant Hose Set": "Flexibles frigorifiques", "Flaring Tool / Tube Expander / Tube Straightener": "Dudgeonnière / expandeur / redresseur", "Tube Cutter / Reamer / Deburring Tool": "Coupe-tube / alésoir / ébavureur", "Ratcheting Wrench": "Clé à cliquet", "Folding Knife / LED Penlight / LED Headlight": "Couteau pliant / lampes LED", "Condenser Fan Motor": "Moteur de ventilateur de condenseur" },
-  DE: { "Line Sets": "Leitungssätze", "Thermal Imaging Camera": "Wärmebildkamera", "Brazing / Utility Torch": "Hartlöt- / Universalbrenner", "Manifold Gauge": "Manometer", "Refrigerant Hose Set": "Kältemittelschlauch-Set", "Flaring Tool / Tube Expander / Tube Straightener": "Bördelwerkzeug / Aufweiter / Richtwerkzeug", "Tube Cutter / Reamer / Deburring Tool": "Rohrschneider / Entgrater", "Ratcheting Wrench": "Ratschenschlüssel", "Folding Knife / LED Penlight / LED Headlight": "Klappmesser / LED-Lampen", "Condenser Fan Motor": "Kondensatorlüftermotor" },
-  JA: { "Line Sets": "ラインセット", "Thermal Imaging Camera": "サーマルイメージングカメラ", "Brazing / Utility Torch": "ろう付け / ユーティリティトーチ", "Manifold Gauge": "マニホールドゲージ", "Refrigerant Hose Set": "冷媒ホースセット", "Flaring Tool / Tube Expander / Tube Straightener": "フレア / 拡管 / 矯正ツール", "Tube Cutter / Reamer / Deburring Tool": "カッター / リーマー / 面取りツール", "Ratcheting Wrench": "ラチェットレンチ", "Folding Knife / LED Penlight / LED Headlight": "折りたたみナイフ / LED ライト", "Condenser Fan Motor": "コンデンサーファンモーター" },
-  KO: { "Line Sets": "라인 세트", "Thermal Imaging Camera": "열화상 카메라", "Brazing / Utility Torch": "브레이징 / 다용도 토치", "Manifold Gauge": "매니폴드 게이지", "Refrigerant Hose Set": "냉매 호스 세트", "Flaring Tool / Tube Expander / Tube Straightener": "플레어링 / 확관 / 교정 공구", "Tube Cutter / Reamer / Deburring Tool": "튜브 커터 / 리머 / 디버링 공구", "Ratcheting Wrench": "래칫 렌치", "Folding Knife / LED Penlight / LED Headlight": "접이식 나이프 / LED 라이트", "Condenser Fan Motor": "콘덴서 팬 모터" },
-  ZH: { "Line Sets": "管组", "Thermal Imaging Camera": "热成像相机", "Brazing / Utility Torch": "焊炬 / 多用途焊炬", "Manifold Gauge": "歧管压力表", "Refrigerant Hose Set": "制冷剂软管组", "Flaring Tool / Tube Expander / Tube Straightener": "扩口 / 扩管 / 校直工具", "Tube Cutter / Reamer / Deburring Tool": "割管 / 铰刀 / 去毛刺工具", "Ratcheting Wrench": "棘轮扳手", "Folding Knife / LED Penlight / LED Headlight": "折叠刀 / LED 灯", "Condenser Fan Motor": "冷凝风扇电机" },
+  ES: { "Line Sets": "Juegos de líneas", "Thermal Imaging Camera": "Cámara termográfica", "Brazing / Utility Torch": "Soplete de soldadura / multiuso", "Manifold Gauge": "Manómetro múltiple", "Refrigerant Hose Set": "Juego de mangueras para refrigerante", "Flaring Tool / Tube Expander / Tube Straightener": "Abocardador / expansor / enderezador", "Tube Cutter / Reamer / Deburring Tool": "Cortatubos / escariador / desbarbador", "Ratcheting Wrench": "Llave de carraca", "Folding Utility Knife / LED Penlight / LED Headlight": "Cuchillo plegable multiuso / linterna LED", "Condenser Fan Motor": "Motor de ventilador de condensador" },
+  PT: { "Line Sets": "Conjuntos de linhas", "Thermal Imaging Camera": "Câmera termográfica", "Brazing / Utility Torch": "Maçarico de brasagem / utilitário", "Manifold Gauge": "Manifold", "Refrigerant Hose Set": "Mangueiras para refrigerante", "Flaring Tool / Tube Expander / Tube Straightener": "Flangeador / expansor / endireitador", "Tube Cutter / Reamer / Deburring Tool": "Cortador / alargador / rebarbador", "Ratcheting Wrench": "Chave catraca", "Folding Utility Knife / LED Penlight / LED Headlight": "Faca dobrável utilitária / lanterna LED", "Condenser Fan Motor": "Motor do ventilador do condensador" },
+  FR: { "Line Sets": "Kits de lignes", "Thermal Imaging Camera": "Caméra thermique", "Brazing / Utility Torch": "Chalumeau de brasage / utilitaire", "Manifold Gauge": "Manifold", "Refrigerant Hose Set": "Flexibles frigorifiques", "Flaring Tool / Tube Expander / Tube Straightener": "Dudgeonnière / expandeur / redresseur", "Tube Cutter / Reamer / Deburring Tool": "Coupe-tube / alésoir / ébavureur", "Ratcheting Wrench": "Clé à cliquet", "Folding Utility Knife / LED Penlight / LED Headlight": "Couteau pliant utilitaire / lampes LED", "Condenser Fan Motor": "Moteur de ventilateur de condenseur" },
+  DE: { "Line Sets": "Leitungssätze", "Thermal Imaging Camera": "Wärmebildkamera", "Brazing / Utility Torch": "Hartlöt- / Universalbrenner", "Manifold Gauge": "Manometer", "Refrigerant Hose Set": "Kältemittelschlauch-Set", "Flaring Tool / Tube Expander / Tube Straightener": "Bördelwerkzeug / Aufweiter / Richtwerkzeug", "Tube Cutter / Reamer / Deburring Tool": "Rohrschneider / Entgrater", "Ratcheting Wrench": "Ratschenschlüssel", "Folding Utility Knife / LED Penlight / LED Headlight": "Universal-Klappmesser / LED-Lampen", "Condenser Fan Motor": "Kondensatorlüftermotor" },
+  JA: { "Line Sets": "ラインセット", "Thermal Imaging Camera": "サーマルイメージングカメラ", "Brazing / Utility Torch": "ろう付け / ユーティリティトーチ", "Manifold Gauge": "マニホールドゲージ", "Refrigerant Hose Set": "冷媒ホースセット", "Flaring Tool / Tube Expander / Tube Straightener": "フレア / 拡管 / 矯正ツール", "Tube Cutter / Reamer / Deburring Tool": "カッター / リーマー / 面取りツール", "Ratcheting Wrench": "ラチェットレンチ", "Folding Utility Knife / LED Penlight / LED Headlight": "折りたたみ万能ナイフ / LED ライト", "Condenser Fan Motor": "コンデンサーファンモーター" },
+  KO: { "Line Sets": "라인 세트", "Thermal Imaging Camera": "열화상 카메라", "Brazing / Utility Torch": "브레이징 / 다용도 토치", "Manifold Gauge": "매니폴드 게이지", "Refrigerant Hose Set": "냉매 호스 세트", "Flaring Tool / Tube Expander / Tube Straightener": "플레어링 / 확관 / 교정 공구", "Tube Cutter / Reamer / Deburring Tool": "튜브 커터 / 리머 / 디버링 공구", "Ratcheting Wrench": "래칫 렌치", "Folding Utility Knife / LED Penlight / LED Headlight": "접이식 다용도 나이프 / LED 라이트", "Condenser Fan Motor": "콘덴서 팬 모터" },
+  ZH: { "Line Sets": "管组", "Thermal Imaging Camera": "热成像相机", "Brazing / Utility Torch": "焊炬 / 多用途焊炬", "Manifold Gauge": "歧管压力表", "Refrigerant Hose Set": "制冷剂软管组", "Flaring Tool / Tube Expander / Tube Straightener": "扩口 / 扩管 / 校直工具", "Tube Cutter / Reamer / Deburring Tool": "割管 / 铰刀 / 去毛刺工具", "Ratcheting Wrench": "棘轮扳手", "Folding Utility Knife / LED Penlight / LED Headlight": "多用途折叠刀 / LED 灯", "Condenser Fan Motor": "冷凝风扇电机" },
 };
 categoryTranslations["ZH-TW"] = { ...categoryTranslations.ZH, "Line Sets": "管組", "Thermal Imaging Camera": "熱成像相機", "Condenser Fan Motor": "冷凝風扇馬達" };
 
 const technicalPhrases: Partial<Record<LanguageCode, Array<[string, string]>>> = {
   ES: [
-    ["Operating range", "Rango de operación"], ["UV resistant", "Resistente a los rayos UV"], ["meets", "cumple"], ["pure copper", "cobre puro"], ["compliant with", "conforme con"], ["Soft annealed and easy to bend", "Recocido y fácil de doblar"], ["Temperature range", "Rango de temperatura"], ["IP54 rated housing", "Carcasa con clasificación IP54"], ["Automatic ignition and flame shutoff", "Encendido y apagado automático de la llama"], ["Stainless steel tip", "Punta de acero inoxidable"], ["Compatible with", "Compatible con"], ["Range", "Rango"], ["Includes", "Incluye"], ["Model", "Modelo"], ["Standard", "Estándar"], ["With ball valve", "Con válvula de bola"], ["No ball valve", "Sin válvula de bola"], ["capacity", "capacidad"], ["Folding design for jobsite portability", "Diseño plegable para transportar en obra"], ["Two blade configuration", "Configuración de dos hojas"], ["rated", "clasificada"], ["continuous use", "uso continuo"], ["UL recognized", "Reconocido por UL"], ["Thermal overload protection", "Protección contra sobrecarga térmica"],
+    ["Operating range", "Rango de operación"], ["UV resistant", "Resistente a los rayos UV"], ["meets", "cumple"], ["pure copper", "cobre puro"], ["compliant with", "conforme con"], ["Soft annealed and easy to bend", "Recocido y fácil de doblar"], ["Temperature range", "Rango de temperatura"], ["IP54 rated housing", "Carcasa con clasificación IP54"], ["Automatic ignition and flame shutoff", "Encendido y apagado automático de la llama"], ["Stainless steel tip", "Punta de acero inoxidable"], ["Compatible with", "Compatible con"], ["Range", "Rango"], ["Includes", "Incluye"], ["Model", "Modelo"], ["Standard", "Estándar"], ["With ball valve", "Con válvula de bola"], ["No ball valve", "Sin válvula de bola"], ["capacity", "capacidad"], ["Folding design for jobsite portability", "Diseño plegable para transportar en obra"], ["Two blade configuration", "Configuración de dos hojas"], ["rated", "clasificada"], ["continuous use", "uso continuo"], ["UL recognized", "Reconocido por UL"], ["Thermal overload protection", "Protección contra sobrecarga térmica"], ["Refrigerant Compatibility", "Compatibilidad de refrigerante"], ["A2L Compatible", "Compatible con A2L"],
   ],
   PT: [
-    ["Operating range", "Faixa de operação"], ["UV resistant", "Resistente a UV"], ["meets", "atende"], ["pure copper", "cobre puro"], ["compliant with", "em conformidade com"], ["Soft annealed and easy to bend", "Recozido e fácil de dobrar"], ["Temperature range", "Faixa de temperatura"], ["IP54 rated housing", "Carcaça com classificação IP54"], ["Automatic ignition and flame shutoff", "Ignição e desligamento automático da chama"], ["Stainless steel tip", "Ponta de aço inoxidável"], ["Compatible with", "Compatível com"], ["Range", "Faixa"], ["Includes", "Inclui"], ["Model", "Modelo"], ["Standard", "Padrão"], ["With ball valve", "Com válvula de esfera"], ["No ball valve", "Sem válvula de esfera"], ["capacity", "capacidade"], ["Folding design for jobsite portability", "Design dobrável para transporte no trabalho"], ["Two blade configuration", "Configuração de duas lâminas"], ["rated", "classificada"], ["continuous use", "uso contínuo"], ["UL recognized", "Reconhecido pela UL"], ["Thermal overload protection", "Proteção contra sobrecarga térmica"],
+    ["Operating range", "Faixa de operação"], ["UV resistant", "Resistente a UV"], ["meets", "atende"], ["pure copper", "cobre puro"], ["compliant with", "em conformidade com"], ["Soft annealed and easy to bend", "Recozido e fácil de dobrar"], ["Temperature range", "Faixa de temperatura"], ["IP54 rated housing", "Carcaça com classificação IP54"], ["Automatic ignition and flame shutoff", "Ignição e desligamento automático da chama"], ["Stainless steel tip", "Ponta de aço inoxidável"], ["Compatible with", "Compatível com"], ["Range", "Faixa"], ["Includes", "Inclui"], ["Model", "Modelo"], ["Standard", "Padrão"], ["With ball valve", "Com válvula de esfera"], ["No ball valve", "Sem válvula de esfera"], ["capacity", "capacidade"], ["Folding design for jobsite portability", "Design dobrável para transporte no trabalho"], ["Two blade configuration", "Configuração de duas lâminas"], ["rated", "classificada"], ["continuous use", "uso contínuo"], ["UL recognized", "Reconhecido pela UL"], ["Thermal overload protection", "Proteção contra sobrecarga térmica"], ["Refrigerant Compatibility", "Compatibilidade de refrigerante"], ["A2L Compatible", "Compatível com A2L"],
   ],
   FR: [
-    ["Operating range", "Plage de fonctionnement"], ["UV resistant", "Résistant aux UV"], ["meets", "respecte"], ["pure copper", "cuivre pur"], ["compliant with", "conforme à"], ["Soft annealed and easy to bend", "Recuit et facile à cintrer"], ["Temperature range", "Plage de température"], ["IP54 rated housing", "Boîtier classé IP54"], ["Automatic ignition and flame shutoff", "Allumage et arrêt automatiques de la flamme"], ["Stainless steel tip", "Embout en acier inoxydable"], ["Compatible with", "Compatible avec"], ["Range", "Plage"], ["Includes", "Comprend"], ["Model", "Modèle"], ["Standard", "Standard"], ["With ball valve", "Avec vanne à bille"], ["No ball valve", "Sans vanne à bille"], ["capacity", "capacité"], ["Folding design for jobsite portability", "Conception pliable facile à transporter"], ["Two blade configuration", "Configuration à deux lames"], ["rated", "classé"], ["continuous use", "utilisation continue"], ["UL recognized", "Reconnu UL"], ["Thermal overload protection", "Protection contre les surcharges thermiques"],
+    ["Operating range", "Plage de fonctionnement"], ["UV resistant", "Résistant aux UV"], ["meets", "respecte"], ["pure copper", "cuivre pur"], ["compliant with", "conforme à"], ["Soft annealed and easy to bend", "Recuit et facile à cintrer"], ["Temperature range", "Plage de température"], ["IP54 rated housing", "Boîtier classé IP54"], ["Automatic ignition and flame shutoff", "Allumage et arrêt automatiques de la flamme"], ["Stainless steel tip", "Embout en acier inoxydable"], ["Compatible with", "Compatible avec"], ["Range", "Plage"], ["Includes", "Comprend"], ["Model", "Modèle"], ["Standard", "Standard"], ["With ball valve", "Avec vanne à bille"], ["No ball valve", "Sans vanne à bille"], ["capacity", "capacité"], ["Folding design for jobsite portability", "Conception pliable facile à transporter"], ["Two blade configuration", "Configuration à deux lames"], ["rated", "classé"], ["continuous use", "utilisation continue"], ["UL recognized", "Reconnu UL"], ["Thermal overload protection", "Protection contre les surcharges thermiques"], ["Refrigerant Compatibility", "Compatibilité avec les réfrigérants"], ["A2L Compatible", "Compatible A2L"],
   ],
   DE: [
-    ["Operating range", "Betriebsbereich"], ["UV resistant", "UV-beständig"], ["meets", "erfüllt"], ["pure copper", "reines Kupfer"], ["compliant with", "konform mit"], ["Soft annealed and easy to bend", "Weichgeglüht und leicht zu biegen"], ["Temperature range", "Temperaturbereich"], ["IP54 rated housing", "Gehäuse mit Schutzart IP54"], ["Automatic ignition and flame shutoff", "Automatische Zündung und Flammenabschaltung"], ["Stainless steel tip", "Edelstahlspitze"], ["Compatible with", "Kompatibel mit"], ["Range", "Bereich"], ["Includes", "Enthält"], ["Model", "Modell"], ["Standard", "Standard"], ["With ball valve", "Mit Kugelventil"], ["No ball valve", "Ohne Kugelventil"], ["capacity", "Kapazität"], ["Folding design for jobsite portability", "Faltbares Design für den Transport auf der Baustelle"], ["Two blade configuration", "Zweiklingen-Konfiguration"], ["rated", "klassifiziert"], ["continuous use", "Dauerbetrieb"], ["UL recognized", "UL-anerkannt"], ["Thermal overload protection", "Thermischer Überlastschutz"],
+    ["Operating range", "Betriebsbereich"], ["UV resistant", "UV-beständig"], ["meets", "erfüllt"], ["pure copper", "reines Kupfer"], ["compliant with", "konform mit"], ["Soft annealed and easy to bend", "Weichgeglüht und leicht zu biegen"], ["Temperature range", "Temperaturbereich"], ["IP54 rated housing", "Gehäuse mit Schutzart IP54"], ["Automatic ignition and flame shutoff", "Automatische Zündung und Flammenabschaltung"], ["Stainless steel tip", "Edelstahlspitze"], ["Compatible with", "Kompatibel mit"], ["Range", "Bereich"], ["Includes", "Enthält"], ["Model", "Modell"], ["Standard", "Standard"], ["With ball valve", "Mit Kugelventil"], ["No ball valve", "Ohne Kugelventil"], ["capacity", "Kapazität"], ["Folding design for jobsite portability", "Faltbares Design für den Transport auf der Baustelle"], ["Two blade configuration", "Zweiklingen-Konfiguration"], ["rated", "klassifiziert"], ["continuous use", "Dauerbetrieb"], ["UL recognized", "UL-anerkannt"], ["Thermal overload protection", "Thermischer Überlastschutz"], ["Refrigerant Compatibility", "Kältemittelkompatibilität"], ["A2L Compatible", "A2L-kompatibel"],
   ],
   JA: [
-    ["Operating range", "使用温度範囲"], ["UV resistant", "UV 耐性"], ["meets", "適合"], ["pure copper", "純銅"], ["compliant with", "準拠"], ["Soft annealed and easy to bend", "軟質焼鈍で曲げやすい"], ["Temperature range", "温度範囲"], ["IP54 rated housing", "IP54 規格ハウジング"], ["Automatic ignition and flame shutoff", "自動点火・消火"], ["Stainless steel tip", "ステンレスチップ"], ["Compatible with", "対応"], ["Range", "範囲"], ["Includes", "付属"], ["Model", "モデル"], ["Standard", "標準"], ["With ball valve", "ボールバルブ付き"], ["No ball valve", "ボールバルブなし"], ["capacity", "容量"], ["Folding design for jobsite portability", "現場で持ち運びやすい折りたたみ設計"], ["Two blade configuration", "2枚刃構成"], ["rated", "規格"], ["continuous use", "連続使用"], ["UL recognized", "UL 認定"], ["Thermal overload protection", "過熱保護"],
+    ["Operating range", "使用温度範囲"], ["UV resistant", "UV 耐性"], ["meets", "適合"], ["pure copper", "純銅"], ["compliant with", "準拠"], ["Soft annealed and easy to bend", "軟質焼鈍で曲げやすい"], ["Temperature range", "温度範囲"], ["IP54 rated housing", "IP54 規格ハウジング"], ["Automatic ignition and flame shutoff", "自動点火・消火"], ["Stainless steel tip", "ステンレスチップ"], ["Compatible with", "対応"], ["Range", "範囲"], ["Includes", "付属"], ["Model", "モデル"], ["Standard", "標準"], ["With ball valve", "ボールバルブ付き"], ["No ball valve", "ボールバルブなし"], ["capacity", "容量"], ["Folding design for jobsite portability", "現場で持ち運びやすい折りたたみ設計"], ["Two blade configuration", "2枚刃構成"], ["rated", "規格"], ["continuous use", "連続使用"], ["UL recognized", "UL 認定"], ["Thermal overload protection", "過熱保護"], ["Refrigerant Compatibility", "冷媒適合性"], ["A2L Compatible", "A2L 対応"],
   ],
   KO: [
-    ["Operating range", "작동 범위"], ["UV resistant", "자외선 차단"], ["meets", "충족"], ["pure copper", "순수 구리"], ["compliant with", "준수"], ["Soft annealed and easy to bend", "연질 소둔 처리로 쉽게 구부러짐"], ["Temperature range", "온도 범위"], ["IP54 rated housing", "IP54 등급 하우징"], ["Automatic ignition and flame shutoff", "자동 점화 및 화염 차단"], ["Stainless steel tip", "스테인리스 팁"], ["Compatible with", "호환"], ["Range", "범위"], ["Includes", "포함"], ["Model", "모델"], ["Standard", "표준"], ["With ball valve", "볼 밸브 포함"], ["No ball valve", "볼 밸브 없음"], ["capacity", "용량"], ["Folding design for jobsite portability", "현장 휴대가 쉬운 접이식 설계"], ["Two blade configuration", "2중 블레이드 구성"], ["rated", "등급"], ["continuous use", "연속 사용"], ["UL recognized", "UL 인증"], ["Thermal overload protection", "열 과부하 보호"],
+    ["Operating range", "작동 범위"], ["UV resistant", "자외선 차단"], ["meets", "충족"], ["pure copper", "순수 구리"], ["compliant with", "준수"], ["Soft annealed and easy to bend", "연질 소둔 처리로 쉽게 구부러짐"], ["Temperature range", "온도 범위"], ["IP54 rated housing", "IP54 등급 하우징"], ["Automatic ignition and flame shutoff", "자동 점화 및 화염 차단"], ["Stainless steel tip", "스테인리스 팁"], ["Compatible with", "호환"], ["Range", "범위"], ["Includes", "포함"], ["Model", "모델"], ["Standard", "표준"], ["With ball valve", "볼 밸브 포함"], ["No ball valve", "볼 밸브 없음"], ["capacity", "용량"], ["Folding design for jobsite portability", "현장 휴대가 쉬운 접이식 설계"], ["Two blade configuration", "2중 블레이드 구성"], ["rated", "등급"], ["continuous use", "연속 사용"], ["UL recognized", "UL 인증"], ["Thermal overload protection", "열 과부하 보호"], ["Refrigerant Compatibility", "냉매 호환성"], ["A2L Compatible", "A2L 호환"],
   ],
   ZH: [
-    ["Operating range", "工作范围"], ["UV resistant", "抗紫外线"], ["meets", "符合"], ["pure copper", "纯铜"], ["compliant with", "符合标准"], ["Soft annealed and easy to bend", "软退火处理，易于弯曲"], ["Temperature range", "温度范围"], ["IP54 rated housing", "IP54 等级外壳"], ["Automatic ignition and flame shutoff", "自动点火与火焰关闭"], ["Stainless steel tip", "不锈钢喷嘴"], ["Compatible with", "兼容"], ["Range", "范围"], ["Includes", "包含"], ["Model", "型号"], ["Standard", "标准"], ["With ball valve", "带球阀"], ["No ball valve", "不带球阀"], ["capacity", "容量"], ["Folding design for jobsite portability", "便于现场携带的折叠设计"], ["Two blade configuration", "双刀片配置"], ["rated", "等级"], ["continuous use", "连续使用"], ["UL recognized", "UL 认可"], ["Thermal overload protection", "热过载保护"],
+    ["Operating range", "工作范围"], ["UV resistant", "抗紫外线"], ["meets", "符合"], ["pure copper", "纯铜"], ["compliant with", "符合标准"], ["Soft annealed and easy to bend", "软退火处理，易于弯曲"], ["Temperature range", "温度范围"], ["IP54 rated housing", "IP54 等级外壳"], ["Automatic ignition and flame shutoff", "自动点火与火焰关闭"], ["Stainless steel tip", "不锈钢喷嘴"], ["Compatible with", "兼容"], ["Range", "范围"], ["Includes", "包含"], ["Model", "型号"], ["Standard", "标准"], ["With ball valve", "带球阀"], ["No ball valve", "不带球阀"], ["capacity", "容量"], ["Folding design for jobsite portability", "便于现场携带的折叠设计"], ["Two blade configuration", "双刀片配置"], ["rated", "等级"], ["continuous use", "连续使用"], ["UL recognized", "UL 认可"], ["Thermal overload protection", "热过载保护"], ["Refrigerant Compatibility", "制冷剂兼容性"], ["A2L Compatible", "兼容 A2L"],
   ],
 };
 technicalPhrases["ZH-TW"] = [
-  ["Operating range", "工作範圍"], ["UV resistant", "抗紫外線"], ["meets", "符合"], ["pure copper", "純銅"], ["compliant with", "符合標準"], ["Soft annealed and easy to bend", "軟退火處理，易於彎曲"], ["Temperature range", "溫度範圍"], ["IP54 rated housing", "IP54 等級外殼"], ["Automatic ignition and flame shutoff", "自動點火與熄火"], ["Stainless steel tip", "不鏽鋼噴嘴"], ["Compatible with", "相容"], ["Range", "範圍"], ["Includes", "包含"], ["Model", "型號"], ["Standard", "標準"], ["With ball valve", "帶球閥"], ["No ball valve", "不帶球閥"], ["capacity", "容量"], ["Folding design for jobsite portability", "便於現場攜帶的折疊設計"], ["Two blade configuration", "雙刀片配置"], ["rated", "等級"], ["continuous use", "連續使用"], ["UL recognized", "UL 認可"], ["Thermal overload protection", "熱過載保護"],
+  ["Operating range", "工作範圍"], ["UV resistant", "抗紫外線"], ["meets", "符合"], ["pure copper", "純銅"], ["compliant with", "符合標準"], ["Soft annealed and easy to bend", "軟退火處理，易於彎曲"], ["Temperature range", "溫度範圍"], ["IP54 rated housing", "IP54 等級外殼"], ["Automatic ignition and flame shutoff", "自動點火與熄火"], ["Stainless steel tip", "不鏽鋼噴嘴"], ["Compatible with", "相容"], ["Range", "範圍"], ["Includes", "包含"], ["Model", "型號"], ["Standard", "標準"], ["With ball valve", "帶球閥"], ["No ball valve", "不帶球閥"], ["capacity", "容量"], ["Folding design for jobsite portability", "便於現場攜帶的折疊設計"], ["Two blade configuration", "雙刀片配置"], ["rated", "等級"], ["continuous use", "連續使用"], ["UL recognized", "UL 認可"], ["Thermal overload protection", "熱過載保護"], ["Refrigerant Compatibility", "冷媒相容性"], ["A2L Compatible", "相容 A2L"],
 ];
 
 function translateTechnicalText(value: string, language: LanguageCode) {
@@ -1315,4 +1323,18 @@ export function localizedLineLabel(line: string, language: LanguageCode) {
 
 export function localizedCategoryLabel(category: string, language: LanguageCode) {
   return categoryTranslations[language]?.[category] ?? category;
+}
+
+export function localizedA2LBadgeLabel(language: LanguageCode) {
+  const labels: Partial<Record<LanguageCode, string>> = {
+    ES: "Compatible con A2L",
+    PT: "Compatível com A2L",
+    FR: "Compatible A2L",
+    DE: "A2L-kompatibel",
+    JA: "A2L 対応",
+    KO: "A2L 호환",
+    ZH: "兼容 A2L",
+    "ZH-TW": "相容 A2L",
+  };
+  return labels[language] ?? "A2L Compatible";
 }
