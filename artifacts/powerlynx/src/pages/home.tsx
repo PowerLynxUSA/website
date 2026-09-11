@@ -9,10 +9,17 @@ import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
 import { localizeProducts, localizedLineLabel } from '@/i18n/products';
+import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function Home() {
   const { t, language } = useLanguage();
   const featuredProducts = localizeProducts(products.slice(0, 4), language);
+
+  useDocumentMeta({
+    title: 'POWERLYNX by Powerlink Inc. | Professional HVAC/R Tools & Equipment',
+    description: 'POWERLYNX by Powerlink Inc. engineers precision HVAC/R tools and equipment built for accuracy, durability, and ease of use — trusted by technicians across North America.',
+    path: '/',
+  });
 
   return (
     <div className="flex flex-col min-h-screen">
