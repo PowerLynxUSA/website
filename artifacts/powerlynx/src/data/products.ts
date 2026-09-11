@@ -38,6 +38,7 @@ export type Product = {
   summary: string;
   bullets: string[];
   specs: ProductSpec[];
+  a2lCompatible?: boolean;
   image: string;
   gallery?: string[];
 };
@@ -149,13 +150,16 @@ export const products: Product[] = [
       'A precision manifold gauge set for reading and charging systems across common refrigerants, with a large 3-1/8" dial for easy reading in the field.',
     bullets: [
       "Compatible with R410A, R32, R454B, and R22",
+      "A2L refrigerant compatible",
       '3-1/8" dial face',
       "Range -30 inHg to 800 psi",
     ],
     specs: [
       { label: "AG2MA / AG2MB", value: "2-valve manifold gauge" },
       { label: "AG4MA / AG4MB", value: "4-valve manifold gauge" },
+      { label: "Refrigerant Compatibility", value: "A2L Compatible" },
     ],
+    a2lCompatible: true,
   },
   {
     slug: "refrigerant-hose-set",
@@ -274,10 +278,10 @@ export const products: Product[] = [
   {
     slug: "folding-knife",
     image: imgFoldingKnife,
-    name: "Folding Knife",
+    name: "Folding Utility Knife",
     models: "AK1",
     line: "HVAC Tool",
-    category: "Folding Knife / LED Penlight / LED Headlight",
+    category: "Folding Utility Knife / LED Penlight / LED Headlight",
     summary: "A jobsite folding knife with a built-in Phillips/flathead driver.",
     bullets: ["Combined Phillips and flathead driver"],
     specs: [{ label: "Model", value: "AK1" }],
@@ -288,7 +292,7 @@ export const products: Product[] = [
     name: "Dual-Blade Folding Knife",
     models: "AK2",
     line: "HVAC Tool",
-    category: "Folding Knife / LED Penlight / LED Headlight",
+    category: "Folding Utility Knife / LED Penlight / LED Headlight",
     summary: "A dual-blade folding knife for cutting a wider range of jobsite materials.",
     bullets: ["Two blade configuration"],
     specs: [{ label: "Model", value: "AK2" }],
@@ -299,7 +303,7 @@ export const products: Product[] = [
     name: "LED Penlight",
     models: "AL1",
     line: "HVAC Tool",
-    category: "Folding Knife / LED Penlight / LED Headlight",
+    category: "Folding Utility Knife / LED Penlight / LED Headlight",
     summary: "A compact 300-lumen penlight for inspecting tight, dark spaces.",
     bullets: ["300 lumens", "IP44 rated", "330ft throw distance"],
     specs: [{ label: "Model", value: "AL1" }],
@@ -310,7 +314,7 @@ export const products: Product[] = [
     name: "LED Headlight",
     models: "AL2",
     line: "HVAC Tool",
-    category: "Folding Knife / LED Penlight / LED Headlight",
+    category: "Folding Utility Knife / LED Penlight / LED Headlight",
     summary: "A hands-free 350-lumen headlight built for long jobs.",
     bullets: ["350 lumens", "IPX3 rated", "Up to 6 hours continuous use"],
     specs: [{ label: "Model", value: "AL2" }],
