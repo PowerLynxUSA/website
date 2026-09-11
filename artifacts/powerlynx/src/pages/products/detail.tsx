@@ -7,6 +7,7 @@ import { ModelBadge } from '@/components/model-badge';
 import { useState } from 'react';
 import { useLanguage } from '@/i18n';
 import { localizeProduct, localizedLineLabel, localizedA2LBadgeLabel } from '@/i18n/products';
+import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function ProductDetail() {
   const [, params] = useRoute('/products/:slug');
@@ -17,6 +18,14 @@ export function ProductDetail() {
   const [activeImage, setActiveImage] = useState(0);
   const { t, language } = useLanguage();
   const localizedProduct = product ? localizeProduct(product, language) : null;
+
+  useDocumentMeta({
+    title: localizedProduct ? `${localizedProduct.name} (${product!.models})` : 'Product Not Found',
+    description: localizedProduct
+      ? `${localizedProduct.name} from POWERLYNX by Powerlink Inc. — professional-grade HVAC/R equipment, models ${product!.models}.`
+      : undefined,
+    path: product ? `/products/${product.slug}` : undefined,
+  });
 
   if (!product || !localizedProduct) {
     return (
