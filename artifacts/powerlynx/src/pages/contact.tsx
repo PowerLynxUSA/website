@@ -182,7 +182,7 @@ export function Contact() {
           <div className="lg:col-span-2">
             <div className="bg-card border border-border p-6 md:p-10 shadow-sm">
                <h2 className="font-display text-3xl font-bold uppercase tracking-tight mb-2">{t('contact.sendInquiry')}</h2>
-               <p className="text-muted-foreground mb-8">{t('contact.sendInquiryDescription')}</p>
+               <p className="text-foreground/80 font-semibold mb-8">{t('contact.sendInquiryDescription')}</p>
 
               {isSubmitted ? (
                 <div className="py-16 text-center animate-in fade-in zoom-in duration-500">
@@ -190,7 +190,7 @@ export function Contact() {
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
                     <h3 className="font-display text-3xl font-bold uppercase tracking-tight mb-2">{t('contact.emailDraftReady')}</h3>
-                   <p className="text-muted-foreground max-w-md mx-auto mb-8">{t('contact.emailDraftDescription')}</p>
+                   <p className="text-foreground/80 font-semibold max-w-md mx-auto mb-8">{t('contact.emailDraftDescription')}</p>
                    <div className="mb-8 text-sm text-muted-foreground">
                       <p className="mb-2 font-bold uppercase tracking-widest">{t('contact.recipients')}</p>
                      <p>{contactRecipients.join(' · ')}</p>

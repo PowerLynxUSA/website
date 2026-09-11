@@ -1,4 +1,4 @@
-import { products, productLines, categoryTree } from '@/data/products';
+import { products, categoryGroups, categoryTree } from '@/data/products';
 import { Link } from 'wouter';
 import { useState, useMemo } from 'react';
 import { Search, SlidersHorizontal, ChevronRight, ChevronDown, X, ShieldCheck, ListFilter } from 'lucide-react';
@@ -12,14 +12,13 @@ import {
   localizeProduct,
   localizedCategoryLabel,
   localizedCategoryGroupLabel,
-  localizedLineLabel,
   localizedA2LBadgeLabel,
 } from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function ProductsIndex() {
   const [search, setSearch] = useState("");
-  const [activeLine, setActiveLine] = useState<string | null>(null);
+  const [activeGroup, setActiveGroup] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const [openSections, setOpenSections] = useState<Record<string, boolean>>({
     "Tubing Tools": true,
@@ -43,12 +42,12 @@ export function ProductsIndex() {
        const localized = localizeProduct(p, language);
        const matchesSearch = `${p.name} ${localized.name}`.toLowerCase().includes(search.toLowerCase()) ||
                             p.models.toLowerCase().includes(search.toLowerCase());
-      const matchesLine = activeLine ? p.line === activeLine : true;
+      const matchesGroup = activeGroup ? p.categoryGroup === activeGroup : true;
       const matchesCategory = activeCategory ? p.category === activeCategory : true;
       
-      return matchesSearch && matchesLine && matchesCategory;
+      return matchesSearch && matchesGroup && matchesCategory;
     });
-   }, [search, activeLine, activeCategory, language]);
+   }, [search, activeGroup, activeCategory, language]);
 
   return (
     <div className="flex flex-col min-h-screen bg-background pb-24">
@@ -108,20 +107,20 @@ export function ProductsIndex() {
             </h3>
             <div className="flex flex-col gap-2">
               <Button 
-                variant={activeLine === null ? "default" : "outline"} 
+                variant={activeGroup === null ? "default" : "outline"} 
                 className="justify-start rounded-none uppercase font-bold tracking-wider text-xs h-9"
-                onClick={() => setActiveLine(null)}
+                onClick={() => setActiveGroup(null)}
               >
                  {t('products.allLines')}
               </Button>
-              {productLines.map(line => (
+              {categoryGroups.map(group => (
                 <Button 
-                  key={line}
-                  variant={activeLine === line ? "default" : "outline"} 
+                  key={group}
+                  variant={activeGroup === group ? "default" : "outline"} 
                   className="justify-start rounded-none uppercase font-bold tracking-wider text-xs h-9"
-                  onClick={() => { setActiveLine(line); setActiveCategory(null); }}
+                  onClick={() => { setActiveGroup(group); setActiveCategory(null); }}
                 >
-                   {localizedLineLabel(line, language)}
+                   {localizedCategoryGroupLabel(group, language)}
                 </Button>
               ))}
             </div>
@@ -142,7 +141,7 @@ export function ProductsIndex() {
 
               {categoryTree.map(({ group, items }) => {
                 const groupCategories = items.flatMap(item => item.kind === 'category' ? [item.category] : item.categories);
-                const groupHasMatch = !activeLine || products.some(p => groupCategories.includes(p.category) && p.line === activeLine);
+                const groupHasMatch = !activeGroup || group === activeGroup;
                 if (!groupHasMatch) return null;
 
                 return (
@@ -153,7 +152,7 @@ export function ProductsIndex() {
                     {items.map(item => {
                       if (item.kind === 'category') {
                         const category = item.category;
-                        const hasMatch = !activeLine || products.some(p => p.category === category && p.line === activeLine);
+                        const hasMatch = !activeGroup || products.some(p => p.category === category && p.categoryGroup === activeGroup);
                         if (!hasMatch) return null;
                         return (
                           <button
@@ -168,7 +167,7 @@ export function ProductsIndex() {
                       }
 
                       const sectionCategories = item.categories.filter(
-                        category => !activeLine || products.some(p => p.category === category && p.line === activeLine),
+                        category => !activeGroup || products.some(p => p.category === category && p.categoryGroup === activeGroup),
                       );
                       if (sectionCategories.length === 0) return null;
                       const isOpen = openSections[item.section] ?? true;
@@ -214,12 +213,12 @@ export function ProductsIndex() {
                {t('products.showing')} {filteredProducts.length} {filteredProducts.length === 1 ? t('products.result') : t('products.results')}
             </div>
             
-            {(search || activeLine || activeCategory) && (
+            {(search || activeGroup || activeCategory) && (
               <Button 
                 variant="ghost" 
                 size="sm"
                 className="text-xs uppercase tracking-widest font-bold text-destructive hover:text-destructive hover:bg-destructive/10"
-                onClick={() => { setSearch(""); setActiveLine(null); setActiveCategory(null); }}
+                onClick={() => { setSearch(""); setActiveGroup(null); setActiveCategory(null); }}
               >
                  <X className="w-3 h-3 mr-2" /> {t('products.clearFilters')}
               </Button>
@@ -246,8 +245,8 @@ export function ProductsIndex() {
                         data-testid={`img-product-${product.slug}`}
                       />
                       <div className="absolute top-3 left-3 flex flex-col items-start gap-1.5">
-                        <Badge variant={product.line === 'HVAC Tool' ? 'default' : 'secondary'} className="rounded-none uppercase tracking-widest text-[10px]">
-                           {localizedLineLabel(product.line, language)}
+                        <Badge variant={product.categoryGroup === 'HVAC Tools and Instruments' ? 'default' : 'secondary'} className="rounded-none uppercase tracking-widest text-[10px]">
+                           {localizedCategoryGroupLabel(product.categoryGroup, language)}
                         </Badge>
                         {product.a2lCompatible && (
                           <Badge

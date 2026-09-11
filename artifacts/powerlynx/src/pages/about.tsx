@@ -1,6 +1,6 @@
 import { ShieldCheck, HardHat, Wrench, Zap, Globe, Users } from 'lucide-react';
 import aboutWarehouseUrl from '@/assets/generated/about-warehouse.jpg';
-import aboutTechnicianUrl from '@/assets/generated/about-technician-branded-v2.jpg';
+import aboutTechnicianUrl from '@/assets/generated/about-technician-branded-v3.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
@@ -72,35 +72,57 @@ export function About() {
 
             <div className="space-y-8">
               <div>
-                 <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-4" data-testid="text-sourcing-title">{t('about.sourcingTitle')}</h2>
-                <p className="text-lg text-muted-foreground leading-relaxed" data-testid="text-sourcing-desc">
-                   {t('about.sourcingDescription')}
+                 <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-4" data-testid="text-sourcing-title">
+                   {(() => {
+                     const title = t('about.sourcingTitle');
+                     const sentences = title.split('. ').filter(Boolean);
+                     if (sentences.length < 2) return title;
+                     const lastIndex = sentences.length - 1;
+                     return sentences.map((sentence, i) => (
+                       <span key={i} className={i === lastIndex ? 'text-primary' : ''}>
+                         {sentence}{i < lastIndex ? '. ' : ''}
+                       </span>
+                     ));
+                   })()}
+                 </h2>
+                <p className="text-lg font-semibold text-foreground/90 leading-relaxed" data-testid="text-sourcing-desc">
+                   {(() => {
+                     const desc = t('about.sourcingDescription');
+                     const parts = desc.split('POWERLYNX');
+                     if (parts.length < 2) return desc;
+                     return parts.map((part, i) => (
+                       <span key={i}>
+                         {part}
+                         {i < parts.length - 1 && <strong className="font-extrabold text-primary">POWERLYNX</strong>}
+                       </span>
+                     ));
+                   })()}
                 </p>
-                <p className="text-lg text-muted-foreground leading-relaxed mt-5" data-testid="text-brand-story">
+                <p className="text-lg font-semibold text-foreground/90 leading-relaxed mt-5" data-testid="text-brand-story">
                    {t('about.brandStory')}
                 </p>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
                  <div className="flex items-start gap-4">
-                   <Globe className="w-8 h-8 text-primary shrink-0 mt-1" strokeWidth={1.5} />
+                   <Globe className="w-11 h-11 text-primary shrink-0 mt-1" strokeWidth={1.5} />
                    <div>
-                      <h4 className="font-bold text-foreground mb-1 uppercase tracking-wide text-sm">{t('about.globalSourcing')}</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{t('about.globalSourcingDesc')}</p>
+                      <h4 className="font-bold text-foreground mb-1 uppercase tracking-wide text-base">{t('about.globalSourcing')}</h4>
+                      <p className="text-foreground/80 font-medium text-base leading-relaxed">{t('about.globalSourcingDesc')}</p>
                    </div>
                  </div>
                  <div className="flex items-start gap-4">
-                   <ShieldCheck className="w-8 h-8 text-primary shrink-0 mt-1" strokeWidth={1.5} />
+                   <ShieldCheck className="w-11 h-11 text-primary shrink-0 mt-1" strokeWidth={1.5} />
                    <div>
-                      <h4 className="font-bold text-foreground mb-1 uppercase tracking-wide text-sm">{t('about.disciplinedQuality')}</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{t('about.disciplinedQualityDesc')}</p>
+                      <h4 className="font-bold text-foreground mb-1 uppercase tracking-wide text-base">{t('about.disciplinedQuality')}</h4>
+                      <p className="text-foreground/80 font-medium text-base leading-relaxed">{t('about.disciplinedQualityDesc')}</p>
                    </div>
                  </div>
                  <div className="flex items-start gap-4 sm:col-span-2">
-                   <Users className="w-8 h-8 text-primary shrink-0 mt-1" strokeWidth={1.5} />
+                   <Users className="w-11 h-11 text-primary shrink-0 mt-1" strokeWidth={1.5} />
                    <div>
-                      <h4 className="font-bold text-foreground mb-1 uppercase tracking-wide text-sm">{t('about.marketFeedback')}</h4>
-                      <p className="text-muted-foreground text-sm leading-relaxed">{t('about.marketFeedbackDesc')}</p>
+                      <h4 className="font-bold text-foreground mb-1 uppercase tracking-wide text-base">{t('about.marketFeedback')}</h4>
+                      <p className="text-foreground/80 font-medium text-base leading-relaxed">{t('about.marketFeedbackDesc')}</p>
                    </div>
                  </div>
               </div>
@@ -124,7 +146,7 @@ export function About() {
                 <ShieldCheck className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseReliability')}</h3>
-               <p className="text-muted-foreground text-lg">{t('about.promiseReliabilityDesc')}</p>
+               <p className="text-foreground/80 font-semibold text-lg">{t('about.promiseReliabilityDesc')}</p>
             </div>
 
             {/* Promise 2 */}
@@ -133,7 +155,7 @@ export function About() {
                 <Wrench className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseQuality')}</h3>
-               <p className="text-muted-foreground text-lg">{t('about.promiseQualityDesc')}</p>
+               <p className="text-foreground/80 font-semibold text-lg">{t('about.promiseQualityDesc')}</p>
             </div>
 
             {/* Promise 3 */}
@@ -142,7 +164,7 @@ export function About() {
                 <HardHat className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseDesign')}</h3>
-               <p className="text-muted-foreground text-lg">{t('about.promiseDesignDesc')}</p>
+               <p className="text-foreground/80 font-semibold text-lg">{t('about.promiseDesignDesc')}</p>
             </div>
 
             {/* Promise 4 */}
@@ -151,7 +173,7 @@ export function About() {
                 <Zap className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseAgility')}</h3>
-               <p className="text-muted-foreground text-lg">{t('about.promiseAgilityDesc')}</p>
+               <p className="text-foreground/80 font-semibold text-lg">{t('about.promiseAgilityDesc')}</p>
             </div>
           </div>
         </div>

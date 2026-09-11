@@ -1,7 +1,7 @@
 import type { Product } from "@/data/products";
 import type { LanguageCode } from "@/data/languages";
 
-type ProductCopy = Partial<Pick<Product, "name" | "category" | "line">>;
+type ProductCopy = Partial<Pick<Product, "name" | "category">>;
 type ProductTechnicalCopy = Pick<Product, "summary" | "bullets">;
 
 const names: Partial<Record<LanguageCode, Record<string, string>>> = {
@@ -1301,7 +1301,6 @@ export function localizeProduct(product: Product, language: LanguageCode): Produ
   const copy: ProductCopy = {
     name: names[language]?.[product.slug],
     category: categoryTranslations[language]?.[product.category],
-    line: language === "EN" ? product.line : product.line === "HVAC Tool" ? "HVAC Tool" : "HVAC Supply",
   };
   const technicalCopy = technicalProductCopy[language]?.[product.slug];
 
@@ -1321,15 +1320,6 @@ export function localizeProduct(product: Product, language: LanguageCode): Produ
 
 export function localizeProducts(products: Product[], language: LanguageCode) {
   return products.map((product) => localizeProduct(product, language));
-}
-
-export function localizedLineLabel(line: string, language: LanguageCode) {
-  if (language === "EN") return line;
-  const labels: Record<string, Record<LanguageCode, string>> = {
-    "HVAC Tool": { EN: "HVAC Tool", ES: "Herramientas HVAC", ZH: "HVAC 工具", "ZH-TW": "HVAC 工具", PT: "Ferramenta HVAC", FR: "Outil HVAC", DE: "HVAC-Werkzeug", JA: "HVAC ツール", KO: "HVAC 공구" },
-    "HVAC Supply": { EN: "HVAC Supply", ES: "Suministros HVAC", ZH: "HVAC 供应", "ZH-TW": "HVAC 供應", PT: "Suprimentos HVAC", FR: "Fourniture HVAC", DE: "HVAC-Versorgung", JA: "HVAC サプライ", KO: "HVAC 공급" },
-  };
-  return labels[line]?.[language] ?? line;
 }
 
 export function localizedCategoryLabel(category: string, language: LanguageCode) {

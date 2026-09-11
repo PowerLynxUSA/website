@@ -4,10 +4,36 @@ import { ArrowLeft, Check, ChevronRight, Share2, Printer, ShieldCheck } from 'lu
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useLanguage } from '@/i18n';
-import { localizeProduct, localizedLineLabel, localizedA2LBadgeLabel } from '@/i18n/products';
+import { localizeProduct, localizedCategoryGroupLabel, localizedA2LBadgeLabel } from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
+
+const PRODUCT_SCHEMA_ID = 'product-structured-data';
+
+function useProductStructuredData(product: { name: string; slug: string; category: string; summary: string; image: string } | null) {
+  useEffect(() => {
+    if (!product) return;
+    const script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.id = PRODUCT_SCHEMA_ID;
+    script.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: product.name,
+      description: product.summary,
+      category: product.category,
+      image: product.image.startsWith('http') ? product.image : `https://powerlinkus.com${product.image}`,
+      brand: { '@type': 'Brand', name: 'POWERLYNX' },
+      manufacturer: { '@type': 'Organization', name: 'Powerlink Inc.' },
+      url: `https://powerlinkus.com/products/${product.slug}`,
+    });
+    document.head.appendChild(script);
+    return () => {
+      document.getElementById(PRODUCT_SCHEMA_ID)?.remove();
+    };
+  }, [product]);
+}
 
 export function ProductDetail() {
   const [, params] = useRoute('/products/:slug');
@@ -26,6 +52,12 @@ export function ProductDetail() {
       : undefined,
     path: product ? `/products/${product.slug}` : undefined,
   });
+
+  useProductStructuredData(
+    product && localizedProduct
+      ? { name: localizedProduct.name, slug: product.slug, category: localizedProduct.category, summary: localizedProduct.summary, image: product.image }
+      : null
+  );
 
   if (!product || !localizedProduct) {
     return (
@@ -48,7 +80,7 @@ export function ProductDetail() {
              <ArrowLeft className="w-3 h-3" /> {t('detail.catalog')}
           </Link>
           <ChevronRight className="w-3 h-3 mx-2 opacity-50" />
-           <span className="shrink-0">{localizedLineLabel(product.line, language)}</span>
+           <span className="shrink-0">{localizedCategoryGroupLabel(product.categoryGroup, language)}</span>
           <ChevronRight className="w-3 h-3 mx-2 opacity-50" />
            <span className="text-foreground truncate min-w-0">{localizedProduct.category}</span>
         </div>
@@ -101,7 +133,7 @@ export function ProductDetail() {
             <div className="mb-8">
               <div className="flex flex-wrap items-center gap-3 mb-4">
                  <Badge className="rounded-none uppercase tracking-widest bg-primary text-primary-foreground">
-                   {localizedLineLabel(product.line, language)}
+                   {localizedCategoryGroupLabel(product.categoryGroup, language)}
                 </Badge>
                 {product.a2lCompatible && (
                   <Badge

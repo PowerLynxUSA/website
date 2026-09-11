@@ -2,13 +2,13 @@ import { Link } from 'wouter';
 import { ArrowRight, ShieldCheck, Wrench, Zap, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ModelBadge } from '@/components/model-badge';
-import { catalogVersion, products, productLines } from '@/data/products';
+import { catalogVersion, products, categoryTree } from '@/data/products';
 import markUrl from '@/assets/brand/powerlynx-mark.png';
-import catalogCollageUrl from '@/assets/brand/catalog-hero-collage.jpeg';
+import catalogCollageUrl from '@/assets/brand/catalog-hero-collage-clean.jpeg';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
-import { localizeProducts, localizedLineLabel } from '@/i18n/products';
+import { localizeProducts, localizedCategoryGroupLabel } from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function Home() {
@@ -91,19 +91,19 @@ export function Home() {
                  {equipmentLineup} <br/>
                  <span className="text-primary">{equipmentLineupAccent}</span>
               </h2>
-              <p className="text-muted-foreground text-lg mb-8 max-w-lg">
+              <p className="text-foreground/80 font-semibold text-lg mb-8 max-w-lg">
                  {t('home.equipmentLineupDescription')}
               </p>
               
               <div className="space-y-4 mb-10">
-                {productLines.map(line => (
-                  <div key={line} className="flex items-center gap-4 p-4 bg-background border border-border">
+                {categoryTree.map(({ group }) => (
+                  <div key={group} className="flex items-center gap-4 p-4 bg-background border border-border">
                     <div className="w-12 h-12 bg-muted flex items-center justify-center text-primary font-display font-bold text-xl">
-                      {line === 'HVAC Tool' ? 'T' : 'S'}
+                      {group === 'HVAC Parts & Supplies' ? 'P' : 'T'}
                     </div>
                     <div>
-                       <h4 className="font-bold text-lg uppercase tracking-wide">{localizedLineLabel(line, language)} Series</h4>
-                       <p className="text-sm text-muted-foreground">{line === 'HVAC Tool' ? t('home.toolSeries') : t('home.supplySeries')}</p>
+                       <h4 className="font-bold text-lg uppercase tracking-wide">{localizedCategoryGroupLabel(group, language)}</h4>
+                       <p className="text-sm text-muted-foreground">{group === 'HVAC Parts & Supplies' ? t('home.supplySeries') : t('home.toolSeries')}</p>
                     </div>
                   </div>
                 ))}
@@ -124,8 +124,8 @@ export function Home() {
                   alt={`POWERLYNX ${catalogLabel} featured tools collage`} 
                   className="w-full h-auto"
                 />
-                <div className="absolute left-[14%] right-[8%] bottom-[6%] bg-[#dfe0df] px-1 pb-1">
-                  <div className="font-display text-[clamp(1.75rem,5vw,4rem)] font-bold leading-none text-[#2b2426]">
+                <div className="absolute left-[14%] bottom-[6%] bg-[#dfe0df] px-2 py-1">
+                  <div className="font-display text-[clamp(0.9rem,2.5vw,2rem)] font-bold leading-none text-[#2b2426]">
                     {catalogLabel}
                   </div>
                 </div>
@@ -144,7 +144,7 @@ export function Home() {
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <div>
                <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-2">{t('home.featuredProducts')}</h2>
-               <p className="text-muted-foreground">{t('home.topRequested')}</p>
+               <p className="text-foreground/80 font-semibold">{t('home.topRequested')}</p>
             </div>
             <Button variant="outline" asChild className="rounded-none font-bold uppercase tracking-widest gap-2">
               <Link href="/products">

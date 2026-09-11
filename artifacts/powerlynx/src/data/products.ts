@@ -51,7 +51,9 @@ export type Product = {
 // Update this value whenever the product catalog edition changes.
 export const catalogVersion = "V1.0";
 
-export const productLines = ["HVAC Tool", "HVAC Supply"] as const;
+// Product Line filter groups — mirrors the same top-level grouping used by
+// the Category sidebar (categoryTree), so both filters share one taxonomy.
+export const categoryGroups: CategoryGroup[] = ["HVAC Parts & Supplies", "HVAC Tools and Instruments"];
 
 export const products: Product[] = [
   {
