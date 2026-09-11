@@ -23,10 +23,10 @@ export function Footer() {
                 <Link href="/website" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.home')}</Link>
               </li>
               <li>
-                <Link href="/products" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.products')}</Link>
+                <Link href="/about" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.about')}</Link>
               </li>
               <li>
-                <Link href="/about" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.about')}</Link>
+                <Link href="/products" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.products')}</Link>
               </li>
               <li>
                 <Link href="/contact" className="text-secondary-foreground/70 hover:text-primary transition-colors font-bold tracking-wide uppercase text-sm">{t('nav.contact')}</Link>
