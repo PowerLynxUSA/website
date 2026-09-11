@@ -2,7 +2,7 @@ import { Link } from 'wouter';
 import { ArrowRight, ShieldCheck, Wrench, Zap, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ModelBadge } from '@/components/model-badge';
-import { products, productLines } from '@/data/products';
+import { catalogVersion, products, productLines } from '@/data/products';
 import markUrl from '@/assets/brand/powerlynx-mark.png';
 import catalogCollageUrl from '@/assets/brand/catalog-hero-collage.jpeg';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
@@ -14,6 +14,9 @@ import { useDocumentMeta } from '@/hooks/use-document-meta';
 export function Home() {
   const { t, language } = useLanguage();
   const featuredProducts = localizeProducts(products.slice(0, 4), language);
+  const equipmentLineup = t('home.equipmentLineup').replace(/2027/g, catalogVersion);
+  const equipmentLineupAccent = t('home.equipmentLineupAccent').replace(/2027/g, catalogVersion);
+  const catalogLabel = `Catalog ${catalogVersion}`;
 
   useDocumentMeta({
     title: 'POWERLYNX by Powerlink Inc. | Professional HVAC/R Tools & Equipment',
@@ -85,8 +88,8 @@ export function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6">
-                 {t('home.equipmentLineup')} <br/>
-                 <span className="text-primary">{t('home.equipmentLineupAccent')}</span>
+                 {equipmentLineup} <br/>
+                 <span className="text-primary">{equipmentLineupAccent}</span>
               </h2>
               <p className="text-muted-foreground text-lg mb-8 max-w-lg">
                  {t('home.equipmentLineupDescription')}
@@ -115,11 +118,18 @@ export function Home() {
             
             <div className="relative group">
               <div className="absolute inset-0 bg-primary/5 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
-              <img 
-                src={catalogCollageUrl} 
-                alt="POWERLYNX Featured Tools Collage" 
-                className="relative z-10 w-full h-auto border border-border bg-white shadow-xl"
-              />
+              <div className="relative z-10 overflow-hidden border border-border bg-white shadow-xl">
+                <img 
+                  src={catalogCollageUrl} 
+                  alt={`POWERLYNX ${catalogLabel} featured tools collage`} 
+                  className="w-full h-auto"
+                />
+                <div className="absolute left-[14%] right-[8%] bottom-[6%] bg-[#dfe0df] px-1 pb-1">
+                  <div className="font-display text-[clamp(1.75rem,5vw,4rem)] font-bold leading-none text-[#2b2426]">
+                    {catalogLabel}
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>

@@ -1,4 +1,4 @@
-// POWERLYNX product catalog data, sourced from the 2027 POWERLYNX catalog (Powerlink Inc.)
+// POWERLYNX product catalog data, sourced from the current POWERLYNX catalog (Powerlink Inc.)
 // Two lines: HVAC Tool and HVAC Supply.
 
 import imgBlackRubberInsulatedLineSet from "@/assets/products/black-rubber-insulated-line-set.png";
@@ -42,6 +42,9 @@ export type Product = {
   image: string;
   gallery?: string[];
 };
+
+// Update this value whenever the product catalog edition changes.
+export const catalogVersion = "V1.0";
 
 export const productLines = ["HVAC Tool", "HVAC Supply"] as const;
 
