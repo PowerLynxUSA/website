@@ -1,14 +1,14 @@
 import { products, productLines, categories } from '@/data/products';
 import { Link } from 'wouter';
 import { useState, useMemo } from 'react';
-import { Search, SlidersHorizontal, ChevronRight, X } from 'lucide-react';
+import { Search, SlidersHorizontal, ChevronRight, X, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
-import { localizeProduct, localizedCategoryLabel, localizedLineLabel } from '@/i18n/products';
+import { localizeProduct, localizedCategoryLabel, localizedLineLabel, localizedA2LBadgeLabel } from '@/i18n/products';
 
 export function ProductsIndex() {
   const [search, setSearch] = useState("");
@@ -150,9 +150,20 @@ export function ProductsIndex() {
                         className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
                         data-testid={`img-product-${product.slug}`}
                       />
-                      <Badge variant={product.line === 'HVAC Tool' ? 'default' : 'secondary'} className="absolute top-3 left-3 rounded-none uppercase tracking-widest text-[10px]">
-                         {localizedLineLabel(product.line, language)}
-                      </Badge>
+                      <div className="absolute top-3 left-3 flex flex-col items-start gap-1.5">
+                        <Badge variant={product.line === 'HVAC Tool' ? 'default' : 'secondary'} className="rounded-none uppercase tracking-widest text-[10px]">
+                           {localizedLineLabel(product.line, language)}
+                        </Badge>
+                        {product.a2lCompatible && (
+                          <Badge
+                            className="rounded-none uppercase tracking-widest text-[10px] bg-emerald-600 text-white gap-1"
+                            data-testid={`badge-a2l-${product.slug}`}
+                          >
+                            <ShieldCheck className="w-3 h-3" />
+                            {localizedA2LBadgeLabel(language)}
+                          </Badge>
+                        )}
+                      </div>
                       <ChevronRight className="absolute top-3 right-3 w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors group-hover:translate-x-1" />
                     </div>
                     
