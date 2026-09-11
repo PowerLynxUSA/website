@@ -1,12 +1,12 @@
 import { useRoute, Link } from 'wouter';
 import { products } from '@/data/products';
-import { ArrowLeft, Check, ChevronRight, Share2, Printer } from 'lucide-react';
+import { ArrowLeft, Check, ChevronRight, Share2, Printer, ShieldCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
 import { useState } from 'react';
 import { useLanguage } from '@/i18n';
-import { localizeProduct, localizedLineLabel } from '@/i18n/products';
+import { localizeProduct, localizedLineLabel, localizedA2LBadgeLabel } from '@/i18n/products';
 
 export function ProductDetail() {
   const [, params] = useRoute('/products/:slug');
@@ -90,10 +90,19 @@ export function ProductDetail() {
           {/* PRODUCT DETAILS */}
           <div>
             <div className="mb-8">
-              <div className="flex items-center gap-3 mb-4">
+              <div className="flex flex-wrap items-center gap-3 mb-4">
                  <Badge className="rounded-none uppercase tracking-widest bg-primary text-primary-foreground">
                    {localizedLineLabel(product.line, language)}
                 </Badge>
+                {product.a2lCompatible && (
+                  <Badge
+                    className="rounded-none uppercase tracking-widest bg-emerald-600 text-white gap-1.5"
+                    data-testid="badge-a2l-compatible"
+                  >
+                    <ShieldCheck className="w-3 h-3" />
+                    {localizedA2LBadgeLabel(language)}
+                  </Badge>
+                )}
                  <span className="text-sm font-bold text-muted-foreground uppercase tracking-wider">{localizedProduct.category}</span>
               </div>
               <h1 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight text-foreground mb-6">
