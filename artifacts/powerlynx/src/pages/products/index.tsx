@@ -9,12 +9,19 @@ import { ModelBadge } from '@/components/model-badge';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import { useLanguage } from '@/i18n';
 import { localizeProduct, localizedCategoryLabel, localizedLineLabel, localizedA2LBadgeLabel } from '@/i18n/products';
+import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function ProductsIndex() {
   const [search, setSearch] = useState("");
   const [activeLine, setActiveLine] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string | null>(null);
   const { t, language } = useLanguage();
+
+  useDocumentMeta({
+    title: 'HVAC/R Tools & Equipment Catalog',
+    description: 'Browse the full POWERLYNX catalog of professional HVAC/R tools and equipment from Powerlink Inc., including manifold gauges and A2L-compatible instruments.',
+    path: '/products',
+  });
 
   const filteredProducts = useMemo(() => {
     return products.filter(p => {
