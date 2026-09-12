@@ -3,6 +3,7 @@ import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/layout/language-switcher';
+import { ThemeToggle } from '@/components/theme-toggle';
 import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { useLanguage } from '@/i18n';
 import { categoryTree, products } from '@/data/products';
@@ -41,7 +42,7 @@ export function Header() {
             setIsProductsMenuOpen(false);
             setHoveredCategory(null);
           }}
-          className="flex w-full items-center gap-2 text-[13px] font-semibold leading-tight text-foreground hover:text-primary transition-colors"
+          className="flex w-full items-center gap-2 text-[13px] font-semibold leading-tight text-white hover:text-primary transition-colors"
         >
           {image && (
             <img
@@ -57,7 +58,7 @@ export function Header() {
         </Link>
         {image && (
           <span
-            className={`pointer-events-none absolute left-12 top-1/2 z-30 -translate-y-1/2 rounded-md border border-border bg-card p-2 shadow-2xl transition-all duration-200 ${
+            className={`pointer-events-none absolute left-12 top-1/2 z-30 -translate-y-1/2 rounded-md border border-white/10 bg-[#1B1F21] p-2 shadow-2xl transition-all duration-200 ${
               hoveredCategory === category
                 ? 'visible scale-100 opacity-100'
                 : 'invisible scale-90 opacity-0'
@@ -151,14 +152,14 @@ export function Header() {
               }`}
               data-testid="menu-products-dropdown"
             >
-              <div className="w-[min(780px,calc(100vw-2rem))] bg-card border border-border shadow-xl">
-                <div className="grid grid-cols-[minmax(170px,0.7fr)_minmax(0,1.3fr)] divide-x divide-border">
+              <div className="w-[min(860px,calc(100vw-2rem))] overflow-hidden border border-white/10 bg-[#101417] text-white shadow-2xl shadow-black/30">
+                <div className="grid grid-cols-[minmax(190px,0.7fr)_minmax(0,1.3fr)] divide-x divide-white/10">
                   {categoryTree.map(({ group, items }) => (
                     <div key={group} className="p-4">
                       <Link
                         href={`/products?group=${encodeURIComponent(group)}`}
                         onClick={() => setIsProductsMenuOpen(false)}
-                        className="block text-xs font-extrabold uppercase tracking-widest text-primary mb-3 hover:underline underline-offset-4"
+                          className="mb-3 block text-xs font-extrabold uppercase tracking-widest text-primary hover:underline underline-offset-4"
                       >
                         {localizedCategoryGroupLabel(group, language)}
                       </Link>
@@ -170,10 +171,10 @@ export function Header() {
                             </li>
                           ) : (
                             <li key={item.section} className="col-span-2">
-                              <div className="text-xs font-extrabold uppercase tracking-wider text-foreground mt-3 mb-1.5 first:mt-0">
+                              <div className="mt-3 mb-1.5 text-xs font-extrabold uppercase tracking-wider text-white/70 first:mt-0">
                                 {item.section}
                               </div>
-                              <ul className="grid grid-cols-2 gap-x-4 gap-y-2 pl-2 border-l border-border">
+                               <ul className="grid grid-cols-2 gap-x-4 gap-y-2 border-l border-white/15 pl-2">
                                 {item.categories.map((category) => (
                                   <li key={category}>
                                     {renderCategoryLink(category, 'h-8 w-8')}
@@ -190,7 +191,7 @@ export function Header() {
                 <Link
                   href="/products"
                   onClick={() => setIsProductsMenuOpen(false)}
-                  className="block text-center text-xs font-bold uppercase tracking-widest py-3 bg-secondary text-secondary-foreground hover:bg-primary hover:text-primary-foreground transition-colors"
+                  className="block bg-primary py-3 text-center text-xs font-bold uppercase tracking-widest text-primary-foreground transition-colors hover:bg-primary/85"
                 >
                   {t('nav.viewCatalog')}
                 </Link>
@@ -211,6 +212,7 @@ export function Header() {
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
           <LanguageSwitcher />
+          <ThemeToggle />
 
           <Button asChild className="gap-2 font-bold tracking-wider rounded-none uppercase">
             <a href="tel:8888187693">
@@ -225,6 +227,7 @@ export function Header() {
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-2">
           <LanguageSwitcher variant="compact" />
+          <ThemeToggle />
           <Button asChild size="icon" variant="outline" className="rounded-none" aria-label={t('contact.callUs')}>
             <a href="tel:8888187693">
               <Phone className="w-4 h-4" />
