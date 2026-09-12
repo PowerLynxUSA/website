@@ -212,27 +212,27 @@ export function Header() {
         {/* Desktop Actions */}
         <div className="hidden md:flex items-center gap-4">
           <LanguageSwitcher />
-          <ThemeToggle />
 
           <Button asChild className="gap-2 font-bold tracking-wider rounded-none uppercase">
             <a href="tel:8888187693">
               <Phone className="w-4 h-4" />
               <span className="whitespace-nowrap">
-                888-818-POWER <span className="text-[0.78em] font-semibold tracking-normal">(7693)</span>
+                888-818-POWER <span className="text-[0.97em] font-semibold tracking-normal">(7693)</span>
               </span>
             </a>
           </Button>
+          <ThemeToggle />
         </div>
 
         {/* Mobile Toggle */}
         <div className="md:hidden flex items-center gap-2">
           <LanguageSwitcher variant="compact" />
-          <ThemeToggle />
           <Button asChild size="icon" variant="outline" className="rounded-none" aria-label={t('contact.callUs')}>
             <a href="tel:8888187693">
               <Phone className="w-4 h-4" />
             </a>
           </Button>
+          <ThemeToggle />
           <Button
             variant="ghost"
             size="icon"
