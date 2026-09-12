@@ -15,6 +15,7 @@ export function Header() {
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const { t, language } = useLanguage();
   const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
   const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo', '160px');
   const markImage = getResponsiveMarketingImage('brand', 'powerlynx-mark', '160px');
 
@@ -23,10 +24,64 @@ export function Header() {
     return product ? getResponsiveProductImage(product.image, '40px') : null;
   };
 
+  const renderCategoryLink = (category: string, thumbnailSize = 'h-9 w-9') => {
+    const image = categoryImage(category);
+
+    return (
+      <span
+        className="group relative block"
+        onMouseEnter={() => setHoveredCategory(category)}
+        onMouseLeave={() => setHoveredCategory(null)}
+        onFocus={() => setHoveredCategory(category)}
+        onBlur={() => setHoveredCategory(null)}
+      >
+        <Link
+          href={`/products?category=${encodeURIComponent(category)}`}
+          onClick={() => {
+            setIsProductsMenuOpen(false);
+            setHoveredCategory(null);
+          }}
+          className="flex w-full items-center gap-2 text-[13px] font-semibold leading-tight text-foreground hover:text-primary transition-colors"
+        >
+          {image && (
+            <img
+              src={image.src}
+              srcSet={image.srcSet}
+              sizes={image.sizes}
+              alt=""
+              className={`${thumbnailSize} shrink-0 rounded-sm border border-border bg-white object-contain p-0.5 transition-transform duration-200 group-hover:scale-110`}
+              loading="lazy"
+            />
+          )}
+          <span>{localizedCategoryLabel(category, language)}</span>
+        </Link>
+        {image && (
+          <span
+            className={`pointer-events-none absolute left-12 top-1/2 z-30 -translate-y-1/2 rounded-md border border-border bg-card p-2 shadow-2xl transition-all duration-200 ${
+              hoveredCategory === category
+                ? 'visible scale-100 opacity-100'
+                : 'invisible scale-90 opacity-0'
+            }`}
+            aria-hidden="true"
+          >
+            <img
+              src={image.src}
+              srcSet={image.srcSet}
+              sizes="128px"
+              alt=""
+              className="h-28 w-28 rounded-sm bg-white object-contain"
+            />
+          </span>
+        )}
+      </span>
+    );
+  };
+
   useEffect(() => {
     setIsProductsMenuOpen(false);
     setIsMobileMenuOpen(false);
     setOpenMobileGroup(null);
+    setHoveredCategory(null);
   }, [location]);
 
   return (
@@ -103,7 +158,7 @@ export function Header() {
                       <Link
                         href={`/products?group=${encodeURIComponent(group)}`}
                         onClick={() => setIsProductsMenuOpen(false)}
-                        className="block text-[11px] font-bold uppercase tracking-widest text-primary mb-3 hover:underline underline-offset-4"
+                        className="block text-xs font-extrabold uppercase tracking-widest text-primary mb-3 hover:underline underline-offset-4"
                       >
                         {localizedCategoryGroupLabel(group, language)}
                       </Link>
@@ -111,59 +166,17 @@ export function Header() {
                         {items.map((item) =>
                           item.kind === 'category' ? (
                             <li key={item.category}>
-                              {(() => {
-                                const image = categoryImage(item.category);
-                                return (
-                              <Link
-                                href={`/products?category=${encodeURIComponent(item.category)}`}
-                                onClick={() => setIsProductsMenuOpen(false)}
-                                className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                              >
-                                {image && (
-                                  <img
-                                    src={image.src}
-                                    srcSet={image.srcSet}
-                                    sizes={image.sizes}
-                                    alt=""
-                                    className="h-9 w-9 shrink-0 rounded-sm border border-border bg-white object-contain p-0.5"
-                                    loading="lazy"
-                                  />
-                                )}
-                                <span>{localizedCategoryLabel(item.category, language)}</span>
-                              </Link>
-                                );
-                              })()}
+                              {renderCategoryLink(item.category)}
                             </li>
                           ) : (
                             <li key={item.section} className="col-span-2">
-                              <div className="text-[11px] font-bold uppercase tracking-wider text-foreground/60 mt-3 mb-1.5 first:mt-0">
+                              <div className="text-xs font-extrabold uppercase tracking-wider text-foreground mt-3 mb-1.5 first:mt-0">
                                 {item.section}
                               </div>
                               <ul className="grid grid-cols-2 gap-x-4 gap-y-2 pl-2 border-l border-border">
                                 {item.categories.map((category) => (
                                   <li key={category}>
-                                    {(() => {
-                                      const image = categoryImage(category);
-                                      return (
-                                    <Link
-                                      href={`/products?category=${encodeURIComponent(category)}`}
-                                      onClick={() => setIsProductsMenuOpen(false)}
-                                      className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
-                                    >
-                                      {image && (
-                                        <img
-                                          src={image.src}
-                                          srcSet={image.srcSet}
-                                          sizes={image.sizes}
-                                          alt=""
-                                          className="h-8 w-8 shrink-0 rounded-sm border border-border bg-white object-contain p-0.5"
-                                          loading="lazy"
-                                        />
-                                      )}
-                                      <span>{localizedCategoryLabel(category, language)}</span>
-                                    </Link>
-                                      );
-                                    })()}
+                                    {renderCategoryLink(category, 'h-8 w-8')}
                                   </li>
                                 ))}
                               </ul>
