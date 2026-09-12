@@ -126,7 +126,8 @@ export function Home() {
                 />
                 <div className="absolute left-[14%] bottom-[5%] bg-[#dfe0df] px-2.5 py-1.5">
                   <div className="font-display text-[clamp(0.72rem,2.1vw,1.7rem)] font-bold uppercase leading-[0.95] text-[#2b2426]">
-                    <span className="block">{t('detail.catalog')}</span>
+                    <span className="block">2027</span>
+                    <span className="block mt-0.5">{t('detail.catalog')}</span>
                     <span className="block mt-0.5">{catalogVersion}</span>
                   </div>
                 </div>
