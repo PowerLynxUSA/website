@@ -1,16 +1,31 @@
 import { Link } from 'wouter';
-import { ArrowRight, ShieldCheck, Wrench, Zap, ChevronRight } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, ShieldCheck, Wrench, Zap, ChevronRight, Moon, Sun } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { ModelBadge } from '@/components/model-badge';
 import { catalogVersion, products, categoryTree } from '@/data/products';
 import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { getResponsiveProductImage } from '@/lib/product-images';
+import { getResponsiveDarkProductImage } from '@/lib/dark-product-images';
 import { useLanguage } from '@/i18n';
 import { localizeProducts, localizedCategoryGroupLabel } from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
 
+const showroomLabels = {
+  EN: { dark: 'Dark Showroom', light: 'Light Showroom' },
+  ES: { dark: 'Sala oscura', light: 'Sala clara' },
+  ZH: { dark: '深色展厅', light: '浅色展厅' },
+  'ZH-TW': { dark: '深色展示廳', light: '淺色展示廳' },
+  PT: { dark: 'Showroom escuro', light: 'Showroom claro' },
+  FR: { dark: 'Showroom sombre', light: 'Showroom clair' },
+  DE: { dark: 'Dunkler Showroom', light: 'Heller Showroom' },
+  JA: { dark: 'ダークショールーム', light: 'ライトショールーム' },
+  KO: { dark: '다크 쇼룸', light: '라이트 쇼룸' },
+} as const;
+
 export function Home() {
   const { t, language } = useLanguage();
+  const [darkShowroom, setDarkShowroom] = useState(false);
   const featuredProducts = localizeProducts(products.slice(0, 4), language);
   const equipmentLineup = t('home.equipmentLineup').replace(/2027/g, catalogVersion);
   const equipmentLineupAccent = t('home.equipmentLineupAccent').replace(/2027/g, catalogVersion);
@@ -150,7 +165,7 @@ export function Home() {
       </section>
 
       {/* FEATURED PRODUCTS */}
-      <section className="py-24 relative overflow-hidden">
+      <section className={`py-24 relative overflow-hidden transition-colors duration-500 ${darkShowroom ? 'bg-[#0D0F10] text-white' : ''}`}>
         <div className="absolute inset-0 z-0">
           <img
             src={textureImage.src}
@@ -166,31 +181,51 @@ export function Home() {
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
             <div>
                <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-2">{t('home.featuredProducts')}</h2>
-               <p className="text-foreground/80 font-semibold">{t('home.topRequested')}</p>
+               <p className={darkShowroom ? 'text-white/70 font-semibold' : 'text-foreground/80 font-semibold'}>{t('home.topRequested')}</p>
             </div>
-            <Button variant="outline" asChild className="rounded-none font-bold uppercase tracking-widest gap-2">
-              <Link href="/products">
-                 {t('home.viewAll')} <ChevronRight className="w-4 h-4" />
-              </Link>
-            </Button>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button
+                type="button"
+                variant={darkShowroom ? 'default' : 'outline'}
+                className="rounded-none font-bold uppercase tracking-widest gap-2"
+                onClick={() => setDarkShowroom((current) => !current)}
+                aria-pressed={darkShowroom}
+              >
+                {darkShowroom ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+                {darkShowroom ? showroomLabels[language].light : showroomLabels[language].dark}
+              </Button>
+              <Button variant="outline" asChild className="rounded-none font-bold uppercase tracking-widest gap-2">
+                <Link href="/products">
+                   {t('home.viewAll')} <ChevronRight className="w-4 h-4" />
+                </Link>
+              </Button>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             {featuredProducts.map(product => (
               <Link key={product.slug} href={`/products/${product.slug}`}>
-                <div className="group h-full flex flex-col bg-card border border-border hover:border-primary transition-colors duration-300">
-                  <div className="aspect-square bg-white p-6 flex items-center justify-center relative overflow-hidden border-b border-border">
+                <div className={`group h-full flex flex-col border transition-colors duration-300 ${
+                  darkShowroom
+                    ? 'bg-[#15181A] border-[#34393D] hover:border-primary'
+                    : 'bg-card border-border hover:border-primary'
+                }`}>
+                  <div className={`aspect-square p-6 flex items-center justify-center relative overflow-hidden border-b ${
+                    darkShowroom ? 'bg-[#1B1F21] border-[#34393D]' : 'bg-white border-border'
+                  }`}>
                     <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors" />
                     {(() => {
-                      const { src, srcSet, sizes } = getResponsiveProductImage(
-                        product.image,
-                        '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw',
-                      );
+                      const image = darkShowroom
+                        ? getResponsiveDarkProductImage(product.image)
+                        : getResponsiveProductImage(
+                            product.image,
+                            '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw',
+                          );
                       return (
                         <img
-                          src={src}
-                          srcSet={srcSet}
-                          sizes={sizes}
+                          src={image.src}
+                          srcSet={image.srcSet}
+                          sizes={image.sizes}
                           alt={product.name}
                           loading="lazy"
                           decoding="async"
@@ -202,8 +237,8 @@ export function Home() {
                   </div>
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">{product.category}</div>
-                    <h3 className="font-bold text-lg leading-tight mb-4 group-hover:text-primary transition-colors">{product.name}</h3>
-                    <div className="mt-auto pt-4 border-t border-border">
+                    <h3 className={`font-bold text-lg leading-tight mb-4 group-hover:text-primary transition-colors ${darkShowroom ? 'text-white' : ''}`}>{product.name}</h3>
+                    <div className={`mt-auto pt-4 border-t ${darkShowroom ? 'border-[#34393D]' : 'border-border'}`}>
                       <ModelBadge models={product.models} size="sm" />
                     </div>
                   </div>
