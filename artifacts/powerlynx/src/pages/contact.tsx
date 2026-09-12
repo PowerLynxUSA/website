@@ -38,19 +38,19 @@ function createContactSchema(t: (key: TranslationKey) => string) {
 
 const contactRecipients = ['info@powerlinkus.com', 'orders@powerlinkus.com'];
 
-function createMailtoLink(data: ContactFormValues) {
-  const subject = `[POWERLYNX] ${data.inquiryType} from ${data.name}`;
+function createMailtoLink(data: ContactFormValues, t: (key: TranslationKey) => string) {
+  const subject = `[POWERLYNX] ${data.inquiryType} — ${data.name}`;
   const body = [
-    'POWERLYNX Website Inquiry',
+    `POWERLYNX — ${t('contact.sendInquiry')}`,
     '',
-    `Name: ${data.name}`,
-    `Company: ${data.company}`,
-    `Country: ${data.country}`,
-    `Email: ${data.email}`,
-    `Phone: ${data.phone}`,
-    `Inquiry Type: ${data.inquiryType}`,
+    `${t('contact.fullName')}: ${data.name}`,
+    `${t('contact.company')}: ${data.company}`,
+    `${t('contact.country')}: ${data.country}`,
+    `${t('contact.email')}: ${data.email}`,
+    `${t('contact.phone')}: ${data.phone}`,
+    `${t('contact.inquiryType')}: ${data.inquiryType}`,
     '',
-    'Message:',
+    `${t('contact.message')}:`,
     data.message,
   ].join('\n');
 
@@ -63,8 +63,8 @@ export function Contact() {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   useDocumentMeta({
-    title: 'Contact Powerlink Inc.',
-    description: 'Get in touch with Powerlink Inc. for POWERLYNX HVAC/R tools — sales inquiries, distribution, and support across North America.',
+    title: `POWERLYNX | ${t('contact.title')}`,
+    description: t('contact.description'),
     path: '/contact',
   });
   const contactSchema = createContactSchema(t);
@@ -83,7 +83,7 @@ export function Contact() {
   });
 
   function onSubmit(data: ContactFormValues) {
-    window.location.href = createMailtoLink(data);
+    window.location.href = createMailtoLink(data, t);
     setIsSubmitted(true);
     toast({
        title: t('contact.emailDraftReady'),

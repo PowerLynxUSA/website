@@ -43,8 +43,8 @@ export function ProductsIndex() {
   };
 
   useDocumentMeta({
-    title: 'HVAC/R Tools & Equipment Catalog',
-    description: 'Browse the full POWERLYNX catalog of professional HVAC/R tools and equipment from Powerlink Inc., including manifold gauges and A2L-compatible instruments.',
+    title: `POWERLYNX | ${t('products.title')}`,
+    description: t('products.description'),
     path: '/products',
   });
 
@@ -251,7 +251,7 @@ export function ProductsIndex() {
                     <div className="aspect-[4/3] bg-white flex items-center justify-center relative overflow-hidden border-b border-border">
                       <img
                         src={product.image}
-                        alt={product.name}
+                        alt={localized.name}
                         className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
                         data-testid={`img-product-${product.slug}`}
                       />

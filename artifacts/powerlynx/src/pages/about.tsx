@@ -210,8 +210,8 @@ export function About() {
                   </div>
                </div>
             </div>
-            <div className="h-80 lg:h-auto w-full relative group overflow-hidden" data-testid="img-technician-container">
-               <img src={aboutTechnicianUrl} alt="POWERLYNX Technician" className="w-full h-full object-cover grayscale-[0.1] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+             <div className="h-80 landscape:h-[min(72vw,30rem)] lg:h-auto w-full relative group overflow-hidden" data-testid="img-technician-container">
+                <img src={aboutTechnicianUrl} alt="POWERLYNX Technician" className="w-full h-full object-cover object-[center_18%] landscape:object-[center_12%] lg:object-center grayscale-[0.1] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-secondary via-secondary/20 to-transparent opacity-80" />
             </div>
          </div>

@@ -46,9 +46,9 @@ export function ProductDetail() {
   const localizedProduct = product ? localizeProduct(product, language) : null;
 
   useDocumentMeta({
-    title: localizedProduct ? `${localizedProduct.name} (${product!.models})` : 'Product Not Found',
+    title: localizedProduct ? `${localizedProduct.name} (${product!.models})` : t('detail.productNotFound'),
     description: localizedProduct
-      ? `${localizedProduct.name} from POWERLYNX by Powerlink Inc. — professional-grade HVAC/R equipment, models ${product!.models}.`
+      ? localizedProduct.summary
       : undefined,
     path: product ? `/products/${product.slug}` : undefined,
   });
@@ -94,7 +94,7 @@ export function ProductDetail() {
             <div className="aspect-[4/3] bg-white border border-border flex items-center justify-center p-8 relative overflow-hidden">
               <img
                 src={images[activeImage]}
-                alt={product.name}
+                 alt={localizedProduct.name}
                 className="w-full h-full object-contain"
                 data-testid="img-product-detail"
               />
@@ -109,7 +109,7 @@ export function ProductDetail() {
                     className={`w-20 h-20 bg-white border-2 flex items-center justify-center p-2 transition-colors ${activeImage === i ? 'border-primary' : 'border-border hover:border-primary/50'}`}
                     data-testid={`button-thumbnail-${i}`}
                   >
-                    <img src={img} alt={`${product.name} view ${i + 1}`} className="w-full h-full object-contain" />
+                    <img src={img} alt={`${localizedProduct.name} ${i + 1}`} className="w-full h-full object-contain" />
                   </button>
                 ))}
               </div>
@@ -158,7 +158,7 @@ export function ProductDetail() {
               <div>
                  <h3 className="font-display text-xl font-bold uppercase tracking-widest mb-4 border-b border-border pb-2">{t('detail.features')}</h3>
                 <ul className="space-y-3">
-                  {product.bullets.map((bullet, i) => (
+                  {localizedProduct.bullets.map((bullet, i) => (
                     <li key={i} className="flex items-start gap-3">
                       <div className="mt-1 bg-primary/10 text-primary p-1 rounded-full shrink-0">
                         <Check className="w-3 h-3 font-bold" />
@@ -174,7 +174,7 @@ export function ProductDetail() {
                 <div className="bg-card border border-border rounded-sm overflow-hidden">
                   <table className="w-full text-left text-sm">
                     <tbody className="divide-y divide-border">
-                      {product.specs.map((spec, i) => (
+                      {localizedProduct.specs.map((spec, i) => (
                         <tr key={i} className="hover:bg-muted/50 transition-colors">
                           <th className="py-3 px-4 font-mono font-bold text-muted-foreground w-1/3 align-top">
                             {spec.label}

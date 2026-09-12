@@ -16,36 +16,36 @@ export function Home() {
   const featuredProducts = localizeProducts(products.slice(0, 4), language);
   const equipmentLineup = t('home.equipmentLineup').replace(/2027/g, catalogVersion);
   const equipmentLineupAccent = t('home.equipmentLineupAccent').replace(/2027/g, catalogVersion);
-  const catalogLabel = `Catalog ${catalogVersion}`;
+  const catalogLabel = `${t('detail.catalog')} ${catalogVersion}`;
 
   useDocumentMeta({
-    title: 'POWERLYNX by Powerlink Inc. | Professional HVAC/R Tools & Equipment',
-    description: 'POWERLYNX by Powerlink Inc. engineers precision HVAC/R tools and equipment built for accuracy, durability, and ease of use — trusted by technicians across North America.',
+    title: `POWERLYNX | ${t('home.tradeEngineered')}`,
+    description: t('home.heroDescription2'),
     path: '/',
   });
 
   return (
     <div className="flex flex-col min-h-screen">
       {/* HERO SECTION */}
-      <section className="relative h-[88vh] min-h-[680px] flex items-end justify-center overflow-hidden">
+      <section className="relative h-[88svh] min-h-[620px] sm:min-h-[680px] flex items-end justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-secondary/35 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/75 to-transparent z-10" />
           <img 
             src={heroBgUrl} 
             alt="Confident HVAC technician on a rooftop with the American flag" 
-            className="w-full h-full object-cover object-[center_8%]"
+            className="w-full h-full object-cover object-[18%_center] sm:object-[center_8%]"
           />
         </div>
         
-        <div className="container relative z-20 px-4 pb-16 md:pb-20 text-center">
-          <h1 className="font-display text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-2 animate-in slide-in-from-bottom-8 duration-700">
+        <div className="container relative z-20 px-4 pb-10 sm:pb-16 md:pb-20 text-center">
+          <h1 className="font-display text-[1.85rem] sm:text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-2 animate-in slide-in-from-bottom-8 duration-700">
              POWER <span className="text-primary">DELIVERED</span>
           </h1>
-          <h2 className="font-display text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-6 animate-in slide-in-from-bottom-8 duration-700 delay-100">
+          <h2 className="font-display text-[1.85rem] sm:text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-5 sm:mb-6 animate-in slide-in-from-bottom-8 duration-700 delay-100">
              {t('home.heroDescription1')}
           </h2>
-          <p className="max-w-3xl mx-auto text-lg md:text-xl text-secondary-foreground/80 mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">
+          <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-secondary-foreground/80 mb-7 sm:mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">
              {t('home.heroDescription2')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 animate-in slide-in-from-bottom-8 duration-700 delay-300">
@@ -124,9 +124,10 @@ export function Home() {
                   alt={`POWERLYNX ${catalogLabel} featured tools collage`} 
                   className="w-full h-auto"
                 />
-                <div className="absolute left-[14%] bottom-[6%] bg-[#dfe0df] px-2 py-1">
-                  <div className="font-display text-[clamp(0.9rem,2.5vw,2rem)] font-bold leading-none text-[#2b2426]">
-                    {catalogLabel}
+                <div className="absolute left-[14%] bottom-[5%] bg-[#dfe0df] px-2.5 py-1.5">
+                  <div className="font-display text-[clamp(0.72rem,2.1vw,1.7rem)] font-bold uppercase leading-[0.95] text-[#2b2426]">
+                    <span className="block">{t('detail.catalog')}</span>
+                    <span className="block mt-0.5">{catalogVersion}</span>
                   </div>
                 </div>
               </div>

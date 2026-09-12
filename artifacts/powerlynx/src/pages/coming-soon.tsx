@@ -4,9 +4,11 @@ import logoUrl from '@/assets/brand/powerlynx-logo.png';
 import heroBgUrl from '@/assets/generated/hero-technician.jpg';
 import textureUrl from '@/assets/generated/texture-metal.jpg';
 import rocketUrl from '@/assets/coming-soon-rocket.png';
+import { useLanguage } from '@/i18n';
 
 export function ComingSoon() {
-  const description = 'POWERLYNX is preparing a new lineup of precision-engineered HVAC/R tools and equipment. Our full catalog and distributor portal launch shortly — built for technicians who demand accuracy, durability, and ease of use on every job.';
+  const { t } = useLanguage();
+  const description = t('coming.description');
   const [descriptionBeforeBrand, descriptionAfterBrand] = description.split('POWERLYNX');
 
   return (
@@ -29,8 +31,7 @@ export function ComingSoon() {
 
         <div className="relative z-10 flex min-w-0 w-full items-center justify-center gap-1 pt-14 sm:gap-4 sm:pt-16 lg:pt-20">
           <p className="min-w-0 whitespace-nowrap text-center font-display text-[clamp(2rem,8.8vw,4.5rem)] font-bold uppercase leading-none tracking-[0.02em] sm:text-7xl sm:tracking-[0.05em]">
-            <span className="text-[#f14d2f]">Launching</span>{' '}
-            <span className="text-white">Soon</span>
+            <span className="text-[#f14d2f]">{t('coming.launching')}</span>
           </p>
           <img src={rocketUrl} alt="" className="h-12 w-12 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
         </div>
@@ -39,11 +40,11 @@ export function ComingSoon() {
           <section className="max-w-2xl">
             <p className="mb-5 flex items-center gap-3 font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#f14d2f]">
               <span className="h-px w-8 bg-[#f14d2f]" />
-              New tools. Same field standard.
+               {t('home.tradeEngineered')}
             </p>
             <h1 className="max-w-2xl font-display text-[clamp(3.8rem,9vw,9rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
-              Power Is
-              <span className="mt-2 block text-[#f14d2f]">Coming.</span>
+               {t('coming.powerIs')}
+               <span className="mt-2 block text-[#f14d2f]">{t('coming.coming')}</span>
             </h1>
             <p className="mt-8 max-w-xl text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
               {descriptionAfterBrand !== undefined ? (
@@ -93,8 +94,8 @@ export function ComingSoon() {
                   <p className="mb-2 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#f14d2f]">
                     POWERLYNX
                   </p>
-                  <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">The next standard is taking shape</p>
-                  <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">Ready for the real world.</p>
+                   <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#f14d2f]">{t('home.ourStandards')}</p>
+                   <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">{t('home.heroDescription1')}</p>
                 </div>
             </div>
           </section>
@@ -106,9 +107,9 @@ export function ComingSoon() {
             href="/"
             className="group inline-flex items-center gap-3 self-start text-sm font-bold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#f14d2f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#f14d2f] sm:self-auto"
             data-testid="link-preview-site"
-            aria-label="Visit the live website"
+            aria-label={t('coming.preview')}
           >
-            Visit the live website
+            {t('coming.preview')}
             <span className="flex h-8 w-8 items-center justify-center border border-[#f14d2f] text-[#f14d2f] transition-transform group-hover:translate-x-1">
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
