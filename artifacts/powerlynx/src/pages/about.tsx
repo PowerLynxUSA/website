@@ -1,12 +1,13 @@
 import { ShieldCheck, HardHat, Wrench, Zap, Globe, Users } from 'lucide-react';
-import aboutWarehouseUrl from '@/assets/generated/about-warehouse.jpg';
-import aboutTechnicianUrl from '@/assets/generated/about-technician-branded-v3.jpg';
-import textureUrl from '@/assets/generated/texture-metal.jpg';
+import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { useLanguage } from '@/i18n';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
 
 export function About() {
   const { t } = useLanguage();
+  const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
+  const warehouseImage = getResponsiveMarketingImage('generated', 'about-warehouse', '(min-width: 1024px) 50vw, 100vw');
+  const technicianImage = getResponsiveMarketingImage('generated', 'about-technician-branded-v3', '(min-width: 1024px) 50vw, 100vw');
 
   useDocumentMeta({
     title: t('about.metaTitle'),
@@ -18,9 +19,9 @@ export function About() {
     <div className="flex flex-col min-h-screen bg-background selection:bg-primary selection:text-primary-foreground">
 
       {/* HERO */}
-      <div className="bg-secondary text-secondary-foreground relative pt-32 pb-24 overflow-hidden border-b border-primary/20">
+       <div className="bg-secondary text-secondary-foreground relative pt-20 pb-16 md:pt-28 md:pb-20 overflow-hidden border-b border-primary/20">
         <div className="absolute inset-0 z-0">
-          <img src={textureUrl} alt="" className="w-full h-full object-cover opacity-20 mix-blend-overlay grayscale" />
+          <img src={textureImage.src} srcSet={textureImage.srcSet} sizes={textureImage.sizes} alt="" className="w-full h-full object-cover opacity-20 mix-blend-overlay grayscale" loading="eager" decoding="async" />
           <div className="absolute inset-0 bg-gradient-to-b from-secondary/80 via-secondary/90 to-secondary" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
@@ -41,7 +42,7 @@ export function About() {
       </div>
 
       {/* THE BELIEF (Massive Typography) */}
-      <section className="py-32 bg-card relative overflow-hidden">
+       <section className="py-20 md:py-24 bg-card relative overflow-hidden">
          <div className="absolute top-0 right-0 w-1/3 h-full bg-muted/30 -skew-x-12 translate-x-16 z-0" />
          <div className="container mx-auto px-4 relative z-10">
             <div className="max-w-5xl">
@@ -53,16 +54,21 @@ export function About() {
          </div>
       </section>
 
-      {/* SOURCING & WAREHOUSE */}
-      <section className="py-24 bg-muted border-y border-border">
+       {/* FIELD EXPERIENCE & SOURCING */}
+       <section className="py-14 md:py-20 bg-muted border-y border-border">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative group" data-testid="img-warehouse-container">
+           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+             <div className="relative group" data-testid="img-technician-container">
               <div className="absolute -inset-4 bg-primary/5 border border-primary/20 z-0 transition-transform duration-500 group-hover:-translate-x-2 group-hover:-translate-y-2" />
               <img
-                src={aboutWarehouseUrl}
-                alt="HVAC/R equipment distribution warehouse"
-                className="relative z-10 w-full h-auto shadow-2xl object-cover grayscale-[0.2] contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100"
+                 src={technicianImage.src}
+                 srcSet={technicianImage.srcSet}
+                 sizes={technicianImage.sizes}
+                 alt="POWERLYNX professional HVAC/R technician holding a manifold gauge"
+                 className="relative z-10 w-full aspect-square shadow-2xl object-cover object-[center_34%] grayscale-[0.1] contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100"
+                loading="lazy"
+                decoding="async"
+                 data-testid="img-about-technician"
               />
               <div className="absolute -bottom-6 -right-6 z-20 bg-card p-6 shadow-xl border border-border hidden md:block">
                  <div className="font-display text-4xl font-bold text-primary">2026</div>
@@ -70,7 +76,7 @@ export function About() {
               </div>
             </div>
 
-            <div className="space-y-8">
+             <div className="space-y-5">
               <div>
                  <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-4" data-testid="text-sourcing-title">
                    {(() => {
@@ -103,7 +109,7 @@ export function About() {
                 </p>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-4">
+               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
                  <div className="flex items-start gap-4">
                    <Globe className="w-11 h-11 text-primary shrink-0 mt-1" strokeWidth={1.5} />
                    <div>
@@ -131,18 +137,18 @@ export function About() {
         </div>
       </section>
 
-      {/* THE FOUR PROMISES */}
-      <section className="py-24 bg-background">
+       {/* THE FOUR PROMISES */}
+       <section className="py-16 md:py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center max-w-3xl mx-auto mb-16">
+           <div className="text-center max-w-3xl mx-auto mb-10">
              <h2 className="font-display text-4xl font-bold uppercase tracking-tight mb-4" data-testid="text-promises-title">{t('about.promisesTitle')}</h2>
              <div className="w-16 h-1 bg-primary mx-auto" />
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Promise 1 */}
-            <div className="bg-card p-10 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-reliability">
-              <div className="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+             <div className="bg-card p-8 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-reliability">
+               <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                 <ShieldCheck className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseReliability')}</h3>
@@ -150,8 +156,8 @@ export function About() {
             </div>
 
             {/* Promise 2 */}
-            <div className="bg-card p-10 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-quality">
-              <div className="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+             <div className="bg-card p-8 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-quality">
+               <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                 <Wrench className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseQuality')}</h3>
@@ -159,8 +165,8 @@ export function About() {
             </div>
 
             {/* Promise 3 */}
-            <div className="bg-card p-10 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-design">
-              <div className="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+             <div className="bg-card p-8 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-design">
+               <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                 <HardHat className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseDesign')}</h3>
@@ -168,8 +174,8 @@ export function About() {
             </div>
 
             {/* Promise 4 */}
-            <div className="bg-card p-10 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-agility">
-              <div className="w-14 h-14 bg-primary/10 text-primary flex items-center justify-center mb-6 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+             <div className="bg-card p-8 border border-border shadow-sm hover:shadow-md hover:border-primary/50 transition-all duration-300 group" data-testid="card-promise-agility">
+               <div className="w-12 h-12 bg-primary/10 text-primary flex items-center justify-center mb-5 group-hover:scale-110 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
                 <Zap className="w-7 h-7" />
               </div>
                <h3 className="font-display text-2xl font-bold uppercase tracking-wide mb-3">{t('about.promiseAgility')}</h3>
@@ -179,12 +185,12 @@ export function About() {
         </div>
       </section>
 
-      {/* CLOSING / PLEDGE */}
-      <section className="py-0 bg-secondary text-secondary-foreground overflow-hidden">
+       {/* CLOSING / PLEDGE */}
+       <section className="py-0 bg-secondary text-secondary-foreground overflow-hidden">
          <div className="grid grid-cols-1 lg:grid-cols-2">
             <div className="p-12 md:p-24 flex flex-col justify-center relative">
                <div className="absolute inset-0 z-0">
-                 <img src={textureUrl} alt="" className="w-full h-full object-cover opacity-10 mix-blend-overlay grayscale" />
+                  <img src={textureImage.src} srcSet={textureImage.srcSet} sizes={textureImage.sizes} alt="" className="w-full h-full object-cover opacity-10 mix-blend-overlay grayscale" loading="lazy" decoding="async" />
                </div>
                <div className="relative z-10 max-w-xl">
                   <div className="w-16 h-1 bg-primary mb-8" />
@@ -210,8 +216,8 @@ export function About() {
                   </div>
                </div>
             </div>
-             <div className="h-80 landscape:h-[min(72vw,30rem)] lg:h-auto w-full relative group overflow-hidden" data-testid="img-technician-container">
-                <img src={aboutTechnicianUrl} alt="POWERLYNX Technician" className="w-full h-full object-cover object-[center_18%] landscape:object-[center_12%] lg:object-center grayscale-[0.1] contrast-125 transition-transform duration-1000 group-hover:scale-105" />
+             <div className="h-80 sm:h-[26rem] lg:h-auto lg:min-h-[34rem] w-full relative group overflow-hidden" data-testid="img-warehouse-container">
+                 <img src={warehouseImage.src} srcSet={warehouseImage.srcSet} sizes={warehouseImage.sizes} alt="HVAC/R equipment distribution warehouse" className="w-full h-full object-cover object-center grayscale-[0.1] contrast-125 transition-transform duration-1000 group-hover:scale-105" loading="lazy" decoding="async" data-testid="img-about-warehouse" />
                <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-secondary via-secondary/20 to-transparent opacity-80" />
             </div>
          </div>

@@ -3,11 +3,11 @@ import { Phone, Menu, X, ChevronDown } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { LanguageSwitcher } from '@/components/layout/language-switcher';
-import logoUrl from '@/assets/brand/powerlynx-logo.png';
-import markUrl from '@/assets/brand/powerlynx-mark.png';
+import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { useLanguage } from '@/i18n';
-import { categoryTree } from '@/data/products';
+import { categoryTree, products } from '@/data/products';
 import { localizedCategoryGroupLabel, localizedCategoryLabel } from '@/i18n/products';
+import { getResponsiveProductImage } from '@/lib/product-images';
 
 export function Header() {
   const [location] = useLocation();
@@ -15,6 +15,13 @@ export function Header() {
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const { t, language } = useLanguage();
   const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
+  const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo', '160px');
+  const markImage = getResponsiveMarketingImage('brand', 'powerlynx-mark', '160px');
+
+  const categoryImage = (category: string) => {
+    const product = products.find((item) => item.category === category);
+    return product ? getResponsiveProductImage(product.image, '40px') : null;
+  };
 
   useEffect(() => {
     setIsProductsMenuOpen(false);
@@ -27,14 +34,20 @@ export function Header() {
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
           <img
-            src={logoUrl}
+            src={logoImage.src}
+            srcSet={logoImage.srcSet}
+            sizes={logoImage.sizes}
             alt="POWERLYNX"
             className="h-[62px] object-contain hidden md:block transition-transform duration-500 group-hover:scale-[1.03]"
+            decoding="async"
           />
           <img
-            src={markUrl}
+            src={markImage.src}
+            srcSet={markImage.srcSet}
+            sizes={markImage.sizes}
             alt="POWERLYNX"
             className="h-[62px] object-contain md:hidden transition-transform duration-500 group-hover:scale-[1.03]"
+            decoding="async"
           />
         </Link>
 
@@ -83,44 +96,74 @@ export function Header() {
               }`}
               data-testid="menu-products-dropdown"
             >
-              <div className="w-[560px] bg-card border border-border shadow-xl">
-                <div className="grid grid-cols-2 divide-x divide-border">
+              <div className="w-[min(780px,calc(100vw-2rem))] bg-card border border-border shadow-xl">
+                <div className="grid grid-cols-[minmax(170px,0.7fr)_minmax(0,1.3fr)] divide-x divide-border">
                   {categoryTree.map(({ group, items }) => (
-                    <div key={group} className="p-5">
+                    <div key={group} className="p-4">
                       <Link
                         href={`/products?group=${encodeURIComponent(group)}`}
                         onClick={() => setIsProductsMenuOpen(false)}
-                        className="block text-xs font-bold uppercase tracking-widest text-primary mb-3 hover:underline underline-offset-4"
+                        className="block text-[11px] font-bold uppercase tracking-widest text-primary mb-3 hover:underline underline-offset-4"
                       >
                         {localizedCategoryGroupLabel(group, language)}
                       </Link>
-                      <ul className="space-y-2.5">
+                      <ul className={group === 'HVAC Tools and Instruments' ? 'grid grid-cols-2 gap-x-4 gap-y-2.5' : 'space-y-2.5'}>
                         {items.map((item) =>
                           item.kind === 'category' ? (
                             <li key={item.category}>
+                              {(() => {
+                                const image = categoryImage(item.category);
+                                return (
                               <Link
                                 href={`/products?category=${encodeURIComponent(item.category)}`}
                                 onClick={() => setIsProductsMenuOpen(false)}
-                                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
                               >
-                                {localizedCategoryLabel(item.category, language)}
+                                {image && (
+                                  <img
+                                    src={image.src}
+                                    srcSet={image.srcSet}
+                                    sizes={image.sizes}
+                                    alt=""
+                                    className="h-9 w-9 shrink-0 rounded-sm border border-border bg-white object-contain p-0.5"
+                                    loading="lazy"
+                                  />
+                                )}
+                                <span>{localizedCategoryLabel(item.category, language)}</span>
                               </Link>
+                                );
+                              })()}
                             </li>
                           ) : (
-                            <li key={item.section}>
+                            <li key={item.section} className="col-span-2">
                               <div className="text-[11px] font-bold uppercase tracking-wider text-foreground/60 mt-3 mb-1.5 first:mt-0">
                                 {item.section}
                               </div>
-                              <ul className="space-y-2 pl-2 border-l border-border">
+                              <ul className="grid grid-cols-2 gap-x-4 gap-y-2 pl-2 border-l border-border">
                                 {item.categories.map((category) => (
                                   <li key={category}>
+                                    {(() => {
+                                      const image = categoryImage(category);
+                                      return (
                                     <Link
                                       href={`/products?category=${encodeURIComponent(category)}`}
                                       onClick={() => setIsProductsMenuOpen(false)}
-                                      className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                                      className="flex items-center gap-2 text-xs text-muted-foreground hover:text-foreground transition-colors"
                                     >
-                                      {localizedCategoryLabel(category, language)}
+                                      {image && (
+                                        <img
+                                          src={image.src}
+                                          srcSet={image.srcSet}
+                                          sizes={image.sizes}
+                                          alt=""
+                                          className="h-8 w-8 shrink-0 rounded-sm border border-border bg-white object-contain p-0.5"
+                                          loading="lazy"
+                                        />
+                                      )}
+                                      <span>{localizedCategoryLabel(category, language)}</span>
                                     </Link>
+                                      );
+                                    })()}
                                   </li>
                                 ))}
                               </ul>
