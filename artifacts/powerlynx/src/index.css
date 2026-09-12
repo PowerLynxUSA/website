@@ -159,8 +159,11 @@
   --popover-border: 210 9% 22%;
   --primary: 14 82% 54%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 0 0% 90%;
-  --secondary-foreground: 0 0% 7%;
+  /* Secondary stays the fixed dark-charcoal brand color in both themes: it drives
+     the hero overlay, page hero bands, and footer, which must not invert with
+     the light/dark toggle. */
+  --secondary: 0 0% 9%;
+  --secondary-foreground: 0 0% 100%;
   --muted: 210 9% 16%;
   --muted-foreground: 0 0% 65%;
   --accent: 14 82% 54%;
