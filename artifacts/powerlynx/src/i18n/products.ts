@@ -1297,19 +1297,64 @@ function translateTechnicalText(value: string, language: LanguageCode) {
   );
 }
 
+function warnProductFallback(language: LanguageCode, slug: string, field: string) {
+  // Surfaced so automated checks (see e2e/translation-parity.spec.ts and
+  // e2e/language-fallback-render.spec.ts) can catch product copy that
+  // silently renders in English instead of the selected language.
+  // eslint-disable-next-line no-console
+  console.warn(`[i18n-product-fallback] language=${language} slug=${slug} field=${field}`);
+}
+
+// A run of 3+ lowercase letters is a reliable signal that a string contains
+// real prose rather than just a model code or measurement (e.g. `AHS2: 1/4"`
+// has nothing language-specific to translate, and is correctly identical
+// across every locale).
+function containsTranslatableProse(text: string) {
+  return /[a-z]{3,}/.test(text);
+}
+
+// Product bullets that are correctly identical to English in a given
+// language because the unit/word is a genuine cognate there (every other
+// supported language does translate it — see e2e/translation-parity.spec.ts
+// for the same allowlist, kept in sync with a comment explaining why).
+// Format: "LANG:slug[bulletIndex]".
+const untranslatedBulletAllowlist = new Set<string>([
+  "FR:led-penlight[0]", // "300 lumens" — "lumens" is the same word in French.
+  "FR:led-headlight[0]", // "350 lumens" — "lumens" is the same word in French.
+]);
+
 export function localizeProduct(product: Product, language: LanguageCode): Product {
-  const copy: ProductCopy = {
-    name: names[language]?.[product.slug],
-    category: categoryTranslations[language]?.[product.category],
-  };
+  if (language === "EN") return product;
+
+  const localizedName = names[language]?.[product.slug];
+  const localizedCategory = categoryTranslations[language]?.[product.category];
   const technicalCopy = technicalProductCopy[language]?.[product.slug];
+  const summary = technicalCopy?.summary ?? translateTechnicalText(product.summary, language);
+  const bullets =
+    technicalCopy?.bullets ??
+    product.bullets.map((bullet) => translateTechnicalText(bullet, language));
+
+  if (!localizedName) warnProductFallback(language, product.slug, "name");
+  if (!localizedCategory) warnProductFallback(language, product.slug, "category");
+  if (containsTranslatableProse(product.summary) && summary === product.summary) {
+    warnProductFallback(language, product.slug, "summary");
+  }
+  // Check every translatable bullet independently, not just whether every
+  // bullet stayed English — a product where only one of several bullets
+  // fails to translate is still a real English-leak regression.
+  product.bullets.forEach((bullet, index) => {
+    if (untranslatedBulletAllowlist.has(`${language}:${product.slug}[${index}]`)) return;
+    if (containsTranslatableProse(bullet) && bullets[index] === bullet) {
+      warnProductFallback(language, product.slug, `bullets[${index}]`);
+    }
+  });
+
+  const copy: ProductCopy = { name: localizedName, category: localizedCategory };
 
   return {
     ...product,
-    summary: technicalCopy?.summary ?? translateTechnicalText(product.summary, language),
-    bullets:
-      technicalCopy?.bullets ??
-      product.bullets.map((bullet) => translateTechnicalText(bullet, language)),
+    summary,
+    bullets,
     specs: product.specs.map((spec) => ({
       label: translateTechnicalText(spec.label, language),
       value: translateTechnicalText(spec.value, language),

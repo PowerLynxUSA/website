@@ -3,10 +3,8 @@ import { ArrowRight, ShieldCheck, Wrench, Zap, ChevronRight } from 'lucide-react
 import { Button } from '@/components/ui/button';
 import { ModelBadge } from '@/components/model-badge';
 import { catalogVersion, products, categoryTree } from '@/data/products';
-import markUrl from '@/assets/brand/powerlynx-mark.png';
-import catalogCollageUrl from '@/assets/brand/catalog-hero-collage-clean.jpeg';
-import heroBgUrl from '@/assets/generated/hero-technician.jpg';
-import textureUrl from '@/assets/generated/texture-metal.jpg';
+import { getResponsiveMarketingImage } from '@/lib/marketing-images';
+import { getResponsiveProductImage } from '@/lib/product-images';
 import { useLanguage } from '@/i18n';
 import { localizeProducts, localizedCategoryGroupLabel } from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
@@ -17,6 +15,10 @@ export function Home() {
   const equipmentLineup = t('home.equipmentLineup').replace(/2027/g, catalogVersion);
   const equipmentLineupAccent = t('home.equipmentLineupAccent').replace(/2027/g, catalogVersion);
   const catalogLabel = `${t('detail.catalog')} ${catalogVersion}`;
+  const heroImage = getResponsiveMarketingImage('generated', 'hero-technician');
+  const catalogCollageImage = getResponsiveMarketingImage('brand', 'catalog-hero-collage-clean');
+  const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
+  const markImage = getResponsiveMarketingImage('brand', 'powerlynx-mark', '48px');
 
   useDocumentMeta({
     title: `POWERLYNX | ${t('home.tradeEngineered')}`,
@@ -31,10 +33,16 @@ export function Home() {
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-secondary/35 z-10" />
           <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/75 to-transparent z-10" />
-          <img 
-            src={heroBgUrl} 
-            alt="Confident HVAC technician on a rooftop with the American flag" 
+          <img
+            src={heroImage.src}
+            srcSet={heroImage.srcSet}
+            sizes={heroImage.sizes}
+            alt="Confident HVAC technician on a rooftop with the American flag"
             className="w-full h-full object-cover object-[18%_center] sm:object-[center_8%]"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
+            data-testid="img-home-hero"
           />
         </div>
         
@@ -119,10 +127,15 @@ export function Home() {
             <div className="relative group">
               <div className="absolute inset-0 bg-primary/5 translate-x-4 translate-y-4 transition-transform group-hover:translate-x-2 group-hover:translate-y-2" />
               <div className="relative z-10 overflow-hidden border border-border bg-white shadow-xl">
-                <img 
-                  src={catalogCollageUrl} 
-                  alt={`POWERLYNX ${catalogLabel} featured tools collage`} 
+                <img
+                  src={catalogCollageImage.src}
+                  srcSet={catalogCollageImage.srcSet}
+                  sizes={catalogCollageImage.sizes}
+                  alt={`POWERLYNX ${catalogLabel} featured tools collage`}
                   className="w-full h-auto"
+                  loading="lazy"
+                  decoding="async"
+                  data-testid="img-home-collage"
                 />
                 <div className="absolute left-[14%] bottom-[5%] bg-[#dfe0df] px-2.5 py-1.5">
                   <div className="font-display text-[clamp(0.72rem,2.1vw,1.7rem)] font-bold uppercase leading-[0.95] text-[#2b2426]">
@@ -139,7 +152,15 @@ export function Home() {
       {/* FEATURED PRODUCTS */}
       <section className="py-24 relative overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={textureUrl} alt="" className="w-full h-full object-cover opacity-[0.03] grayscale" />
+          <img
+            src={textureImage.src}
+            srcSet={textureImage.srcSet}
+            sizes={textureImage.sizes}
+            alt=""
+            className="w-full h-full object-cover opacity-[0.03] grayscale"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="flex flex-col md:flex-row items-end justify-between mb-12 gap-6">
@@ -160,12 +181,24 @@ export function Home() {
                 <div className="group h-full flex flex-col bg-card border border-border hover:border-primary transition-colors duration-300">
                   <div className="aspect-square bg-white p-6 flex items-center justify-center relative overflow-hidden border-b border-border">
                     <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors" />
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
-                      data-testid={`img-featured-${product.slug}`}
-                    />
+                    {(() => {
+                      const { src, srcSet, sizes } = getResponsiveProductImage(
+                        product.image,
+                        '(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw',
+                      );
+                      return (
+                        <img
+                          src={src}
+                          srcSet={srcSet}
+                          sizes={sizes}
+                          alt={product.name}
+                          loading="lazy"
+                          decoding="async"
+                          className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
+                          data-testid={`img-featured-${product.slug}`}
+                        />
+                      );
+                    })()}
                   </div>
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">{product.category}</div>
@@ -184,7 +217,7 @@ export function Home() {
       {/* CTA */}
       <section className="bg-secondary text-secondary-foreground py-24 text-center">
         <div className="container mx-auto px-4">
-          <img src={markUrl} alt="" className="w-12 h-12 mx-auto mb-8 opacity-50 brightness-0 invert" style={{ filter: 'brightness(0) invert(1)' }} />
+          <img src={markImage.src} srcSet={markImage.srcSet} sizes={markImage.sizes} alt="" className="w-12 h-12 mx-auto mb-8 opacity-50 brightness-0 invert" style={{ filter: 'brightness(0) invert(1)' }} loading="lazy" decoding="async" />
            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6 text-white">{t('home.readyToStock')}</h2>
            <p className="max-w-2xl mx-auto text-lg text-secondary-foreground/70 mb-10">{t('home.partnerDescription')}</p>
           <Button size="lg" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest">

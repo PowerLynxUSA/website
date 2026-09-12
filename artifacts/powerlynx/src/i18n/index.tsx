@@ -57,7 +57,18 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
       language,
       languageInfo,
       setLanguage,
-      t: (key) => translations[language][key] ?? translations.EN[key] ?? key,
+      t: (key) => {
+        const localized = translations[language][key];
+
+        if (localized === undefined && language !== "EN") {
+          // Surfaced so automated checks (see e2e/language-fallback-render.spec.ts)
+          // can catch missing translations that would silently show English text.
+          // eslint-disable-next-line no-console
+          console.warn(`[i18n-fallback] language=${language} key=${key}`);
+        }
+
+        return localized ?? translations.EN[key] ?? key;
+      },
     };
   }, [language]);
 

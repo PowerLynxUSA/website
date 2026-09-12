@@ -1,16 +1,17 @@
 import { Link } from 'wouter';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import logoUrl from '@/assets/brand/powerlynx-logo.png';
+import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { useLanguage } from '@/i18n';
 
 export function Footer() {
   const { t } = useLanguage();
+  const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo', '192px');
   return (
     <footer className="bg-secondary text-secondary-foreground pt-16 pb-8 border-t-4 border-primary">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-1">
-            <img src={logoUrl} alt="POWERLYNX" className="h-12 object-contain mb-6 invert brightness-0" style={{ filter: 'brightness(0) invert(1)' }} />
+            <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX" className="h-12 object-contain mb-6 invert brightness-0" style={{ filter: 'brightness(0) invert(1)' }} loading="lazy" decoding="async" />
             <p className="text-secondary-foreground/70 text-sm mb-6 max-w-sm">
               {t('home.heroDescription1')}
             </p>

@@ -6,7 +6,8 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
-import textureUrl from '@/assets/generated/texture-metal.jpg';
+import { getResponsiveMarketingImage } from '@/lib/marketing-images';
+import { getResponsiveProductImage } from '@/lib/product-images';
 import { useLanguage } from '@/i18n';
 import {
   localizeProduct,
@@ -27,6 +28,7 @@ export function ProductsIndex() {
   });
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false);
   const { t, language } = useLanguage();
+  const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
 
   // Deep-link support: /products?group=... and/or /products?category=...
   // let the header's category menu land directly on a pre-filtered view.
@@ -65,7 +67,7 @@ export function ProductsIndex() {
       {/* HEADER */}
       <div className="bg-secondary text-secondary-foreground relative py-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={textureUrl} alt="" className="w-full h-full object-cover opacity-10" />
+          <img src={textureImage.src} srcSet={textureImage.srcSet} sizes={textureImage.sizes} alt="" className="w-full h-full object-cover opacity-10" loading="lazy" decoding="async" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <h1 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tight text-white mb-4">
@@ -249,12 +251,24 @@ export function ProductsIndex() {
                 <Link key={product.slug} href={`/products/${product.slug}`} data-testid={`link-product-${product.slug}`}>
                   <div className="group flex flex-col h-full bg-card border border-border hover:border-primary transition-all duration-300 hover:shadow-lg">
                     <div className="aspect-[4/3] bg-white flex items-center justify-center relative overflow-hidden border-b border-border">
-                      <img
-                        src={product.image}
-                        alt={localized.name}
-                        className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
-                        data-testid={`img-product-${product.slug}`}
-                      />
+                      {(() => {
+                        const { src, srcSet, sizes } = getResponsiveProductImage(
+                          product.image,
+                          '(min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw',
+                        );
+                        return (
+                          <img
+                            src={src}
+                            srcSet={srcSet}
+                            sizes={sizes}
+                            alt={localized.name}
+                            loading="lazy"
+                            decoding="async"
+                            className="w-full h-full object-contain p-6 group-hover:scale-105 transition-transform duration-500"
+                            data-testid={`img-product-${product.slug}`}
+                          />
+                        );
+                      })()}
                       <div className="absolute top-3 left-3 flex flex-col items-start gap-1.5">
                         <Badge variant={product.categoryGroup === 'HVAC Tools and Instruments' ? 'default' : 'secondary'} className="rounded-none uppercase tracking-widest text-[10px]">
                            {localizedCategoryGroupLabel(product.categoryGroup, language)}

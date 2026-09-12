@@ -1,31 +1,36 @@
 // POWERLYNX product catalog data, sourced from the current POWERLYNX catalog (Powerlink Inc.)
 // Two lines: HVAC Tool and HVAC Supply.
+//
+// Product `image`/`gallery` values are basenames (matching
+// src/assets/products/<name>.png) resolved to optimized, responsive WebP
+// variants by `getResponsiveProductImage` in `@/lib/product-images`. See
+// scripts/optimize-product-images.mjs for how those variants are generated.
 
-import imgBlackRubberInsulatedLineSet from "@/assets/products/black-rubber-insulated-line-set.png";
-import imgBrazingTorch from "@/assets/products/brazing-torch.png";
-import imgCondenserFanMotorSingleSpeed from "@/assets/products/condenser-fan-motor-single-speed.png";
-import imgDeburringTool from "@/assets/products/deburring-tool.png";
-import imgDualBladeFoldingKnife from "@/assets/products/dual-blade-folding-knife.png";
-import imgFlaringTool from "@/assets/products/flaring-tool.png";
-import imgFoldingKnife from "@/assets/products/folding-knife.png";
-import imgLedHeadlight from "@/assets/products/led-headlight.png";
-import imgLedPenlight from "@/assets/products/led-penlight.png";
-import imgManifoldGauge2valve from "@/assets/products/manifold-gauge-2valve.png";
-import imgManifoldGauge4valve from "@/assets/products/manifold-gauge-4valve.png";
-import imgRatchetingWrench from "@/assets/products/ratcheting-wrench.png";
-import imgRatchetingWrenchAlt from "@/assets/products/ratcheting-wrench-alt.png";
-import imgReamer from "@/assets/products/reamer.png";
-import imgRefrigerantHoseSetStandard from "@/assets/products/refrigerant-hose-set-standard.png";
-import imgRefrigerantHoseSetValve from "@/assets/products/refrigerant-hose-set-valve.png";
-import imgThermalImagingCamera from "@/assets/products/thermal-imaging-camera.png";
-import imgThermalImagingCameraAccessories from "@/assets/products/thermal-imaging-camera-accessories.png";
-import imgTubeCutter from "@/assets/products/tube-cutter.png";
-import imgTubeCutterMini from "@/assets/products/tube-cutter-mini.png";
-import imgTubeExpander from "@/assets/products/tube-expander.png";
-import imgTubeExpanderAccessories from "@/assets/products/tube-expander-accessories.png";
-import imgTubeStraightener from "@/assets/products/tube-straightener.png";
-import imgUtilityTorch from "@/assets/products/utility-torch.png";
-import imgWhiteInsulatedLineSet from "@/assets/products/white-insulated-line-set.png";
+const imgBlackRubberInsulatedLineSet = "black-rubber-insulated-line-set";
+const imgBrazingTorch = "brazing-torch";
+const imgCondenserFanMotorSingleSpeed = "condenser-fan-motor-single-speed";
+const imgDeburringTool = "deburring-tool";
+const imgDualBladeFoldingKnife = "dual-blade-folding-knife";
+const imgFlaringTool = "flaring-tool";
+const imgFoldingKnife = "folding-knife";
+const imgLedHeadlight = "led-headlight";
+const imgLedPenlight = "led-penlight";
+const imgManifoldGauge2valve = "manifold-gauge-2valve";
+const imgManifoldGauge4valve = "manifold-gauge-4valve";
+const imgRatchetingWrench = "ratcheting-wrench";
+const imgRatchetingWrenchAlt = "ratcheting-wrench-alt";
+const imgReamer = "reamer";
+const imgRefrigerantHoseSetStandard = "refrigerant-hose-set-standard";
+const imgRefrigerantHoseSetValve = "refrigerant-hose-set-valve";
+const imgThermalImagingCamera = "thermal-imaging-camera";
+const imgThermalImagingCameraAccessories = "thermal-imaging-camera-accessories";
+const imgTubeCutter = "tube-cutter";
+const imgTubeCutterMini = "tube-cutter-mini";
+const imgTubeExpander = "tube-expander";
+const imgTubeExpanderAccessories = "tube-expander-accessories";
+const imgTubeStraightener = "tube-straightener";
+const imgUtilityTorch = "utility-torch";
+const imgWhiteInsulatedLineSet = "white-insulated-line-set";
 
 export type ProductSpec = { label: string; value: string };
 

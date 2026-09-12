@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react';
 import { useLanguage } from '@/i18n';
 import { localizeProduct, localizedCategoryGroupLabel, localizedA2LBadgeLabel } from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
+import { getResponsiveProductImage } from '@/lib/product-images';
 
 const PRODUCT_SCHEMA_ID = 'product-structured-data';
 
@@ -23,7 +24,7 @@ function useProductStructuredData(product: { name: string; slug: string; categor
       name: product.name,
       description: product.summary,
       category: product.category,
-      image: product.image.startsWith('http') ? product.image : `https://powerlinkus.com${product.image}`,
+      image: `https://powerlinkus.com${getResponsiveProductImage(product.image).src}`,
       brand: { '@type': 'Brand', name: 'POWERLYNX' },
       manufacturer: { '@type': 'Organization', name: 'Powerlink Inc.' },
       url: `https://powerlinkus.com/products/${product.slug}`,
@@ -92,26 +93,47 @@ export function ProductDetail() {
           {/* PRODUCT VISUAL / MOCK */}
           <div className="space-y-6">
             <div className="aspect-[4/3] bg-white border border-border flex items-center justify-center p-8 relative overflow-hidden">
-              <img
-                src={images[activeImage]}
-                 alt={localizedProduct.name}
-                className="w-full h-full object-contain"
-                data-testid="img-product-detail"
-              />
+              {(() => {
+                const { src, srcSet, sizes } = getResponsiveProductImage(images[activeImage], '(min-width: 1024px) 50vw, 100vw');
+                return (
+                  <img
+                    src={src}
+                    srcSet={srcSet}
+                    sizes={sizes}
+                    alt={localizedProduct.name}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    className="w-full h-full object-contain"
+                    data-testid="img-product-detail"
+                  />
+                );
+              })()}
             </div>
 
             {images.length > 1 && (
               <div className="flex gap-3">
-                {images.map((img, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActiveImage(i)}
-                    className={`w-20 h-20 bg-white border-2 flex items-center justify-center p-2 transition-colors ${activeImage === i ? 'border-primary' : 'border-border hover:border-primary/50'}`}
-                    data-testid={`button-thumbnail-${i}`}
-                  >
-                    <img src={img} alt={`${localizedProduct.name} ${i + 1}`} className="w-full h-full object-contain" />
-                  </button>
-                ))}
+                {images.map((img, i) => {
+                  const thumb = getResponsiveProductImage(img, '80px');
+                  return (
+                    <button
+                      key={i}
+                      onClick={() => setActiveImage(i)}
+                      className={`w-20 h-20 bg-white border-2 flex items-center justify-center p-2 transition-colors ${activeImage === i ? 'border-primary' : 'border-border hover:border-primary/50'}`}
+                      data-testid={`button-thumbnail-${i}`}
+                    >
+                      <img
+                        src={thumb.src}
+                        srcSet={thumb.srcSet}
+                        sizes={thumb.sizes}
+                        alt={`${localizedProduct.name} ${i + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className="w-full h-full object-contain"
+                      />
+                    </button>
+                  );
+                })}
               </div>
             )}
 

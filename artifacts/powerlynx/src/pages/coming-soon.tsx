@@ -1,15 +1,16 @@
 import { Link } from 'wouter';
 import { ArrowRight, Mail, MapPin, Phone } from 'lucide-react';
-import logoUrl from '@/assets/brand/powerlynx-logo.png';
-import heroBgUrl from '@/assets/generated/hero-technician.jpg';
-import textureUrl from '@/assets/generated/texture-metal.jpg';
 import rocketUrl from '@/assets/coming-soon-rocket.png';
+import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { useLanguage } from '@/i18n';
 
 export function ComingSoon() {
   const { t } = useLanguage();
   const description = t('coming.description');
   const [descriptionBeforeBrand, descriptionAfterBrand] = description.split('POWERLYNX');
+  const heroImage = getResponsiveMarketingImage('generated', 'hero-technician');
+  const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
+  const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo', '160px');
 
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-[#10161b] text-[#f6f3ed]">
@@ -20,7 +21,7 @@ export function ComingSoon() {
         <header className="flex items-center border-b border-white/10 pb-5">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-[116px] items-center justify-center bg-[#f6f3ed] px-2 py-1.5 sm:h-14 sm:w-[138px]">
-              <img src={logoUrl} alt="POWERLYNX — Power Delivered." className="h-full w-full object-contain" />
+              <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX — Power Delivered." className="h-full w-full object-contain" decoding="async" />
             </div>
             <div className="hidden border-l border-white/15 pl-4 sm:block">
               <p className="font-mono text-base font-extrabold uppercase tracking-[0.18em] text-[#f14d2f]">Powerlink Inc.</p>
@@ -85,8 +86,8 @@ export function ComingSoon() {
 
           <section className="relative min-h-[400px] lg:min-h-[590px]">
             <div className="relative h-full min-h-[400px] overflow-hidden border border-white/15 bg-[#202a31] shadow-2xl shadow-black/25 lg:min-h-[590px]">
-                <img src={heroBgUrl} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" />
-                <img src={textureUrl} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" />
+                <img src={heroImage.src} srcSet={heroImage.srcSet} sizes={heroImage.sizes} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" loading="eager" fetchPriority="high" decoding="async" />
+                <img src={textureImage.src} srcSet={textureImage.srcSet} sizes={textureImage.sizes} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" loading="eager" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
                 <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
 

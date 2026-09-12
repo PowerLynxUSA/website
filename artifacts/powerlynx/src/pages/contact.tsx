@@ -9,20 +9,15 @@ import { Textarea } from '@/components/ui/textarea';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage, FormDescription } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import textureUrl from '@/assets/generated/texture-metal.jpg';
+import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { useLanguage } from '@/i18n';
 import type { TranslationKey } from '@/i18n/translations';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
-
-type ContactFormValues = {
-  name: string;
-  company: string;
-  country: string;
-  email: string;
-  phone: string;
-  inquiryType: string;
-  message: string;
-};
+import {
+  contactRecipients,
+  createMailtoLink,
+  type ContactFormValues,
+} from '@/lib/contact-mailto';
 
 function createContactSchema(t: (key: TranslationKey) => string) {
   return z.object({
@@ -36,31 +31,11 @@ function createContactSchema(t: (key: TranslationKey) => string) {
   });
 }
 
-const contactRecipients = ['info@powerlinkus.com', 'orders@powerlinkus.com'];
-
-function createMailtoLink(data: ContactFormValues, t: (key: TranslationKey) => string) {
-  const subject = `[POWERLYNX] ${data.inquiryType} — ${data.name}`;
-  const body = [
-    `POWERLYNX — ${t('contact.sendInquiry')}`,
-    '',
-    `${t('contact.fullName')}: ${data.name}`,
-    `${t('contact.company')}: ${data.company}`,
-    `${t('contact.country')}: ${data.country}`,
-    `${t('contact.email')}: ${data.email}`,
-    `${t('contact.phone')}: ${data.phone}`,
-    `${t('contact.inquiryType')}: ${data.inquiryType}`,
-    '',
-    `${t('contact.message')}:`,
-    data.message,
-  ].join('\n');
-
-  return `mailto:${contactRecipients.join(',')}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-}
-
 export function Contact() {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
 
   useDocumentMeta({
     title: `POWERLYNX | ${t('contact.title')}`,
@@ -96,7 +71,7 @@ export function Contact() {
       {/* HEADER */}
       <div className="bg-secondary text-secondary-foreground relative py-20 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          <img src={textureUrl} alt="" className="w-full h-full object-cover opacity-10" />
+          <img src={textureImage.src} srcSet={textureImage.srcSet} sizes={textureImage.sizes} alt="" className="w-full h-full object-cover opacity-10" loading="eager" decoding="async" />
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <h1 className="font-display text-4xl md:text-6xl font-bold uppercase tracking-tight text-white mb-4">
@@ -185,7 +160,7 @@ export function Contact() {
                <p className="text-foreground/80 font-semibold mb-8">{t('contact.sendInquiryDescription')}</p>
 
               {isSubmitted ? (
-                <div className="py-16 text-center animate-in fade-in zoom-in duration-500">
+                <div className="py-16 text-center animate-in fade-in zoom-in duration-500" role="status" aria-live="polite">
                   <div className="w-20 h-20 bg-primary/10 text-primary rounded-full flex items-center justify-center mx-auto mb-6">
                     <CheckCircle2 className="w-10 h-10" />
                   </div>
