@@ -42,4 +42,6 @@ test('products mega menu uses the showroom panel styling', async ({ page }) => {
   const menu = page.getByTestId('menu-products-dropdown');
   await expect(menu).toBeVisible();
   await expect(menu.locator('> div').first()).toHaveClass(/bg-\[#101417\]/);
+  await expect(menu.getByText('Tubing Tools', { exact: true })).toHaveClass(/border-primary/);
+  await expect(menu.getByText('Utility & Hand Tools', { exact: true })).toHaveClass(/border-primary/);
 });

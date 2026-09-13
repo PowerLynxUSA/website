@@ -181,7 +181,7 @@ export function Header() {
                             </li>
                           ) : (
                             <li key={item.section} className="col-span-2">
-                              <div className="mt-3 mb-1.5 text-xs font-extrabold uppercase tracking-wider text-white/70 first:mt-0">
+                                <div className="mt-3 mb-2 inline-flex w-fit items-center rounded-sm border border-primary/90 bg-primary/10 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-primary shadow-[inset_0_0_0_1px_rgba(255,255,255,0.04)] first:mt-0">
                                 {item.section}
                               </div>
                                <ul className="grid grid-cols-2 gap-x-4 gap-y-2 border-l border-white/15 pl-2">
@@ -327,7 +327,7 @@ export function Header() {
                             </li>
                           ) : (
                             <li key={item.section}>
-                              <div className="text-[11px] font-bold uppercase tracking-wider text-foreground/60 mt-2 mb-1.5 first:mt-0">
+                              <div className="mt-2 mb-2 inline-flex w-fit items-center rounded-sm border border-primary/80 bg-primary/10 px-2 py-1 text-[10px] font-extrabold uppercase tracking-[0.12em] text-primary first:mt-0">
                                 {item.section}
                               </div>
                               <ul className="space-y-2 pl-2">
