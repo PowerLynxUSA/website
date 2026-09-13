@@ -25,7 +25,7 @@ const showroomLabels = {
 
 export function Home() {
   const { t, language } = useLanguage();
-  const [darkShowroom, setDarkShowroom] = useState(false);
+  const [darkShowroom, setDarkShowroom] = useState(true);
   const featuredProducts = localizeProducts(products.slice(0, 4), language);
   const equipmentLineup = t('home.equipmentLineup').replace(/2027/g, catalogVersion);
   const equipmentLineupAccent = t('home.equipmentLineupAccent').replace(/2027/g, catalogVersion);
@@ -33,7 +33,7 @@ export function Home() {
   const heroImage = getResponsiveMarketingImage('generated', 'hero-technician');
   const catalogCollageImage = getResponsiveMarketingImage('brand', 'catalog-hero-collage-clean');
   const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
-  const markImage = getResponsiveMarketingImage('brand', 'powerlynx-mark', '48px');
+  const markImage = getResponsiveMarketingImage('brand', 'powerlynx-mark-dark', '48px');
 
   useDocumentMeta({
     title: `POWERLYNX | ${t('home.tradeEngineered')}`,

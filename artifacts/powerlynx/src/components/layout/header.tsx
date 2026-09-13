@@ -9,16 +9,26 @@ import { useLanguage } from '@/i18n';
 import { categoryTree, products } from '@/data/products';
 import { localizedCategoryGroupLabel, localizedCategoryLabel } from '@/i18n/products';
 import { getResponsiveProductImage } from '@/lib/product-images';
+import { useTheme } from '@/components/theme-provider';
 
 export function Header() {
   const [location] = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openMobileGroup, setOpenMobileGroup] = useState<string | null>(null);
   const { t, language } = useLanguage();
+  const { resolvedTheme } = useTheme();
   const [isProductsMenuOpen, setIsProductsMenuOpen] = useState(false);
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
-  const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo', '160px');
-  const markImage = getResponsiveMarketingImage('brand', 'powerlynx-mark', '160px');
+  const logoImage = getResponsiveMarketingImage(
+    'brand',
+    resolvedTheme === 'dark' ? 'powerlynx-logo-dark' : 'powerlynx-logo',
+    '160px',
+  );
+  const markImage = getResponsiveMarketingImage(
+    'brand',
+    resolvedTheme === 'dark' ? 'powerlynx-mark-dark' : 'powerlynx-mark',
+    '160px',
+  );
 
   const categoryImage = (category: string) => {
     const product = products.find((item) => item.category === category);
