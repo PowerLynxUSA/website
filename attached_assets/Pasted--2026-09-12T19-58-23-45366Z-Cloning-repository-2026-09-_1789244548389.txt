@@ -1,0 +1,72 @@
+
+—
+2026-09-12T19:58:23.45366Z	Cloning repository...
+2026-09-12T19:58:27.998171Z	From https://github.com/PowerLynxUSA/website
+2026-09-12T19:58:27.99916Z	 * branch            fc06e03967d3d7b02773fbd53975421ef86e8c5b -> FETCH_HEAD
+2026-09-12T19:58:27.999245Z	
+2026-09-12T19:58:38.422544Z	HEAD is now at fc06e03 Refine mega menu and compact About page layout
+2026-09-12T19:58:38.423067Z	
+2026-09-12T19:58:38.479887Z	
+2026-09-12T19:58:38.480366Z	Using v2 root directory strategy
+2026-09-12T19:58:38.497899Z	Success: Finished cloning repository files
+2026-09-12T19:58:40.031626Z	Checking for configuration in a Wrangler configuration file (BETA)
+2026-09-12T19:58:40.032082Z	
+2026-09-12T19:58:40.196818Z	No Wrangler configuration file found. Continuing.
+2026-09-12T19:58:40.745824Z	Detected the following tools from environment: pnpm@10.11.1, nodejs@22.16.0
+2026-09-12T19:58:42.635995Z	Installing project dependencies: pnpm install
+2026-09-12T19:58:43.224241Z	Scope: all 9 workspace projects
+2026-09-12T19:58:43.31543Z	Lockfile is up to date, resolution step is skipped
+2026-09-12T19:58:43.352243Z	Progress: resolved 1, reused 0, downloaded 0, added 0
+2026-09-12T19:58:43.428693Z	Packages: +476
+2026-09-12T19:58:43.431118Z	++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+2026-09-12T19:58:44.356313Z	Progress: resolved 476, reused 0, downloaded 120, added 73
+2026-09-12T19:58:45.356869Z	Progress: resolved 476, reused 0, downloaded 298, added 216
+2026-09-12T19:58:46.358473Z	Progress: resolved 476, reused 0, downloaded 323, added 224
+2026-09-12T19:58:47.359661Z	Progress: resolved 476, reused 0, downloaded 455, added 300
+2026-09-12T19:58:47.91349Z	Progress: resolved 476, reused 0, downloaded 476, added 476, done
+2026-09-12T19:58:48.176376Z	.../esbuild@0.27.3/node_modules/esbuild postinstall$ node install.js
+2026-09-12T19:58:48.579433Z	.../esbuild@0.27.3/node_modules/esbuild postinstall: Done
+2026-09-12T19:58:49.033755Z	
+2026-09-12T19:58:49.034348Z	dependencies:
+2026-09-12T19:58:49.0345Z	+ @replit/connectors-sdk 0.4.1
+2026-09-12T19:58:49.034648Z	
+2026-09-12T19:58:49.034745Z	devDependencies:
+2026-09-12T19:58:49.03483Z	+ @playwright/test 1.63.0
+2026-09-12T19:58:49.034968Z	+ prettier 3.9.6
+2026-09-12T19:58:49.035223Z	+ typescript 5.9.3
+2026-09-12T19:58:49.035391Z	
+2026-09-12T19:58:49.110765Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-09-12T19:58:49.131165Z	. preinstall: Done
+2026-09-12T19:58:49.31484Z	Done in 6.4s using pnpm v10.11.1
+2026-09-12T19:58:49.365083Z	Executing user command: corepack enable && pnpm install --frozen-lockfile && pnpm --filter @workspace/powerlynx run build
+2026-09-12T19:58:50.228353Z	Scope: all 9 workspace projects
+2026-09-12T19:58:50.344445Z	Lockfile is up to date, resolution step is skipped
+2026-09-12T19:58:50.411511Z	Already up to date
+2026-09-12T19:58:51.581034Z	
+2026-09-12T19:58:51.626869Z	. preinstall$ sh -c 'rm -f package-lock.json yarn.lock; case "$npm_config_user_agent" in pnpm/*) ;; *) echo "Use pnpm instead" >&2; exit 1 ;; esac'
+2026-09-12T19:58:51.641068Z	. preinstall: Done
+2026-09-12T19:58:51.764122Z	Done in 1.9s using pnpm v10.11.1
+2026-09-12T19:58:52.391856Z	
+2026-09-12T19:58:52.392334Z	> @workspace/powerlynx@0.0.0 build /opt/buildhome/repo/artifacts/powerlynx
+2026-09-12T19:58:52.392421Z	> vite build --config vite.config.ts
+2026-09-12T19:58:52.392486Z	
+2026-09-12T19:58:53.259797Z	[36mvite v7.3.6 [32mbuilding client environment for production...[36m[39m
+2026-09-12T19:58:53.364491Z	transforming...
+2026-09-12T19:58:53.929531Z	[33msrc/components/ui/tooltip.tsx (2:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.[39m
+2026-09-12T19:58:54.486351Z	[33msrc/components/ui/select.tsx (2:0): Error when using sourcemap for reporting an error: Can't resolve original location of error.[39m
+2026-09-12T19:58:55.525029Z	[32m✓[39m 1096 modules transformed.
+2026-09-12T19:58:55.529807Z	[31m✗[39m Build failed in 2.22s
+2026-09-12T19:58:55.529954Z	[31merror during build:
+2026-09-12T19:58:55.530462Z	[31m[vite:load-fallback] Could not load /opt/buildhome/repo/artifacts/powerlynx/src/lib/marketing-images (imported by src/pages/about.tsx): ENOENT: no such file or directory, open '/opt/buildhome/repo/artifacts/powerlynx/src/lib/marketing-images'[31m
+2026-09-12T19:58:55.530587Z	    at async open (node:internal/fs/promises:633:25)
+2026-09-12T19:58:55.530694Z	    at async Object.readFile (node:internal/fs/promises:1237:14)
+2026-09-12T19:58:55.530767Z	    at async Object.handler (file:///opt/buildhome/repo/node_modules/.pnpm/vite@7.3.6_@types+node@25.9.5_jiti@2.7.0_lightningcss@1.32.0_tsx@4.23.1_yaml@2.9.0/node_modules/vite/dist/node/chunks/config.js:33249:21)
+2026-09-12T19:58:55.530817Z	    at async PluginDriver.hookFirstAndGetPlugin (file:///opt/buildhome/repo/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/node-entry.js:22671:28)
+2026-09-12T19:58:55.531044Z	    at async file:///opt/buildhome/repo/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/node-entry.js:21657:33
+2026-09-12T19:58:55.531344Z	    at async Queue.work (file:///opt/buildhome/repo/node_modules/.pnpm/rollup@4.62.3/node_modules/rollup/dist/es/shared/node-entry.js:22899:32)[39m
+2026-09-12T19:58:55.64916Z	/opt/buildhome/repo/artifacts/powerlynx:
+2026-09-12T19:58:55.649504Z	 ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @workspace/powerlynx@0.0.0 build: `vite build --config vite.config.ts`
+2026-09-12T19:58:55.64958Z	Exit status 1
+2026-09-12T19:58:55.686997Z	Failed: Error while executing user command. Exited with error code: 1
+2026-09-12T19:58:55.695001Z	Failed: build command exited with code: 1
+2026-09-12T19:58:56.268518Z	Failed: error occurred while running build command

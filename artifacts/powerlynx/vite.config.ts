@@ -68,6 +68,56 @@ export default defineConfig({
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist/public'),
     emptyOutDir: true,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          const normalizedId = id.replaceAll('\\', '/');
+
+          if (!normalizedId.includes('/node_modules/')) {
+            return undefined;
+          }
+
+          const hasPackage = (...packages: string[]) =>
+            packages.some((packageName) =>
+              normalizedId.includes(`/node_modules/${packageName}/`),
+            );
+
+          if (hasPackage('react', 'react-dom', 'scheduler')) {
+            return 'react-vendor';
+          }
+
+          if (hasPackage('@radix-ui', 'cmdk')) {
+            return 'radix-ui';
+          }
+
+          if (hasPackage('@tanstack')) {
+            return 'tanstack-query';
+          }
+
+          if (hasPackage('lucide-react')) {
+            return 'icons';
+          }
+
+          if (hasPackage(
+            '@hookform',
+            'react-hook-form',
+            'zod',
+          )) {
+            return 'forms';
+          }
+
+          if (hasPackage('framer-motion')) {
+            return 'motion';
+          }
+
+          if (hasPackage('recharts', 'd3')) {
+            return 'charts';
+          }
+
+          return 'vendor';
+        },
+      },
+    },
   },
   server: {
     port,

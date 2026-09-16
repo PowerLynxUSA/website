@@ -5,6 +5,8 @@ const replitChromiumPath = '/repl/tools/bin/chromium';
 const chromiumPath =
   process.env.PLAYWRIGHT_EXECUTABLE_PATH ??
   (existsSync(replitChromiumPath) ? replitChromiumPath : undefined);
+const testPort = process.env.PLAYWRIGHT_TEST_PORT ?? '4173';
+const testBaseURL = `http://127.0.0.1:${testPort}`;
 
 export default defineConfig({
   testDir: './artifacts/powerlynx/e2e',
@@ -13,7 +15,7 @@ export default defineConfig({
   retries: process.env.CI ? 2 : 0,
   reporter: 'list',
   use: {
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: testBaseURL,
     launchOptions: {
       executablePath: process.env.PLAYWRIGHT_EXECUTABLE_PATH ?? '/repl/tools/bin/chromium',
     },
@@ -21,17 +23,17 @@ export default defineConfig({
   },
   webServer: {
     command: 'pnpm --filter @workspace/powerlynx run dev',
-    url: 'http://127.0.0.1:4173',
+    url: testBaseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
     env: {
       BASE_PATH: '/',
-      PORT: '4173',
+      PORT: testPort,
     },
   },
   use: {
     ...devices['Desktop Chrome'],
-    baseURL: 'http://127.0.0.1:4173',
+    baseURL: testBaseURL,
     ...(chromiumPath ? { launchOptions: { executablePath: chromiumPath } } : {}),
     trace: 'on-first-retry',
   },

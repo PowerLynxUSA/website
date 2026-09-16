@@ -5,7 +5,7 @@ import { translations, type TranslationKey } from "./translations";
 const STORAGE_KEY = "powerlynx-language";
 
 const fontProfiles: Record<LanguageCode, { sans: string; display: string }> = {
-  EN: { sans: "'Barlow', sans-serif", display: "'Oswald', sans-serif" },
+  EN: { sans: "'Montserrat', sans-serif", display: "'Montserrat', sans-serif" },
   ES: { sans: "'Inter', sans-serif", display: "'Inter', sans-serif" },
   ZH: { sans: "'Inter', 'Noto Sans SC', sans-serif", display: "'Inter', 'Noto Sans SC', sans-serif" },
   "ZH-TW": { sans: "'Inter', 'Noto Sans TC', sans-serif", display: "'Inter', 'Noto Sans TC', sans-serif" },

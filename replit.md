@@ -35,10 +35,10 @@ Corporate/catalog website for POWERLYNX (Powerlink Inc.), a professional HVAC/R 
 
 - Source spec (in Korean) described a two-phase rollout: an "Under Construction" placeholder first, then the full site, aimed at a GitHub + Cloudflare Pages deploy pipeline with a later hand-off to Cursor for final integrations (email sending, etc.). Since this is being built directly as a Replit project/artifact rather than that external pipeline, the full site was built directly instead of a placeholder page.
 - Brand color cues: dark charcoal + red-orange accent (~#E8552A family), taken from the real catalog PDF logo.
+- After edits, synchronize all required tracked source and asset files to the GitHub deployment branch before starting the Cloudflare Pages build. Do not push only the files changed in the current turn; compare the remote tree with the local project so previously merged assets and shared modules are included.
 
 ## Gotchas
-
-- None yet.
+- Cloudflare Pages builds the GitHub tree, not the Replit workspace. A local build can pass while Pages fails if optimized assets or shared modules are present locally but missing from GitHub.
 
 ## Pointers
 

@@ -11,8 +11,8 @@ const STORAGE_KEY = 'powerlynx-theme';
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 function getInitialTheme(): Theme {
-  if (typeof window === 'undefined') return 'light';
-  return window.localStorage.getItem(STORAGE_KEY) === 'dark' ? 'dark' : 'light';
+  if (typeof window === 'undefined') return 'dark';
+  return window.localStorage.getItem(STORAGE_KEY) === 'light' ? 'light' : 'dark';
 }
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
