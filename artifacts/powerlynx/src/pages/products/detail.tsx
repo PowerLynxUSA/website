@@ -2,6 +2,7 @@ import { useRoute, Link } from 'wouter';
 import { products } from '@/data/products';
 import { ArrowLeft, Check, ChevronRight } from 'lucide-react';
 import a2lCompatibleIcon from '@/assets/a2l-compatible-icon.png';
+import a2lCompatibleFullLogo from '@/assets/a2l-compatible-full-logo.png';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
@@ -112,9 +113,9 @@ export function ProductDetail() {
               })()}
               {product.a2lCompatible && (
                 <img
-                  src={a2lCompatibleIcon}
+                  src={a2lCompatibleFullLogo}
                   alt="A2L Compatible"
-                  className="absolute top-3 left-3 w-9 h-9"
+                  className="absolute top-3 left-3 w-28 opacity-70"
                   data-testid="img-a2l-watermark"
                 />
               )}
