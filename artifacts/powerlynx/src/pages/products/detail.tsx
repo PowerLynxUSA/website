@@ -1,6 +1,6 @@
 import { useRoute, Link } from 'wouter';
 import { products } from '@/data/products';
-import { ArrowLeft, Check, ChevronRight, Share2, Printer } from 'lucide-react';
+import { ArrowLeft, Check, ChevronRight } from 'lucide-react';
 import a2lCompatibleIcon from '@/assets/a2l-compatible-icon.png';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -110,6 +110,14 @@ export function ProductDetail() {
                   />
                 );
               })()}
+              {product.a2lCompatible && (
+                <img
+                  src={a2lCompatibleIcon}
+                  alt="A2L Compatible"
+                  className="absolute top-3 left-3 w-9 h-9"
+                  data-testid="img-a2l-watermark"
+                />
+              )}
             </div>
 
             {images.length > 1 && (
@@ -139,16 +147,6 @@ export function ProductDetail() {
             )}
 
             <ModelBadge models={product.models} size="lg" />
-            
-            {/* ACTIONS */}
-            <div className="flex flex-col sm:flex-row gap-4">
-              <Button variant="outline" className="flex-1 rounded-none uppercase font-bold tracking-widest gap-2">
-                 <Printer className="w-4 h-4" /> {t('detail.printSpec')}
-              </Button>
-              <Button variant="outline" className="flex-1 rounded-none uppercase font-bold tracking-widest gap-2">
-                 <Share2 className="w-4 h-4" /> {t('detail.share')}
-              </Button>
-            </div>
           </div>
 
           {/* PRODUCT DETAILS */}
@@ -161,7 +159,7 @@ export function ProductDetail() {
                 {product.a2lCompatible && (
                   <Badge
                     variant="outline"
-                    className="rounded-none uppercase tracking-widest bg-white/95 text-foreground gap-1.5 border-primary/40"
+                    className="rounded-none uppercase tracking-widest bg-white/95 text-neutral-900 gap-1.5 border-primary/40"
                     data-testid="badge-a2l-compatible"
                   >
                     <img src={a2lCompatibleIcon} alt="" aria-hidden="true" className="w-4 h-4" />

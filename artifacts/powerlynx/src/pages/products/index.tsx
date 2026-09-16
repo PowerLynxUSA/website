@@ -274,7 +274,7 @@ export function ProductsIndex() {
                         {product.a2lCompatible && (
                           <Badge
                             variant="outline"
-                            className="rounded-none uppercase tracking-widest text-[10px] bg-white/95 text-foreground gap-1 border-primary/40"
+                            className="rounded-none uppercase tracking-widest text-[10px] bg-white/95 text-neutral-900 gap-1 border-primary/40"
                             data-testid={`badge-a2l-${product.slug}`}
                           >
                             <img src={a2lCompatibleIcon} alt="" aria-hidden="true" className="w-3.5 h-3.5" />
