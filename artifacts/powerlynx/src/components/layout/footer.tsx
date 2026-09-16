@@ -50,7 +50,7 @@ export function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-primary shrink-0" />
                 <a href="tel:8888187693" className="hover:text-primary transition-colors font-bold">
-                  888-818-POWER
+                  888-818-POWER <span className="font-normal text-secondary-foreground/60">(7693)</span>
                 </a>
               </li>
             </ul>

@@ -1,11 +1,12 @@
 import { products, categoryGroups, categoryTree } from '@/data/products';
 import { Link, useSearch } from 'wouter';
 import { useState, useMemo, useEffect } from 'react';
-import { Search, SlidersHorizontal, ChevronRight, ChevronDown, X, ShieldCheck, ListFilter } from 'lucide-react';
+import { Search, SlidersHorizontal, ChevronRight, ChevronDown, X, ListFilter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
+import a2lCompatibleIcon from '@/assets/a2l-compatible-icon.png';
 import { getResponsiveMarketingImage } from '@/lib/marketing-images';
 import { getResponsiveProductImage } from '@/lib/product-images';
 import { useLanguage } from '@/i18n';
@@ -270,15 +271,13 @@ export function ProductsIndex() {
                         );
                       })()}
                       <div className="absolute top-3 left-3 flex flex-col items-start gap-1.5">
-                        <Badge variant={product.categoryGroup === 'HVAC Tools and Instruments' ? 'default' : 'secondary'} className="rounded-none uppercase tracking-widest text-[10px]">
-                           {localizedCategoryGroupLabel(product.categoryGroup, language)}
-                        </Badge>
                         {product.a2lCompatible && (
                           <Badge
-                            className="rounded-none uppercase tracking-widest text-[10px] bg-emerald-600 text-white gap-1"
+                            variant="outline"
+                            className="rounded-none uppercase tracking-widest text-[10px] bg-white/95 text-foreground gap-1 border-primary/40"
                             data-testid={`badge-a2l-${product.slug}`}
                           >
-                            <ShieldCheck className="w-3 h-3" />
+                            <img src={a2lCompatibleIcon} alt="" aria-hidden="true" className="w-3.5 h-3.5" />
                             {localizedA2LBadgeLabel(language)}
                           </Badge>
                         )}
@@ -287,12 +286,11 @@ export function ProductsIndex() {
                     </div>
                     
                     <div className="p-6 flex-1 flex flex-col">
-                       <div className="text-xs font-bold text-primary mb-2 uppercase tracking-wider line-clamp-1">{localized.category}</div>
                        <h3 className="font-bold text-lg leading-tight mb-4 group-hover:text-primary transition-colors">{localized.name}</h3>
                        <p className="text-sm text-muted-foreground mb-6 line-clamp-3">{localized.summary}</p>
                       
                       <div className="mt-auto pt-4 border-t border-border/50">
-                        <ModelBadge models={product.models} size="sm" />
+                        <ModelBadge models={product.models} size="lg" variant="text" />
                       </div>
                     </div>
                   </div>

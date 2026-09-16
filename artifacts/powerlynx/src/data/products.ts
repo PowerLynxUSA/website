@@ -23,7 +23,6 @@ const imgReamer = "reamer";
 const imgRefrigerantHoseSetStandard = "refrigerant-hose-set-standard";
 const imgRefrigerantHoseSetValve = "refrigerant-hose-set-valve";
 const imgThermalImagingCamera = "thermal-imaging-camera";
-const imgThermalImagingCameraAccessories = "thermal-imaging-camera-accessories";
 const imgTubeCutter = "tube-cutter";
 const imgTubeCutterMini = "tube-cutter-mini";
 const imgTubeExpander = "tube-expander";
@@ -110,7 +109,6 @@ export const products: Product[] = [
   {
     slug: "thermal-imaging-camera",
     image: imgThermalImagingCamera,
-    gallery: [imgThermalImagingCameraAccessories],
     name: "Thermal Imaging Camera",
     models: "ATC100 / ATC200",
     line: "HVAC Tool",

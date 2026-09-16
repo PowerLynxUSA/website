@@ -1,6 +1,7 @@
 import { useRoute, Link } from 'wouter';
 import { products } from '@/data/products';
-import { ArrowLeft, Check, ChevronRight, Share2, Printer, ShieldCheck } from 'lucide-react';
+import { ArrowLeft, Check, ChevronRight, Share2, Printer } from 'lucide-react';
+import a2lCompatibleIcon from '@/assets/a2l-compatible-icon.png';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { ModelBadge } from '@/components/model-badge';
@@ -159,10 +160,11 @@ export function ProductDetail() {
                 </Badge>
                 {product.a2lCompatible && (
                   <Badge
-                    className="rounded-none uppercase tracking-widest bg-emerald-600 text-white gap-1.5"
+                    variant="outline"
+                    className="rounded-none uppercase tracking-widest bg-white/95 text-foreground gap-1.5 border-primary/40"
                     data-testid="badge-a2l-compatible"
                   >
-                    <ShieldCheck className="w-3 h-3" />
+                    <img src={a2lCompatibleIcon} alt="" aria-hidden="true" className="w-4 h-4" />
                     {localizedA2LBadgeLabel(language)}
                   </Badge>
                 )}
