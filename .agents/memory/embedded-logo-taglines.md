@@ -14,3 +14,9 @@ Theme-specific brand assets must also be rendered directly after selecting the r
 **Why:** The CTA selected the correct dark/light mark but then transformed both variants into the same white silhouette, hiding whether the requested asset had actually been applied.
 
 **How to apply:** In browser verification, assert both the resolved theme and the rendered image URL, then assert `filter: none` and full opacity for the affected logo.
+
+When the exact brand red is `#D6001C`, use precise HSL values (`352.15 100% 41.96%`) when the design-token system requires HSL; rounded `352 100% 42%` renders as `#D6001D` in Chromium.
+
+**Why:** A one-channel rounding difference is visually small but fails exact brand-color checks and leaves CSS-rendered text/buttons inconsistent with raster logo pixels.
+
+**How to apply:** Verify the browser-computed RGB value, not only the source token string, and regenerate every responsive logo variant after recoloring the source PNGs.

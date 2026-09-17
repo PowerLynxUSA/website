@@ -51,7 +51,7 @@ export function Home() {
   const equipmentLineupAccent = t('home.equipmentLineupAccent').replace(/2027/g, catalogVersion);
   const heroSloganLines = t('home.heroDescription1')
     .split('. ')
-    .map((line) => `${line.replace(/\.$/, '')}!`);
+    .map((line) => line.replace(/\.$/, ''));
   const catalogLabel = `${t('detail.catalog')} ${catalogVersion}`;
   const heroImage = getResponsiveMarketingImage('generated', 'hero-technician');
   const catalogCollageImage = getResponsiveMarketingImage('brand', 'catalog-hero-collage-clean');

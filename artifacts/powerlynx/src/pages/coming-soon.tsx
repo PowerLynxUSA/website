@@ -15,7 +15,7 @@ export function ComingSoon() {
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-[#10161b] text-[#f6f3ed]">
       <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:48px_48px]" />
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-[#F04C29]/10 blur-3xl" />
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-[#D6001C]/10 blur-3xl" />
 
       <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-[1440px] flex-col px-5 py-5 sm:px-8 lg:px-12">
         <header className="flex items-center border-b border-white/10 pb-5">
@@ -24,7 +24,7 @@ export function ComingSoon() {
               <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX" className="h-full w-full object-contain [clip-path:inset(0_0_22%_0)]" decoding="async" />
             </div>
             <div className="hidden border-l border-white/15 pl-4 sm:block">
-              <p className="font-mono text-base font-extrabold uppercase tracking-[0.18em] text-[#F04C29]">Powerlink Inc.</p>
+              <p className="font-mono text-base font-extrabold uppercase tracking-[0.18em] text-[#D6001C]">Powerlink Inc.</p>
               <p className="mt-1 text-sm font-semibold uppercase tracking-[0.14em] text-white/75">HVAC / R systems</p>
             </div>
           </div>
@@ -32,26 +32,26 @@ export function ComingSoon() {
 
         <div className="relative z-10 flex min-w-0 w-full items-center justify-center gap-1 pt-14 sm:gap-4 sm:pt-16 lg:pt-20">
           <p className="min-w-0 whitespace-nowrap text-center font-display text-[clamp(2rem,8.8vw,4.5rem)] font-bold uppercase leading-none tracking-[0.02em] sm:text-7xl sm:tracking-[0.05em]">
-            <span className="text-[#F04C29]">{t('coming.launching')}</span>
+            <span className="text-[#D6001C]">{t('coming.launching')}</span>
           </p>
           <img src={rocketUrl} alt="" className="h-12 w-12 shrink-0 object-contain sm:h-28 sm:w-28" aria-hidden="true" />
         </div>
 
         <div className="relative z-0 grid flex-1 items-center gap-10 py-7 lg:mt-4 lg:grid-cols-[minmax(0,0.86fr)_minmax(500px,1.14fr)] lg:gap-12 lg:pb-10 lg:pt-4">
           <section className="max-w-2xl">
-            <p className="mb-5 flex items-center gap-3 font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#F04C29]">
-              <span className="h-px w-8 bg-[#F04C29]" />
+            <p className="mb-5 flex items-center gap-3 font-mono text-[13px] font-bold uppercase tracking-[0.2em] text-[#D6001C]">
+              <span className="h-px w-8 bg-[#D6001C]" />
                {t('home.tradeEngineered')}
             </p>
             <h1 className="max-w-2xl font-display text-[clamp(3.8rem,9vw,9rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
                {t('coming.powerIs')}
-               <span className="mt-2 block text-[#F04C29]">{t('coming.coming')}</span>
+                <span className="mt-2 block text-[#D6001C]">{t('coming.coming')}</span>
             </h1>
             <p className="mt-8 max-w-xl text-base leading-7 text-white/62 sm:text-lg sm:leading-8">
               {descriptionAfterBrand !== undefined ? (
                 <>
                   {descriptionBeforeBrand}
-                  <strong className="font-extrabold text-[#F04C29]">POWERLYNX</strong>
+                  <strong className="font-extrabold text-[#D6001C]">POWERLYNX</strong>
                   {descriptionAfterBrand}
                 </>
               ) : (
@@ -62,14 +62,14 @@ export function ComingSoon() {
             <div className="mt-10 flex flex-col gap-4 border-t border-white/10 pt-5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-4">
               <a
                 href="mailto:info@powerlinkus.com"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#F04C29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F04C29]"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#D6001C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6001C]"
               >
                 <Mail className="h-4 w-4" aria-hidden="true" /> info@powerlinkus.com
               </a>
               <span className="hidden h-4 w-px bg-white/20 sm:block" aria-hidden="true" />
               <a
                 href="tel:8888187693"
-                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#F04C29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F04C29]"
+                className="inline-flex items-center gap-2 text-sm font-bold uppercase tracking-[0.13em] text-white/72 transition-colors hover:text-[#D6001C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6001C]"
               >
                 <Phone className="h-4 w-4" aria-hidden="true" />
                 <span>
@@ -89,13 +89,13 @@ export function ComingSoon() {
                 <img src={heroImage.src} srcSet={heroImage.srcSet} sizes={heroImage.sizes} alt="HVAC/R technician at work in the field" className="absolute inset-0 h-full w-full object-cover object-[center_25%] opacity-60" loading="eager" fetchPriority="high" decoding="async" />
                 <img src={textureImage.src} srcSet={textureImage.srcSet} sizes={textureImage.sizes} alt="" className="absolute inset-0 h-full w-full object-cover opacity-25 mix-blend-overlay" loading="eager" decoding="async" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#10161b] via-[#10161b]/10 to-[#10161b]/25" />
-                <div className="absolute inset-0 [background-image:linear-gradient(rgba(241,77,47,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(241,77,47,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
+                 <div className="absolute inset-0 [background-image:linear-gradient(rgba(214,0,28,0.15)_1px,transparent_1px),linear-gradient(90deg,rgba(214,0,28,0.15)_1px,transparent_1px)] [background-size:42px_42px] opacity-35" />
 
                 <div className="absolute bottom-6 left-5 right-5 sm:bottom-9 sm:left-8 sm:right-8">
-                  <p className="mb-2 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#F04C29]">
+                  <p className="mb-2 font-mono text-sm font-extrabold uppercase tracking-[0.2em] text-[#D6001C]">
                     POWERLYNX
                   </p>
-                   <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#F04C29]">{t('home.ourStandards')}</p>
+                   <p className="font-mono text-xs font-bold uppercase tracking-[0.18em] text-[#D6001C]">{t('home.ourStandards')}</p>
                    <p className="mt-2 max-w-sm font-display text-3xl font-bold uppercase leading-none text-white sm:text-5xl">{t('home.heroDescription1')}</p>
                 </div>
             </div>
@@ -106,12 +106,12 @@ export function ComingSoon() {
           <p className="font-mono text-xs uppercase tracking-[0.15em] text-white/35">© Powerlink Inc. / POWERLYNX</p>
           <Link
             href="/"
-            className="group inline-flex items-center gap-3 self-start text-sm font-bold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#F04C29] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F04C29] sm:self-auto"
+            className="group inline-flex items-center gap-3 self-start text-sm font-bold uppercase tracking-[0.16em] text-white transition-colors hover:text-[#D6001C] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D6001C] sm:self-auto"
             data-testid="link-preview-site"
             aria-label={t('coming.preview')}
           >
             {t('coming.preview')}
-            <span className="flex h-8 w-8 items-center justify-center border border-[#F04C29] text-[#F04C29] transition-transform group-hover:translate-x-1">
+              <span className="flex h-8 w-8 items-center justify-center border border-[#D6001C] text-[#D6001C] transition-transform group-hover:translate-x-1">
               <ArrowRight className="h-4 w-4" aria-hidden="true" />
             </span>
           </Link>

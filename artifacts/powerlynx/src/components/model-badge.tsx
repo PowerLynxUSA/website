@@ -4,7 +4,7 @@ interface ModelBadgeProps {
   size?: "sm" | "md" | "lg";
   /**
  * "plate" (default) and "text" both render the model codes as the same
- * orange Montserrat text so model identifiers remain consistent across views.
+ * red Montserrat text so model identifiers remain consistent across views.
    */
   variant?: "plate" | "text";
 }
