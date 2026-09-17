@@ -18,3 +18,4 @@
 - [Playwright WebKit host limitation](playwright-webkit-host-limitation.md) — WebKit may remain unlaunchable in this Nix container when its pinned ICU/atomic/GL/GStreamer sonames differ from available packages.
 - [i18n fallback test readiness](i18n-fallback-networkidle.md) — fallback-warning checks should use bounded render settling, not networkidle.
 - [Embedded logo taglines](embedded-logo-taglines.md) — changing translated text does not remove slogans baked into raster logo assets; audit image content separately.
+- [Theme-specific logo assets](embedded-logo-taglines.md) — select the dark/light source asset directly; do not apply a global filter that turns the selected logo into a silhouette.
