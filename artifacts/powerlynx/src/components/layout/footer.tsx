@@ -14,7 +14,7 @@ export function Footer() {
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           <div className="md:col-span-1">
-            <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX" className="h-12 object-contain mb-6 [clip-path:inset(0_0_13%_0)]" loading="lazy" decoding="async" />
+            <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX" className="h-12 object-contain mb-6 [clip-path:inset(0_0_22%_0)]" loading="lazy" decoding="async" />
             <p className="text-secondary-foreground/70 text-sm mb-6 max-w-sm">
               {taglineLines.map((line) => (
                 <span key={line} className="block">

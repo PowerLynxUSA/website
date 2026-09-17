@@ -104,7 +104,7 @@ export function Header() {
             srcSet={logoImage.srcSet}
             sizes={logoImage.sizes}
             alt="POWERLYNX"
-            className="h-[62px] object-contain hidden md:block transition-transform duration-500 group-hover:scale-[1.03] [clip-path:inset(0_0_13%_0)]"
+            className="h-[62px] object-contain hidden md:block transition-transform duration-500 group-hover:scale-[1.03] [clip-path:inset(0_0_22%_0)]"
             decoding="async"
           />
           <img
