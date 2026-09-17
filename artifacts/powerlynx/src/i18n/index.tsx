@@ -6,14 +6,14 @@ const STORAGE_KEY = "powerlynx-language";
 
 const fontProfiles: Record<LanguageCode, { sans: string; display: string }> = {
   EN: { sans: "'Montserrat', sans-serif", display: "'Montserrat', sans-serif" },
-  ES: { sans: "'Inter', sans-serif", display: "'Inter', sans-serif" },
+  ES: { sans: "'Montserrat', sans-serif", display: "'Montserrat', sans-serif" },
+  FR: { sans: "'Montserrat', sans-serif", display: "'Montserrat', sans-serif" },
+  PT: { sans: "'Montserrat', sans-serif", display: "'Montserrat', sans-serif" },
+  DE: { sans: "'Montserrat', sans-serif", display: "'Montserrat', sans-serif" },
   ZH: { sans: "'Inter', 'Noto Sans SC', sans-serif", display: "'Inter', 'Noto Sans SC', sans-serif" },
   "ZH-TW": { sans: "'Inter', 'Noto Sans TC', sans-serif", display: "'Inter', 'Noto Sans TC', sans-serif" },
-  PT: { sans: "'Inter', sans-serif", display: "'Inter', sans-serif" },
-  FR: { sans: "'Inter', sans-serif", display: "'Inter', sans-serif" },
-  DE: { sans: "'Inter', sans-serif", display: "'Inter', sans-serif" },
-  JA: { sans: "'Inter', 'Noto Sans JP', sans-serif", display: "'Inter', 'Noto Sans JP', sans-serif" },
   KO: { sans: "'Inter', 'Noto Sans KR', sans-serif", display: "'Inter', 'Noto Sans KR', sans-serif" },
+  JA: { sans: "'Inter', 'Noto Sans JP', sans-serif", display: "'Inter', 'Noto Sans JP', sans-serif" },
 };
 
 type LanguageContextValue = {

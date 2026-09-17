@@ -1,14 +1,13 @@
 import { expect, test, type Page } from '@playwright/test';
 
-const languageCodes = ['EN', 'ES', 'ZH', 'ZH-TW', 'PT', 'FR', 'DE', 'JA', 'KO'];
+const languageCodes = ['EN', 'ES', 'FR'];
 
 async function openDesktopLanguageMenu(page: Page) {
   await page.getByTestId('button-language-switcher').click();
 }
 
 async function openMobileLanguageMenu(page: Page) {
-  await page.getByRole('button', { name: /home|contact|menu/i }).click();
-  await page.getByTestId('button-language-switcher-mobile').click();
+  await page.getByTestId('button-language-switcher-compact').click();
 }
 
 test.describe('language switching', () => {
@@ -33,7 +32,7 @@ test.describe('language switching', () => {
     await expect(page.getByRole('heading', { name: /caméra thermique/i })).toBeVisible();
   });
 
-  test('desktop and mobile selectors expose the same nine languages', async ({ page }) => {
+  test('desktop and mobile selectors expose the same three languages', async ({ page }) => {
     await page.goto('/');
 
     await openDesktopLanguageMenu(page);

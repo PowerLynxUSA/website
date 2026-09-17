@@ -14,13 +14,13 @@ import { useDocumentMeta } from '@/hooks/use-document-meta';
 const showroomLabels = {
   EN: { dark: 'Dark Showroom', light: 'Light Showroom' },
   ES: { dark: 'Sala oscura', light: 'Sala clara' },
+  FR: { dark: 'Showroom sombre', light: 'Showroom clair' },
+  PT: { dark: 'Showroom escuro', light: 'Showroom claro' },
+  DE: { dark: 'Dunkler Showroom', light: 'Heller Showroom' },
   ZH: { dark: '深色展厅', light: '浅色展厅' },
   'ZH-TW': { dark: '深色展示廳', light: '淺色展示廳' },
-  PT: { dark: 'Showroom escuro', light: 'Showroom claro' },
-  FR: { dark: 'Showroom sombre', light: 'Showroom clair' },
-  DE: { dark: 'Dunkler Showroom', light: 'Heller Showroom' },
-  JA: { dark: 'ダークショールーム', light: 'ライトショールーム' },
   KO: { dark: '다크 쇼룸', light: '라이트 쇼룸' },
+  JA: { dark: 'ダークショールーム', light: 'ライトショールーム' },
 } as const;
 
 export function Home() {
@@ -215,7 +215,7 @@ export function Home() {
                   }`}>
                     <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/5 transition-colors" />
                     {(() => {
-                      const image = darkShowroom
+                      const image = darkShowroom && product.slug !== 'black-rubber-insulated-line-set'
                         ? getResponsiveDarkProductImage(product.image)
                         : getResponsiveProductImage(
                             product.image,
@@ -235,11 +235,10 @@ export function Home() {
                       );
                     })()}
                   </div>
-                  <div className="p-6 flex-1 flex flex-col">
-                    <div className="text-xs font-bold text-primary mb-2 uppercase tracking-wider">{product.category}</div>
+                   <div className="p-6 flex-1 flex flex-col">
                     <h3 className={`font-bold text-lg leading-tight mb-4 group-hover:text-primary transition-colors ${darkShowroom ? 'text-white' : ''}`}>{product.name}</h3>
                     <div className={`mt-auto pt-4 border-t ${darkShowroom ? 'border-[#34393D]' : 'border-border'}`}>
-                      <ModelBadge models={product.models} size="sm" />
+                       <ModelBadge models={product.models} size="sm" variant="text" />
                     </div>
                   </div>
                 </div>
