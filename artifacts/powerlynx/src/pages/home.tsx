@@ -282,7 +282,7 @@ export function Home() {
       {/* CTA */}
       <section className="bg-secondary text-secondary-foreground py-24 text-center">
         <div className="container mx-auto px-4">
-          <img src={markImage.src} srcSet={markImage.srcSet} sizes={markImage.sizes} alt="" className="w-12 h-12 mx-auto mb-8 brightness-0 invert" style={{ filter: 'brightness(0) invert(1)' }} loading="lazy" decoding="async" />
+          <img src={markImage.src} srcSet={markImage.srcSet} sizes={markImage.sizes} alt="" className="w-12 h-12 mx-auto mb-8" loading="lazy" decoding="async" />
            <h2 className="font-display text-4xl md:text-5xl font-bold uppercase tracking-tight mb-6 text-white">{t('home.readyToStock')}</h2>
            <p className="max-w-2xl mx-auto text-lg text-secondary-foreground/70 mb-10">{t('home.partnerDescription')}</p>
           <Button size="lg" asChild className="text-lg h-14 px-8 rounded-none font-bold uppercase tracking-widest">
