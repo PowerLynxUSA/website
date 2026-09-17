@@ -13,6 +13,23 @@ const screens = [
   { name: 'contact', path: '/contact' },
 ];
 
+const lightThemeScreens = [
+  { name: 'home', path: '/' },
+  { name: 'about', path: '/about' },
+];
+
+async function setThemeBeforeLoad(page: Page, theme: 'light' | 'dark') {
+  await page.addInitScript((selectedTheme) => {
+    window.localStorage.setItem('powerlynx-theme', selectedTheme);
+  }, theme);
+}
+
+async function clearThemeBeforeLoad(page: Page) {
+  await page.addInitScript(() => {
+    window.localStorage.removeItem('powerlynx-theme');
+  });
+}
+
 async function prepareForScreenshot(page: Page) {
   // Freeze anything time-based / animated so screenshots are deterministic.
   await page.addStyleTag({
@@ -33,6 +50,7 @@ for (const [viewportName, viewportSize] of Object.entries(viewports)) {
 
     for (const { name, path } of screens) {
       test(`${name} (EN)`, async ({ page }) => {
+        await clearThemeBeforeLoad(page);
         await page.goto(path);
         await prepareForScreenshot(page);
         await page.waitForLoadState('networkidle');
@@ -50,6 +68,7 @@ for (const [viewportName, viewportSize] of Object.entries(viewports)) {
       await page.addInitScript(() => {
         window.localStorage.setItem('powerlynx-language', 'ES');
       });
+      await clearThemeBeforeLoad(page);
       await page.goto('/');
       await prepareForScreenshot(page);
       await page.waitForLoadState('networkidle');
@@ -58,5 +77,18 @@ for (const [viewportName, viewportSize] of Object.entries(viewports)) {
         maxDiffPixelRatio: 0.02,
       });
     });
+
+    for (const { name, path } of lightThemeScreens) {
+      test(`${name} (EN, light theme)`, async ({ page }) => {
+        await setThemeBeforeLoad(page, 'light');
+        await page.goto(path);
+        await prepareForScreenshot(page);
+        await page.waitForLoadState('networkidle');
+        await expect(page).toHaveScreenshot(`${viewportName}-${name}-en-light.png`, {
+          fullPage: true,
+          maxDiffPixelRatio: 0.02,
+        });
+      });
+    }
   });
 }

@@ -17,22 +17,22 @@ test('global theme toggle switches every page theme and persists', async ({ page
   await page.goto('/');
   const toggle = page.getByTestId('button-theme-toggle').first();
 
-  await expect(page.locator('html')).not.toHaveClass(/dark/);
-  await toggle.click();
   await expect(page.locator('html')).toHaveClass(/dark/);
-  await expect(toggle).toHaveAttribute('aria-label', 'Switch to light theme');
+  await toggle.click();
+  await expect(page.locator('html')).not.toHaveClass(/dark/);
+  await expect(toggle).toHaveAttribute('aria-label', 'Switch to dark theme');
 
   await page.reload();
-  await expect(page.locator('html')).toHaveClass(/dark/);
+  await expect(page.locator('html')).not.toHaveClass(/dark/);
   for (const route of ['/about', '/products', '/contact']) {
     await page.goto(route);
-    await expect(page.locator('html')).toHaveClass(/dark/);
+    await expect(page.locator('html')).not.toHaveClass(/dark/);
   }
 
   await page.goto('/');
   const lightToggle = page.getByTestId('button-theme-toggle').first();
   await lightToggle.click();
-  await expect(page.locator('html')).not.toHaveClass(/dark/);
+  await expect(page.locator('html')).toHaveClass(/dark/);
 });
 
 test('products mega menu uses the showroom panel styling', async ({ page }) => {
