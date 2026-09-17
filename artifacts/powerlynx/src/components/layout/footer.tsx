@@ -92,8 +92,12 @@ export function Footer() {
           <p className="text-secondary-foreground/50 text-sm font-bold tracking-widest uppercase">
              © {new Date().getFullYear()} Powerlink Inc. {t('footer.rights')}
           </p>
-          <p className="text-secondary-foreground/30 text-xs font-bold tracking-widest uppercase">
-             {t('footer.tagline')}
+          <p className="text-secondary-foreground/30 text-xs font-bold tracking-widest uppercase text-right">
+             {taglineLines.map((line) => (
+               <span key={`footer-${line}`} className="block">
+                 {line}
+               </span>
+             ))}
           </p>
         </div>
       </div>
