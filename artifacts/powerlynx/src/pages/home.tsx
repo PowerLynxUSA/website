@@ -10,6 +10,25 @@ import { getResponsiveDarkProductImage } from '@/lib/dark-product-images';
 import { useLanguage } from '@/i18n';
 import { localizeProducts, localizedCategoryGroupLabel } from '@/i18n/products';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
+import { useTheme } from '@/components/theme-provider';
+
+function highlightSloganAccent(line: string) {
+  const match = line.match(/^(.*\s)(\S+)$/);
+
+  if (!match) {
+    return line;
+  }
+
+  const accentMatch = match[2].match(/^(.*?)(!)$/);
+
+  return (
+    <>
+      {match[1]}
+      <span className="text-primary">{accentMatch?.[1] ?? match[2]}</span>
+      {accentMatch?.[2]}
+    </>
+  );
+}
 
 const showroomLabels = {
   EN: { dark: 'Dark Showroom', light: 'Light Showroom' },
@@ -25,15 +44,23 @@ const showroomLabels = {
 
 export function Home() {
   const { t, language } = useLanguage();
+  const { resolvedTheme } = useTheme();
   const [darkShowroom, setDarkShowroom] = useState(true);
   const featuredProducts = localizeProducts(products.slice(0, 4), language);
   const equipmentLineup = t('home.equipmentLineup').replace(/2027/g, catalogVersion);
   const equipmentLineupAccent = t('home.equipmentLineupAccent').replace(/2027/g, catalogVersion);
+  const heroSloganLines = t('home.heroDescription1')
+    .split('. ')
+    .map((line) => `${line.replace(/\.$/, '')}!`);
   const catalogLabel = `${t('detail.catalog')} ${catalogVersion}`;
   const heroImage = getResponsiveMarketingImage('generated', 'hero-technician');
   const catalogCollageImage = getResponsiveMarketingImage('brand', 'catalog-hero-collage-clean');
   const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
-  const markImage = getResponsiveMarketingImage('brand', 'powerlynx-mark-dark', '48px');
+  const markImage = getResponsiveMarketingImage(
+    'brand',
+    resolvedTheme === 'dark' ? 'powerlynx-mark-dark' : 'powerlynx-mark',
+    '48px',
+  );
 
   useDocumentMeta({
     title: `POWERLYNX | ${t('home.tradeEngineered')}`,
@@ -65,8 +92,12 @@ export function Home() {
           <h1 className="font-display text-[1.85rem] sm:text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-2 animate-in slide-in-from-bottom-8 duration-700">
              POWER <span className="text-primary">DELIVERED</span>
           </h1>
-          <h2 className="font-display text-[1.85rem] sm:text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-5 sm:mb-6 animate-in slide-in-from-bottom-8 duration-700 delay-100">
-             {t('home.heroDescription1')}
+          <h2 className="font-display text-[1.85rem] sm:text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase leading-[1.05] tracking-tight mb-5 sm:mb-6 animate-in slide-in-from-bottom-8 duration-700 delay-100">
+             {heroSloganLines.map((line) => (
+               <span key={line} className="block">
+                 {highlightSloganAccent(line)}
+               </span>
+             ))}
           </h2>
           <p className="max-w-3xl mx-auto text-base sm:text-lg md:text-xl text-secondary-foreground/80 mb-7 sm:mb-10 font-medium animate-in slide-in-from-bottom-8 duration-700 delay-150">
              {t('home.heroDescription2')}

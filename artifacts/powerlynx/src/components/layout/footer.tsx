@@ -6,6 +6,9 @@ import { useLanguage } from '@/i18n';
 export function Footer() {
   const { t } = useLanguage();
   const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo-dark', '192px');
+  const taglineLines = t('home.heroDescription1').split('. ').map((line) =>
+    line.endsWith('.') ? line : `${line}.`,
+  );
   return (
     <footer className="bg-secondary text-secondary-foreground pt-16 pb-8 border-t-4 border-primary">
       <div className="container mx-auto px-4">
@@ -13,7 +16,11 @@ export function Footer() {
           <div className="md:col-span-1">
             <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX" className="h-12 object-contain mb-6" loading="lazy" decoding="async" />
             <p className="text-secondary-foreground/70 text-sm mb-6 max-w-sm">
-              {t('home.heroDescription1')}
+              {taglineLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </p>
           </div>
 

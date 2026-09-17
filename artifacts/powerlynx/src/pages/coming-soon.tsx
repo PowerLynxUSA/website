@@ -10,7 +10,7 @@ export function ComingSoon() {
   const [descriptionBeforeBrand, descriptionAfterBrand] = description.split('POWERLYNX');
   const heroImage = getResponsiveMarketingImage('generated', 'hero-technician');
   const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
-  const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo', '160px');
+  const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo-dark', '160px');
 
   return (
     <main className="relative min-h-[100dvh] overflow-hidden bg-[#10161b] text-[#f6f3ed]">
@@ -20,7 +20,7 @@ export function ComingSoon() {
       <div className="relative mx-auto flex min-h-[100dvh] w-full max-w-[1440px] flex-col px-5 py-5 sm:px-8 lg:px-12">
         <header className="flex items-center border-b border-white/10 pb-5">
           <div className="flex items-center gap-4">
-            <div className="flex h-12 w-[116px] items-center justify-center bg-[#f6f3ed] px-2 py-1.5 sm:h-14 sm:w-[138px]">
+            <div className="flex h-12 w-[116px] items-center justify-center px-2 py-1.5 sm:h-14 sm:w-[138px]">
               <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX — Power Delivered." className="h-full w-full object-contain" decoding="async" />
             </div>
             <div className="hidden border-l border-white/15 pl-4 sm:block">
