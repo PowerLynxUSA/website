@@ -21,7 +21,7 @@ export function ComingSoon() {
         <header className="flex items-center border-b border-white/10 pb-5">
           <div className="flex items-center gap-4">
             <div className="flex h-12 w-[116px] items-center justify-center px-2 py-1.5 sm:h-14 sm:w-[138px]">
-              <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX — Power Delivered." className="h-full w-full object-contain" decoding="async" />
+              <img src={logoImage.src} srcSet={logoImage.srcSet} sizes={logoImage.sizes} alt="POWERLYNX" className="h-full w-full object-contain [clip-path:inset(0_0_13%_0)]" decoding="async" />
             </div>
             <div className="hidden border-l border-white/15 pl-4 sm:block">
               <p className="font-mono text-base font-extrabold uppercase tracking-[0.18em] text-[#F04C29]">Powerlink Inc.</p>
