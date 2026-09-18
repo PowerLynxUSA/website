@@ -29,6 +29,10 @@ export function Header() {
     resolvedTheme === 'dark' ? 'powerlynx-mark-dark' : 'powerlynx-mark',
     '160px',
   );
+  const desktopLogoScaleClass =
+    resolvedTheme === 'dark'
+      ? 'scale-[1.25] translate-y-[2px] group-hover:scale-[1.28] group-hover:translate-y-[2px]'
+      : 'group-hover:scale-[1.03]';
 
   const categoryImage = (category: string) => {
     const product = products.find((item) => item.category === category);
@@ -104,7 +108,7 @@ export function Header() {
             srcSet={logoImage.srcSet}
             sizes={logoImage.sizes}
             alt="POWERLYNX"
-            className="block h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03] hidden md:block"
+            className={`block h-full w-full object-contain transition-transform duration-500 hidden md:block ${desktopLogoScaleClass}`}
             decoding="async"
           />
           <img
