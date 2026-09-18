@@ -7,7 +7,7 @@ export function About() {
   const { t } = useLanguage();
   const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
   const warehouseImage = getResponsiveMarketingImage('generated', 'about-warehouse', '(min-width: 1024px) 50vw, 100vw');
-  const technicianImage = getResponsiveMarketingImage('generated', 'about-technician-branded-v3', '(min-width: 1024px) 50vw, 100vw');
+  const technicianImage = getResponsiveMarketingImage('generated', 'about-technician-logo-50pct', '(min-width: 1024px) 50vw, 100vw');
 
   useDocumentMeta({
     title: t('about.metaTitle'),
@@ -65,15 +65,11 @@ export function About() {
                  srcSet={technicianImage.srcSet}
                  sizes={technicianImage.sizes}
                  alt="POWERLYNX professional HVAC/R technician holding a manifold gauge"
-                 className="relative z-10 w-full aspect-square shadow-2xl object-cover object-[center_34%] grayscale-[0.1] contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100"
+                  className="relative z-10 w-full h-auto shadow-2xl grayscale-[0.1] contrast-125 transition-all duration-700 group-hover:grayscale-0 group-hover:contrast-100"
                 loading="lazy"
                 decoding="async"
                  data-testid="img-about-technician"
               />
-              <div className="absolute -bottom-6 -right-6 z-20 bg-card p-6 shadow-xl border border-border hidden md:block">
-                 <div className="font-display text-4xl font-bold text-primary">2026</div>
-                 <div className="text-sm text-muted-foreground uppercase tracking-wider font-bold">{t('about.brandLaunch')}</div>
-              </div>
             </div>
 
              <div className="space-y-5">

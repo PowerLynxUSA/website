@@ -18,57 +18,7 @@ const QUALITY = 84;
 // classify every dark pixel as either product or background. Coordinates are
 // normalized so the mask remains tied to the source composition if the source
 // is re-encoded at a different size.
-const MANUAL_FOREGROUND_MASKS = {
-  'black-rubber-insulated-line-set': {
-    foreground: [
-      [
-        [0.007, 0],
-        [0.1, 0],
-        [0.206, 0.083],
-        [0.196, 0.167],
-        [0.201, 0.25],
-        [0.25, 0.333],
-        [0.231, 0.417],
-        [0.336, 0.5],
-        [0.414, 0.583],
-        [0.504, 0.667],
-        [0.584, 0.75],
-        [0.666, 0.833],
-        [0.75, 0.917],
-        [0.837, 1],
-        [1, 1],
-        [0.172, 1],
-        [0.116, 0.833],
-        [0.086, 0.75],
-        [0.069, 0.667],
-        [0.041, 0.583],
-        [0.014, 0.5],
-        [0.014, 0.333],
-        [0, 0.167],
-        [0.026, 0.083],
-      ],
-      [
-        [0.294, 0],
-        [0.581, 0],
-        [0.675, 0.06],
-        [0.7, 0.15],
-        [0.681, 0.3],
-        [0.67, 0.4],
-        [0.65, 0.46],
-        [0.58, 0.49],
-        [0.48, 0.47],
-        [0.39, 0.4],
-        [0.35, 0.3],
-        [0.306, 0.15],
-      ],
-    ],
-    // Bright foam is separated from the textured coil by luminance; warm
-    // pixels in the fitting are retained even when they are comparatively
-    // dark (including the copper opening).
-    foamLuminance: { start: 72, end: 112 },
-    warmPixel: { redOverBlue: 18, greenOverBlue: 5, minimumRed: 55 },
-  },
-};
+const MANUAL_FOREGROUND_MASKS = {};
 
 function isBackgroundPixel(r, g, b, a) {
   if (a < 24) return true;
