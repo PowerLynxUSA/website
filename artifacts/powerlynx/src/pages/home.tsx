@@ -90,7 +90,7 @@ export function Home() {
         
         <div className="container relative z-20 px-4 pb-10 sm:pb-16 md:pb-20 text-center">
           <h1 className="font-display text-[1.85rem] sm:text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase tracking-tight mb-2 animate-in slide-in-from-bottom-8 duration-700">
-             POWER <span className="text-primary">DELIVERED</span>
+             POWERLYNX <span className="text-primary">DELIVERS</span>
           </h1>
           <h2 className="font-display text-[1.85rem] sm:text-[2.1rem] md:text-[3.15rem] lg:text-[4.2rem] font-bold text-white uppercase leading-[1.05] tracking-tight mb-5 sm:mb-6 animate-in slide-in-from-bottom-8 duration-700 delay-100">
              {heroSloganLines.map((line) => (

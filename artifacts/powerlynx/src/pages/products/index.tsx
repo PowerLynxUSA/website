@@ -52,10 +52,12 @@ export function ProductsIndex() {
   });
 
   const filteredProducts = useMemo(() => {
+    const normalizedSearch = search.trim().toLowerCase();
     return products.filter(p => {
        const localized = localizeProduct(p, language);
-       const matchesSearch = `${p.name} ${localized.name}`.toLowerCase().includes(search.toLowerCase()) ||
-                            p.models.toLowerCase().includes(search.toLowerCase());
+       const matchesSearch = normalizedSearch === '' ||
+                            `${p.name} ${localized.name}`.toLowerCase().includes(normalizedSearch) ||
+                            p.models.toLowerCase().includes(normalizedSearch);
       const matchesGroup = activeGroup ? p.categoryGroup === activeGroup : true;
       const matchesCategory = activeCategory ? p.category === activeCategory : true;
       
@@ -107,7 +109,7 @@ export function ProductsIndex() {
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <Input 
                  placeholder={t('products.search')}
-                className="pl-9 rounded-none border-border bg-card font-mono"
+                className="pl-9 rounded-none border-border bg-card"
                 value={search}
                 onChange={e => setSearch(e.target.value)}
               />
