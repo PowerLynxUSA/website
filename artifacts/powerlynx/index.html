@@ -63,7 +63,7 @@
     <script>
       (function () {
         try {
-          var theme = window.localStorage.getItem('powerlynx-theme') === 'light' ? 'light' : 'dark';
+          var theme = window.localStorage.getItem('powerlynx-theme-v2') === 'light' ? 'light' : 'dark';
           document.documentElement.classList.toggle('dark', theme === 'dark');
           document.documentElement.style.colorScheme = theme;
         } catch (e) {

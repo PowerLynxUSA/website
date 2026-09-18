@@ -7,7 +7,9 @@ type ThemeContextValue = {
   setTheme: (theme: Theme) => void;
 };
 
-const STORAGE_KEY = 'powerlynx-theme';
+// Versioned so legacy light-theme choices do not override the dark default
+// after the site's theme behavior changes.
+const STORAGE_KEY = 'powerlynx-theme-v2';
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 
 function getInitialTheme(): Theme {

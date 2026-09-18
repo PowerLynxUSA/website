@@ -20,13 +20,13 @@ const lightThemeScreens = [
 
 async function setThemeBeforeLoad(page: Page, theme: 'light' | 'dark') {
   await page.addInitScript((selectedTheme) => {
-    window.localStorage.setItem('powerlynx-theme', selectedTheme);
+    window.localStorage.setItem('powerlynx-theme-v2', selectedTheme);
   }, theme);
 }
 
 async function clearThemeBeforeLoad(page: Page) {
   await page.addInitScript(() => {
-    window.localStorage.removeItem('powerlynx-theme');
+    window.localStorage.removeItem('powerlynx-theme-v2');
   });
 }
 

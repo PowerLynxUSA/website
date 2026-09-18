@@ -12,7 +12,7 @@ const en = {
   "home.heroPower": "Power",
   "home.heroDelivered": "Delivered.",
   "home.heroDescription1": "BUILT FOR PROFESSIONALS. POWERED BY VALUE.",
-  "home.heroDescription2": "Products, services and solutions for HVAC distributors, contractors and service professionals day in and day out.",
+  "home.heroDescription2": "POWERLYNX Delivers products, services and solutions for HVAC distributors, contractors and service professionals day in and day out.",
   "home.viewCatalog": "View Catalog",
   "home.ourStandards": "Our Standards",
   "home.certifiedQuality": "Certified Quality",
