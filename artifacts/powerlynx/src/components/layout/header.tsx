@@ -96,15 +96,15 @@ export function Header() {
   }, [location]);
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/50 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-brand-gray/30 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container mx-auto px-4 h-20 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2 group">
+        <Link href="/" className="flex h-[62px] w-[104px] items-center justify-center gap-2 group md:w-[112px]">
           <img
             src={logoImage.src}
             srcSet={logoImage.srcSet}
             sizes={logoImage.sizes}
             alt="POWERLYNX"
-            className="h-[62px] object-contain hidden md:block transition-transform duration-500 group-hover:scale-[1.03] [clip-path:inset(0_0_22%_0)]"
+            className="block h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03] hidden md:block"
             decoding="async"
           />
           <img
@@ -112,7 +112,7 @@ export function Header() {
             srcSet={markImage.srcSet}
             sizes={markImage.sizes}
             alt="POWERLYNX"
-            className="h-[62px] object-contain md:hidden transition-transform duration-500 group-hover:scale-[1.03]"
+            className="block h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03] md:hidden"
             decoding="async"
           />
         </Link>

@@ -13,7 +13,7 @@ export function ComingSoon() {
   const logoImage = getResponsiveMarketingImage('brand', 'powerlynx-logo-dark', '160px');
 
   return (
-    <main className="relative min-h-[100dvh] overflow-hidden bg-[#10161b] text-[#f6f3ed]">
+    <main className="relative min-h-[100dvh] overflow-hidden bg-[#10161b] text-white">
       <div className="pointer-events-none absolute inset-0 opacity-30 [background-image:linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] [background-size:48px_48px]" />
       <div className="pointer-events-none absolute -right-40 -top-40 h-[34rem] w-[34rem] rounded-full bg-[#D6001C]/10 blur-3xl" />
 
@@ -43,7 +43,7 @@ export function ComingSoon() {
               <span className="h-px w-8 bg-[#D6001C]" />
                {t('home.tradeEngineered')}
             </p>
-            <h1 className="max-w-2xl font-display text-[clamp(3.8rem,9vw,9rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-[#f6f3ed]">
+            <h1 className="max-w-2xl font-display text-[clamp(3.8rem,9vw,9rem)] font-bold uppercase leading-[0.84] tracking-[-0.055em] text-white">
                {t('coming.powerIs')}
                 <span className="mt-2 block text-[#D6001C]">{t('coming.coming')}</span>
             </h1>

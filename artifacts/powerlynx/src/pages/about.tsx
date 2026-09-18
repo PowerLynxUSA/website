@@ -55,7 +55,7 @@ export function About() {
       </section>
 
        {/* FIELD EXPERIENCE & SOURCING */}
-       <section className="py-14 md:py-20 bg-muted border-y border-border">
+        <section className="py-14 md:py-20 bg-brand-gray/5 border-y border-brand-gray/20">
         <div className="container mx-auto px-4">
            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
              <div className="relative group" data-testid="img-technician-container">

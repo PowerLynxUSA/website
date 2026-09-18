@@ -39,6 +39,8 @@
   --color-primary: hsl(var(--primary));
   --color-primary-foreground: hsl(var(--primary-foreground));
   --color-primary-border: var(--primary-border);
+  --color-brand-gray: hsl(var(--brand-gray));
+  --color-brand-gray-dark: hsl(var(--brand-gray-dark));
 
   --color-secondary: hsl(var(--secondary));
   --color-secondary-foreground: hsl(var(--secondary-foreground));
@@ -96,6 +98,9 @@
 
   --background: 0 0% 100%;
   --foreground: 0 0% 7%;
+  /* Logo neutrals: #626161 and the deep charcoal used in the dark mark. */
+  --brand-gray: 0 1% 38.6%;
+  --brand-gray-dark: 20 10% 18%;
   --border: 0 0% 90%;
   --card: 0 0% 100%;
   --card-foreground: 0 0% 7%;
@@ -113,7 +118,7 @@
   --popover-border: 0 0% 90%;
   --primary: 352.15 100% 41.96%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 20 10% 18%;
+   --secondary: var(--brand-gray-dark);
   --secondary-foreground: 0 0% 100%;
   --muted: 0 0% 96%;
   --muted-foreground: 0 0% 40%;
@@ -178,7 +183,7 @@
   /* Secondary stays the fixed dark-charcoal brand color in both themes: it drives
      the hero overlay, page hero bands, and footer, which must not invert with
      the light/dark toggle. Pantone 418C / #322C29. */
-  --secondary: 20 10% 18%;
+   --secondary: var(--brand-gray-dark);
   --secondary-foreground: 0 0% 100%;
   --muted: 210 9% 16%;
   --muted-foreground: 0 0% 65%;
