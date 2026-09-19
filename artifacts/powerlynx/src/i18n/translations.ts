@@ -90,8 +90,8 @@ const en = {
   "contact.ordersQuotes": "Orders / Quotes",
   "contact.sendInquiry": "Send an Inquiry",
   "contact.sendInquiryDescription": "Complete the form below and the appropriate team will respond promptly.",
-  "contact.emailDraftReady": "Email Draft Ready",
-  "contact.emailDraftDescription": "Your email app should now be open with the inquiry prepared. Press Send to deliver it to our team.",
+  "contact.emailDraftReady": "Inquiry Sent",
+  "contact.emailDraftDescription": "Your inquiry was sent to the appropriate POWERLYNX team. We will respond promptly.",
   "contact.recipients": "Recipients",
   "contact.sendAnother": "Send Another Message",
   "contact.fullName": "Full Name",
@@ -103,8 +103,8 @@ const en = {
   "contact.message": "Message",
   "contact.selectType": "Select type",
   "contact.messagePlaceholder": "How can we help you?",
-  "contact.mailtoDescription": "Your email app will open with both POWERLYNX team addresses.",
-  "contact.openEmail": "Open Email",
+  "contact.mailtoDescription": "Your inquiry will be sent securely to the appropriate POWERLYNX team.",
+  "contact.openEmail": "Send Inquiry",
   "contact.productInquiry": "Product Inquiry",
   "contact.quoteRequest": "Quote Request",
   "contact.distributionPartnership": "Distribution Partnership",
@@ -279,3 +279,91 @@ export const translations: Record<LanguageCode, LocaleTranslations> = {
   JA: ja,
   KO: ko,
 };
+
+const inquiryDeliveryCopy: Record<
+  LanguageCode,
+  Pick<
+    LocaleTranslations,
+    | "contact.emailDraftReady"
+    | "contact.emailDraftDescription"
+    | "contact.mailtoDescription"
+    | "contact.openEmail"
+  >
+> = {
+  EN: {
+    "contact.emailDraftReady": "Inquiry Sent",
+    "contact.emailDraftDescription":
+      "Your inquiry was sent to the appropriate POWERLYNX team. We will respond promptly.",
+    "contact.mailtoDescription":
+      "Your inquiry will be sent securely to the appropriate POWERLYNX team.",
+    "contact.openEmail": "Send Inquiry",
+  },
+  ES: {
+    "contact.emailDraftReady": "Consulta enviada",
+    "contact.emailDraftDescription":
+      "Su consulta se envió al equipo correspondiente de POWERLYNX. Responderemos pronto.",
+    "contact.mailtoDescription":
+      "Su consulta se enviará de forma segura al equipo correspondiente de POWERLYNX.",
+    "contact.openEmail": "Enviar consulta",
+  },
+  ZH: {
+    "contact.emailDraftReady": "咨询已发送",
+    "contact.emailDraftDescription":
+      "您的咨询已发送给相应的 POWERLYNX 团队。我们会尽快回复。",
+    "contact.mailtoDescription":
+      "您的咨询将安全发送给相应的 POWERLYNX 团队。",
+    "contact.openEmail": "发送咨询",
+  },
+  "ZH-TW": {
+    "contact.emailDraftReady": "諮詢已發送",
+    "contact.emailDraftDescription":
+      "您的諮詢已發送給相應的 POWERLYNX 團隊。我們會盡快回覆。",
+    "contact.mailtoDescription":
+      "您的諮詢將安全發送給相應的 POWERLYNX 團隊。",
+    "contact.openEmail": "發送諮詢",
+  },
+  PT: {
+    "contact.emailDraftReady": "Consulta enviada",
+    "contact.emailDraftDescription":
+      "Sua consulta foi enviada à equipe POWERLYNX apropriada. Responderemos em breve.",
+    "contact.mailtoDescription":
+      "Sua consulta será enviada com segurança à equipe POWERLYNX apropriada.",
+    "contact.openEmail": "Enviar consulta",
+  },
+  FR: {
+    "contact.emailDraftReady": "Demande envoyée",
+    "contact.emailDraftDescription":
+      "Votre demande a été envoyée à l'équipe POWERLYNX concernée. Nous vous répondrons rapidement.",
+    "contact.mailtoDescription":
+      "Votre demande sera envoyée en toute sécurité à l'équipe POWERLYNX concernée.",
+    "contact.openEmail": "Envoyer la demande",
+  },
+  DE: {
+    "contact.emailDraftReady": "Anfrage gesendet",
+    "contact.emailDraftDescription":
+      "Ihre Anfrage wurde an das zuständige POWERLYNX-Team gesendet. Wir antworten schnellstmöglich.",
+    "contact.mailtoDescription":
+      "Ihre Anfrage wird sicher an das zuständige POWERLYNX-Team gesendet.",
+    "contact.openEmail": "Anfrage senden",
+  },
+  JA: {
+    "contact.emailDraftReady": "お問い合わせを送信しました",
+    "contact.emailDraftDescription":
+      "お問い合わせは担当の POWERLYNX チームに送信されました。速やかに返信します。",
+    "contact.mailtoDescription":
+      "お問い合わせは担当の POWERLYNX チームに安全に送信されます。",
+    "contact.openEmail": "お問い合わせを送信",
+  },
+  KO: {
+    "contact.emailDraftReady": "문의가 전송되었습니다",
+    "contact.emailDraftDescription":
+      "문의가 POWERLYNX 담당 팀에 전송되었습니다. 신속하게 답변드리겠습니다.",
+    "contact.mailtoDescription":
+      "문의가 POWERLYNX 담당 팀에 안전하게 전송됩니다.",
+    "contact.openEmail": "문의 보내기",
+  },
+};
+
+for (const language of Object.keys(inquiryDeliveryCopy) as LanguageCode[]) {
+  Object.assign(translations[language], inquiryDeliveryCopy[language]);
+}

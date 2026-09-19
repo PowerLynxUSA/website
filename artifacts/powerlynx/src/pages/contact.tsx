@@ -15,9 +15,9 @@ import type { TranslationKey } from '@/i18n/translations';
 import { useDocumentMeta } from '@/hooks/use-document-meta';
 import {
   contactRecipients,
-  createMailtoLink,
+  getInquiryRecipient,
   type ContactFormValues,
-} from '@/lib/contact-mailto';
+} from '@/lib/contact-api';
 
 function createContactSchema(t: (key: TranslationKey) => string) {
   return z.object({
@@ -28,6 +28,7 @@ function createContactSchema(t: (key: TranslationKey) => string) {
     phone: z.string().min(10, t('contact.validationPhone')),
     inquiryType: z.string().min(1, t('contact.validationInquiryType')),
     message: z.string().min(10, t('contact.validationMessage')),
+    website: z.string().max(0).optional(),
   });
 }
 
@@ -35,6 +36,8 @@ export function Contact() {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [submittedRecipient, setSubmittedRecipient] = useState('');
+  const [submitError, setSubmitError] = useState(false);
   const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
 
   useDocumentMeta({
@@ -54,16 +57,40 @@ export function Contact() {
       phone: "",
       inquiryType: "",
       message: "",
+      website: "",
     },
   });
 
-  function onSubmit(data: ContactFormValues) {
-    window.location.href = createMailtoLink(data, t);
-    setIsSubmitted(true);
-    toast({
-       title: t('contact.emailDraftReady'),
-       description: t('contact.emailDraftDescription'),
-    });
+  async function onSubmit(data: ContactFormValues) {
+    setSubmitError(false);
+
+    try {
+      const response = await fetch('/api/inquiry', {
+        method: 'POST',
+        headers: {
+          'content-type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        throw new Error('Inquiry request failed');
+      }
+
+      setSubmittedRecipient(getInquiryRecipient(data));
+      setIsSubmitted(true);
+      toast({
+        title: t('contact.emailDraftReady'),
+        description: t('contact.emailDraftDescription'),
+      });
+    } catch {
+      setSubmitError(true);
+      toast({
+        title: t('contact.sendInquiry'),
+        description: t('contact.sendInquiryDescription'),
+        variant: 'destructive',
+      });
+    }
   }
 
   return (
@@ -168,7 +195,7 @@ export function Contact() {
                    <p className="text-foreground/80 font-semibold max-w-md mx-auto mb-8">{t('contact.emailDraftDescription')}</p>
                    <div className="mb-8 text-sm text-muted-foreground">
                       <p className="mb-2 font-bold uppercase tracking-widest">{t('contact.recipients')}</p>
-                     <p>{contactRecipients.join(' · ')}</p>
+                      <p>{submittedRecipient || contactRecipients[0]}</p>
                    </div>
                   <Button variant="outline" onClick={() => { setIsSubmitted(false); form.reset(); }} className="rounded-none uppercase font-bold tracking-widest">
                      {t('contact.sendAnother')}
@@ -176,7 +203,15 @@ export function Contact() {
                 </div>
               ) : (
                 <Form {...form}>
-                  <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                   <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                     <input
+                       type="text"
+                       tabIndex={-1}
+                       autoComplete="off"
+                       aria-hidden="true"
+                       className="absolute -left-[9999px] h-px w-px overflow-hidden"
+                       {...form.register('website')}
+                     />
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <FormField
                         control={form.control}
@@ -295,9 +330,17 @@ export function Contact() {
                       )}
                     />
 
-                    <Button
+                     {submitError && (
+                       <p className="text-sm font-semibold text-destructive" role="alert">
+                         {t('contact.sendInquiryDescription')}
+                       </p>
+                     )}
+
+                     <Button
                       type="submit"
                       size="lg"
+                       disabled={form.formState.isSubmitting}
+                       aria-busy={form.formState.isSubmitting}
                       className="w-full md:w-auto rounded-none font-bold uppercase tracking-widest h-14 px-8 gap-2"
                     >
                        <Send className="w-4 h-4" /> {t('contact.openEmail')}
