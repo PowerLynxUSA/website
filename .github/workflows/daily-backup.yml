@@ -1,0 +1,75 @@
+name: Daily Full Backup
+
+on:
+  schedule:
+    - cron: '17 7 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout full history
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set backup identifiers
+        id: vars
+        run: |
+          echo "date=$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+          echo "tag=backup-$(date -u +%Y-%m-%d)" >> "$GITHUB_OUTPUT"
+          echo "sha=$(git rev-parse --short HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Archive full repository snapshot
+        run: |
+          git archive \
+            --format=zip \
+            -o "website-backup-${{ steps.vars.outputs.date }}.zip" \
+            HEAD
+
+      - name: Tag today's commit
+        run: |
+          git tag -f "${{ steps.vars.outputs.tag }}"
+          git push origin -f "${{ steps.vars.outputs.tag }}"
+
+      - name: Publish backup release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.vars.outputs.tag }}
+          name: "Daily backup - ${{ steps.vars.outputs.date }}"
+          body: |
+            Full source snapshot of PowerLynxUSA/website, captured automatically.
+
+            Commit: ${{ steps.vars.outputs.sha }}
+
+            Restore options:
+            1. Download the zip asset below and unzip it anywhere.
+            2. Or, with git installed:
+               git fetch --tags
+               git checkout ${{ steps.vars.outputs.tag }}
+          files: website-backup-${{ steps.vars.outputs.date }}.zip
+
+      - name: Remove backups older than 90 days
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          cutoff=$(date -u -d '90 days ago' +%Y-%m-%d)
+
+          gh release list \
+            --limit 500 \
+            --json tagName \
+            --jq '.[].tagName' |
+          grep '^backup-' |
+          while read -r tag; do
+            tag_date="${tag#backup-}"
+
+            if [[ "$tag_date" < "$cutoff" ]]; then
+              echo "Deleting old backup $tag"
+              gh release delete "$tag" -y --cleanup-tag || true
+            fi
+          done
