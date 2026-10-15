@@ -34,7 +34,7 @@ const en = {
   "home.partnerDescription": "We partner with leading HVAC/R distributors across North America to deliver precision-engineered equipment to the contractors who rely on it.",
   "home.becomeDistributor": "Become a Distributor",
   "about.heroTitle": "Built for Professionals. Powered by Value.",
-  "about.heroDescription": "Powerlink Inc. is a U.S.-based, market-facing company bringing professional tools, equipment, supplies, and solutions to the HVAC/R industry.",
+  "about.heroDescription": "Powerlink Inc. provides professional tools, equipment, supplies, and solutions for the HVAC/R industry.",
   "about.mission": "Our Mission",
   "about.missionDescription": "We saw a market flooded with consumer-grade tools masquerading as professional equipment. POWERLYNX was founded with a single directive: engineer HVAC/R equipment that delivers unsurpassed accuracy, durability, and ease of use on every job. Every manifold, motor, and line set we manufacture is validated against the demands of commercial and residential jobsites.",
   "about.standard": "The POWERLYNX Standard",
