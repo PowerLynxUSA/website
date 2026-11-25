@@ -54,7 +54,7 @@ export function Home() {
     .map((line) => line.replace(/\.$/, ''));
   const catalogLabel = `${t('detail.catalog')} ${catalogVersion}`;
   const heroImage = getResponsiveMarketingImage('generated', 'hero-technician');
-  const catalogCollageImage = getResponsiveMarketingImage('brand', 'catalog-hero-collage-clean');
+  const catalogCollageImage = getResponsiveMarketingImage('brand', 'catalog-hero-collage-current');
   const textureImage = getResponsiveMarketingImage('generated', 'texture-metal');
   const markImage = getResponsiveMarketingImage(
     'brand',

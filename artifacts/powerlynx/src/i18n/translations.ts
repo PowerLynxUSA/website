@@ -367,3 +367,19 @@ const inquiryDeliveryCopy: Record<
 for (const language of Object.keys(inquiryDeliveryCopy) as LanguageCode[]) {
   Object.assign(translations[language], inquiryDeliveryCopy[language]);
 }
+
+// Match the currently offered lineup; archived products remain in catalog data.
+const currentLineupCopy: Record<LanguageCode, string> = {
+  EN: "Explore professional flaring tools, internal and external reamers, and rugged brazing torches—built for accuracy, reliability, and everyday HVAC/R work.",
+  ES: "Descubra abocardadores profesionales, escariadores internos y externos y sopletes de soldadura resistentes, diseñados para ofrecer precisión y fiabilidad en el trabajo diario de HVAC/R.",
+  FR: "Découvrez nos outils d'évasement professionnels, alésoirs intérieurs et extérieurs et chalumeaux robustes, conçus pour la précision et la fiabilité au quotidien en CVC/R.",
+  PT: "Conheça nossos flangeadores profissionais, escareadores internos e externos e maçaricos robustos, desenvolvidos para precisão e confiabilidade no trabalho diário de HVAC/R.",
+  DE: "Entdecken Sie professionelle Bördelgeräte, Innen- und Außenentgrater sowie robuste Hartlötbrenner – für Präzision und Zuverlässigkeit im täglichen HLK/Kälte-Einsatz.",
+  ZH: "探索专业扩口工具、内外倒角器及坚固耐用的钎焊焊炬，为日常暖通空调及制冷作业提供精准、可靠的性能。",
+  'ZH-TW': "探索專業擴口工具、內外倒角器及堅固耐用的釬焊焊炬，為日常暖通空調及冷凍作業提供精準、可靠的性能。",
+  KO: "전문가용 플레어링 툴, 내·외부 리머, 견고한 브레이징 토치를 만나보세요. 일상적인 HVAC/R 작업에 필요한 정밀성과 신뢰성을 제공합니다.",
+  JA: "日々の空調・冷凍作業に必要な精度と信頼性を備えた、プロ向けのフレアツール、内外面リーマー、堅牢なろう付けトーチをご覧ください。",
+};
+for (const language of Object.keys(currentLineupCopy) as LanguageCode[]) {
+  translations[language]['home.equipmentLineupDescription'] = currentLineupCopy[language];
+}

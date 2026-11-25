@@ -74,7 +74,7 @@ export function readProductCatalog(productsFilePath: string): CatalogProduct[] {
     if (
       ts.isVariableDeclaration(node) &&
       ts.isIdentifier(node.name) &&
-      node.name.text === 'products' &&
+      node.name.text === 'allProducts' &&
       node.initializer &&
       ts.isArrayLiteralExpression(node.initializer)
     ) {
@@ -85,7 +85,7 @@ export function readProductCatalog(productsFilePath: string): CatalogProduct[] {
   });
 
   if (!productsArray) {
-    throw new Error(`Could not find "export const products = [...]" in ${productsFilePath}`);
+    throw new Error(`Could not find "export const allProducts = [...]" in ${productsFilePath}`);
   }
 
   const catalog: CatalogProduct[] = [];

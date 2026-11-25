@@ -7,11 +7,11 @@ const mainPages = [
   { name: 'about', path: '/about' },
   { name: 'products index', path: '/products' },
   // A spread of product detail pages: some have dedicated technical copy
-  // (thermal-imaging-camera), some rely on phrase-substitution fallback
+  // (flaring-tool), some rely on phrase-substitution fallback
   // (utility-torch), and some are code/measurement-only with nothing to
   // translate (tube-straightener) — covering all three keeps this render
   // check honest about how localizeProduct() actually behaves per product.
-  { name: 'product detail (dedicated copy)', path: '/products/thermal-imaging-camera' },
+  { name: 'product detail (dedicated copy)', path: '/products/flaring-tool' },
   { name: 'product detail (phrase substitution)', path: '/products/utility-torch' },
   { name: 'product detail (codes/measurements only)', path: '/products/tube-straightener' },
   { name: 'contact', path: '/contact' },

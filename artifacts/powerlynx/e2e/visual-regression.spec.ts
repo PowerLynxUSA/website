@@ -8,7 +8,7 @@ const viewports = {
 const screens = [
   { name: 'home', path: '/' },
   { name: 'products-index', path: '/products' },
-  { name: 'product-detail', path: '/products/thermal-imaging-camera' },
+  { name: 'product-detail', path: '/products/flaring-tool' },
   { name: 'about', path: '/about' },
   { name: 'contact', path: '/contact' },
 ];

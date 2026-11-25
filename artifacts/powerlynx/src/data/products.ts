@@ -38,6 +38,8 @@ export type CategorySection = "Tubing Tools" | "Utility & Hand Tools";
 
 export type Product = {
   slug: string;
+  /** Retained in allProducts for later reuse; omitted from every public catalog surface. */
+  hidden?: boolean;
   name: string;
   models: string; // model codes, as printed in the catalog
   line: "HVAC Tool" | "HVAC Supply";
@@ -59,7 +61,7 @@ export const catalogVersion = "V1.0";
 // the Category sidebar (categoryTree), so both filters share one taxonomy.
 export const categoryGroups: CategoryGroup[] = ["HVAC Parts & Supplies", "HVAC Tools and Instruments"];
 
-export const products: Product[] = [
+export const allProducts: Product[] = [
   {
     slug: "white-insulated-line-set",
     image: imgWhiteInsulatedLineSet,
@@ -108,6 +110,7 @@ export const products: Product[] = [
   },
   {
     slug: "thermal-imaging-camera",
+    hidden: true,
     image: imgThermalImagingCamera,
     name: "Thermal Imaging Camera",
     models: "ATC100 / ATC200",
@@ -363,6 +366,7 @@ export const products: Product[] = [
   },
   {
     slug: "condenser-fan-motor-single-speed",
+    hidden: true,
     image: imgCondenserFanMotorSingleSpeed,
     name: "Condenser Fan Motor (Single Speed)",
     models: "ACM216 / ACM214",
@@ -384,6 +388,7 @@ export const products: Product[] = [
   },
   {
     slug: "condenser-fan-motor-multi-hp",
+    hidden: true,
     image: imgCondenserFanMotorSingleSpeed,
     name: "Condenser Fan Motor (Multi-HP)",
     models: "ACM2M1",
@@ -397,6 +402,10 @@ export const products: Product[] = [
   },
 ];
 
+// All public pages, search, featured cards and detail lookup consume this view.
+// To restore a product, remove its hidden flag; its original data/assets remain.
+export const products = allProducts.filter(product => !product.hidden);
+
 // Product category tree — mirrors the official POWERLYNX category structure:
 // two top-level groups, with "Tubing Tools" and "Utility & Hand Tools" nested
 // under HVAC Tools and Instruments as collapsible sections.
@@ -409,7 +418,7 @@ export type CategoryTreeGroup = {
   items: CategoryTreeItem[];
 };
 
-export const categoryTree: CategoryTreeGroup[] = [
+export const allCategoryTree: CategoryTreeGroup[] = [
   {
     group: "HVAC Parts & Supplies",
     items: [
@@ -450,6 +459,16 @@ export const categoryTree: CategoryTreeGroup[] = [
     ],
   },
 ];
+
+const publicCategories = new Set(products.map(product => product.category));
+export const categoryTree: CategoryTreeGroup[] = allCategoryTree.map(group => ({
+  ...group,
+  items: group.items.flatMap((item): CategoryTreeItem[] => {
+    if (item.kind === 'category') return publicCategories.has(item.category) ? [item] : [];
+    const categories = item.categories.filter(category => publicCategories.has(category));
+    return categories.length ? [{ ...item, categories }] : [];
+  }),
+})).filter(group => group.items.length > 0);
 
 // Flat category list, ordered to match categoryTree (used for search/filter helpers).
 export const categories = categoryTree.flatMap((g) =>
